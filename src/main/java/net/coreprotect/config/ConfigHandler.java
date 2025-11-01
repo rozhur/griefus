@@ -54,15 +54,15 @@ public class ConfigHandler extends Queue {
     public static final String MINECRAFT_VERSION = "1.16";
     public static final String PATCH_VERSION = "23.0";
     public static final String LATEST_VERSION = "1.21.10";
-    public static String path = "plugins/CoreProtect/";
+    public static String path = "plugins/Griefus/";
     public static String sqlite = "database.db";
     public static String host = "127.0.0.1";
     public static int port = 3306;
     public static String database = "database";
     public static String username = "root";
     public static String password = "";
-    public static String prefix = "co_";
-    public static String prefixConfig = "co_";
+    public static String prefix = "gus_";
+    public static String prefixConfig = "gus_";
     public static int maximumPoolSize = 10;
 
     public static HikariDataSource hikariDataSource = null;
@@ -209,7 +209,7 @@ public class ConfigHandler extends Queue {
 
         if (!Config.getGlobal().MYSQL) {
             try {
-                File tempFile = File.createTempFile("CoreProtect_" + System.currentTimeMillis(), ".tmp");
+                File tempFile = File.createTempFile("Griefus_" + System.currentTimeMillis(), ".tmp");
                 tempFile.setExecutable(true);
 
                 boolean canExecute = false;
@@ -483,15 +483,15 @@ public class ConfigHandler extends Queue {
                     while (rs.next()) {
                         if (unixtimestamp < waitTime) {
                             if (!lockMessage) {
-                                Chat.sendConsoleMessage("[CoreProtect] " + Phrase.build(Phrase.DATABASE_LOCKED_1));
+                                Chat.sendConsoleMessage("[Griefus] " + Phrase.build(Phrase.DATABASE_LOCKED_1));
                                 lockMessage = true;
                             }
                             Thread.sleep(1000);
                         }
                         else {
-                            Chat.sendConsoleMessage(Color.RED + "[CoreProtect] " + Phrase.build(Phrase.DATABASE_LOCKED_2));
-                            Chat.sendConsoleMessage(Color.GREY + "[CoreProtect] " + Phrase.build(Phrase.DATABASE_LOCKED_3));
-                            Chat.sendConsoleMessage(Color.GREY + "[CoreProtect] " + Phrase.build(Phrase.DATABASE_LOCKED_4));
+                            Chat.sendConsoleMessage(Color.RED + "[Griefus] " + Phrase.build(Phrase.DATABASE_LOCKED_2));
+                            Chat.sendConsoleMessage(Color.GREY + "[Griefus] " + Phrase.build(Phrase.DATABASE_LOCKED_3));
+                            Chat.sendConsoleMessage(Color.GREY + "[Griefus] " + Phrase.build(Phrase.DATABASE_LOCKED_4));
                             return false;
                         }
 

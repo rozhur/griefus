@@ -4,7 +4,7 @@ version: ${project.version}
 branch: ${project.branch}
 api-version: 1.16
 folia-supported: true
-website: https://git.zhira.net/zhdev/griefus
+website: https://griefus.zhdev.org
 authors: [Intelli, rozhur]
 softdepend: [WorldEdit,AdvancedChests]
 description: >
@@ -13,21 +13,31 @@ commands:
   co:
     description: Utilize the plugin
     permission: coreprotect.co
-    permission-message: §3CoreProtect §f- You do not have permission to do that.
+    permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
   core:
     description: Utilize the plugin
     permission: coreprotect.core
-    permission-message: §3CoreProtect §f- You do not have permission to do that.
+    permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
   coreprotect:
     description: Utilize the plugin
     permission: coreprotect.coreprotect
-    permission-message: §3CoreProtect §f- You do not have permission to do that.
+    permission-message: §3Griefus §f- You do not have permission to do that.
+    usage: /<command> <params>
+  gus:
+    description: Utilize the plugin
+    permission: coreprotect.coreprotect
+    permission-message: §3Griefus §f- You do not have permission to do that.
+    usage: /<command> <params>
+  griefus:
+    description: Utilize the plugin
+    permission: coreprotect.coreprotect
+    permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
 permissions:
     coreprotect.*:
-        description: Gives access to all CoreProtect actions and commands
+        description: Gives access to all Griefus actions and commands
         default: op
         children: 
             coreprotect.rollback: true
@@ -54,13 +64,13 @@ permissions:
             coreprotect.consumer: true
             coreprotect.networking: true
     coreprotect.co:
-        description: Has permission to access the CoreProtect /co command
+        description: Has permission to access the Griefus /co command
         default: true
     coreprotect.core:
-        description: Has permission to access the CoreProtect /core command
+        description: Has permission to access the Griefus /core command
         default: false
     coreprotect.coreprotect:
-        description: Has permission to access the CoreProtect /coreprotect command
+        description: Has permission to access the Griefus /coreprotect command
         default: false
     coreprotect.lookup:
         description: Has permission to use the lookup command

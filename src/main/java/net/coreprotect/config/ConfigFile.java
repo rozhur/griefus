@@ -35,7 +35,7 @@ public class ConfigFile extends Config {
 
     private static final TreeMap<String, String> DEFAULT_VALUES = new TreeMap<>();
     private static final TreeMap<String, String> USER_VALUES = new TreeMap<>();
-    private static final String DEFAULT_FILE_HEADER = "# CoreProtect Language File (en)";
+    private static final String DEFAULT_FILE_HEADER = "# Griefus Language File (en)";
     private final HashMap<String, String> lang;
 
     public static void init(String fileName) throws IOException {

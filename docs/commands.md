@@ -218,8 +218,8 @@ ___
 * Example: `i:stone` *(only include stone)*
 * Example: `i:stone,oak_wood,bedrock` *(specify multiple blocks)*
 
-> You can find a list of block names at [https://coreprotect.net/wiki-blocks](https://coreprotect.net/wiki-blocks).  
-> You can find a list of entity names at [https://coreprotect.net/wiki-entities](https://coreprotect.net/wiki-entities).
+> You can find a list of block names at [https://griefus.zhdev.org/wiki-blocks](https://griefus.zhdev.org/wiki-blocks).  
+> You can find a list of entity names at [https://griefus.zhdev.org/wiki-entities](https://griefus.zhdev.org/wiki-entities).
 
 ---
 

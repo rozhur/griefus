@@ -1,5 +1,5 @@
 site_name: CoreProtect Documentation
-site_url: https://docs.coreprotect.net
+site_url: https://docs.griefus.zhdev.org
 theme: readthedocs
 repo_url: https://github.com/PlayPro/CoreProtect
 docs_dir: 'docs'

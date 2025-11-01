@@ -147,12 +147,12 @@ public class CommandHandler implements CommandExecutor {
                                 Thread.sleep(5000);
                                 Chat.sendMessage(user, Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.UPDATE_HEADER, "Griefus" + (VersionUtils.isCommunityEdition() ? " " + ConfigHandler.COMMUNITY_EDITION : "")) + Color.WHITE + " -----");
                                 if (latestVersion != null) {
-                                    Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.UPDATE_NOTICE, Color.WHITE, "CoreProtect CE v" + latestVersion));
-                                    Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.LINK_DOWNLOAD, Color.WHITE, "www.coreprotect.net/download/"));
+                                    Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.UPDATE_NOTICE, Color.WHITE, "Griefus CE v" + latestVersion));
+                                    Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.LINK_DOWNLOAD, Color.WHITE, "www.griefus.zhdev.org/download/"));
                                 }
                                 else if (!VersionUtils.isCommunityEdition()) {
-                                    Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.UPDATE_NOTICE, Color.WHITE, "CoreProtect v" + latestEdgeVersion));
-                                    Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.LINK_DOWNLOAD, Color.WHITE, "www.coreprotect.net/latest/"));
+                                    Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.UPDATE_NOTICE, Color.WHITE, "Griefus v" + latestEdgeVersion));
+                                    Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.LINK_DOWNLOAD, Color.WHITE, "www.griefus.zhdev.org/latest/"));
                                 }
                             }
                             catch (Exception e) {

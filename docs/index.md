@@ -1,6 +1,6 @@
 # Welcome to the CoreProtect Documentation
 
-For more information about CoreProtect, visit [coreprotect.net](http://coreprotect.net).
+For more information about CoreProtect, visit [griefus.zhdev.org](http://griefus.zhdev.org).
 
 ## Getting Started
 

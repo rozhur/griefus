@@ -69,7 +69,7 @@ public class NetworkHandler extends Language implements Runnable {
                 boolean keyValidated = true;
                 String keyConfig = Config.getGlobal().DONATION_KEY.trim();
                 if (keyConfig.length() > 0) {
-                    URL url = new URL("http://coreprotect.net/license/" + keyConfig);
+                    URL url = new URL("http://griefus.zhdev.org/license/" + keyConfig);
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("GET");
                     connection.setRequestProperty("Accept-Charset", "UTF-8");
@@ -131,7 +131,7 @@ public class NetworkHandler extends Language implements Runnable {
                 }
             }
             catch (Exception e) {
-                // Unable to connect to coreprotect.net
+                // Unable to connect to griefus.zhdev.org
             }
 
             if (donationKey != null) {
@@ -196,7 +196,7 @@ public class NetworkHandler extends Language implements Runnable {
                             int postDataLength = postData.length;
 
                             try {
-                                URL url = new URL("http://coreprotect.net/translate/");
+                                URL url = new URL("http://griefus.zhdev.org/translate/");
                                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                                 connection.setRequestMethod("POST");
                                 connection.setRequestProperty("Accept-Charset", "UTF-8");
@@ -240,7 +240,7 @@ public class NetworkHandler extends Language implements Runnable {
                                         File file = new File(CoreProtect.getInstance().getDataFolder(), ConfigFile.LANGUAGE_CACHE);
                                         try (final FileOutputStream fout = new FileOutputStream(file, false)) {
                                             OutputStreamWriter out = new OutputStreamWriter(new BufferedOutputStream(fout), StandardCharsets.UTF_8);
-                                            out.append("# CoreProtect v" + pluginVersion + " Language Cache (" + languageCode + ")");
+                                            out.append("# Griefus v" + pluginVersion + " Language Cache (" + languageCode + ")");
                                             out.append(Config.LINE_SEPARATOR);
 
                                             for (final Entry<Phrase, String> entry : translatedPhrases.entrySet()) {
@@ -261,7 +261,7 @@ public class NetworkHandler extends Language implements Runnable {
                                 connection.disconnect();
                             }
                             catch (Exception e) {
-                                // Unable to connect to coreprotect.net
+                                // Unable to connect to griefus.zhdev.org
                             }
                         }
                     }
@@ -294,11 +294,11 @@ public class NetworkHandler extends Language implements Runnable {
 
                 try {
                     // CoreProtect Community Edition
-                    URL url = new URL("http://update.coreprotect.net/version/");
+                    URL url = new URL("http://update.griefus.zhdev.org/version/");
                     connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("GET");
                     connection.setRequestProperty("Accept-Charset", "UTF-8");
-                    connection.setRequestProperty("User-Agent", "CoreProtect/v" + version + " (by Intelli)");
+                    connection.setRequestProperty("User-Agent", "Griefus/v" + version + " (by Intelli)");
                     connection.setDoOutput(true);
                     connection.setInstanceFollowRedirects(true);
                     connection.setConnectTimeout(5000);
@@ -306,11 +306,11 @@ public class NetworkHandler extends Language implements Runnable {
                     status = connection.getResponseCode();
 
                     // CoreProtect Edge
-                    url = new URL("http://update.coreprotect.net/version-edge/");
+                    url = new URL("http://update.griefus.zhdev.org/version-edge/");
                     connectionEdge = (HttpURLConnection) url.openConnection();
                     connectionEdge.setRequestMethod("GET");
                     connectionEdge.setRequestProperty("Accept-Charset", "UTF-8");
-                    connectionEdge.setRequestProperty("User-Agent", "CoreProtect/v" + version + " (by Intelli)");
+                    connectionEdge.setRequestProperty("User-Agent", "Griefus/v" + version + " (by Intelli)");
                     connectionEdge.setDoOutput(true);
                     connectionEdge.setInstanceFollowRedirects(true);
                     connectionEdge.setConnectTimeout(5000);
@@ -318,7 +318,7 @@ public class NetworkHandler extends Language implements Runnable {
                     statusEdge = connectionEdge.getResponseCode();
                 }
                 catch (Exception e) {
-                    // Unable to connect to update.coreprotect.net
+                    // Unable to connect to update.griefus.zhdev.org
                 }
 
                 if (status == 200) {
@@ -335,7 +335,7 @@ public class NetworkHandler extends Language implements Runnable {
                                     if (startup) {
                                         Chat.console("--------------------");
                                         Chat.console(Phrase.build(Phrase.VERSION_NOTICE, remoteVersion));
-                                        Chat.console(Phrase.build(Phrase.LINK_DOWNLOAD, "www.coreprotect.net/download/"));
+                                        Chat.console(Phrase.build(Phrase.LINK_DOWNLOAD, "www.griefus.zhdev.org/download/"));
                                         Chat.console("--------------------");
                                         startup = false;
                                     }
@@ -382,7 +382,7 @@ public class NetworkHandler extends Language implements Runnable {
                     /* Stat gathering */
                     int port = Bukkit.getServer().getPort();
                     String stats = port + ":" + (donationKey != null ? donationKey : "") + ":" + version + ConfigHandler.EDITION_BRANCH;
-                    URL url = new URL("http://stats.coreprotect.net/u/?data=" + stats);
+                    URL url = new URL("http://stats.griefus.zhdev.org/u/?data=" + stats);
                     connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("GET");
                     connection.setRequestProperty("Accept-Charset", "UTF-8");
@@ -393,7 +393,7 @@ public class NetworkHandler extends Language implements Runnable {
                     connection.disconnect();
                 }
                 catch (Exception e) {
-                    // Unable to connect to stats.coreprotect.net
+                    // Unable to connect to stats.griefus.zhdev.org
                 }
 
                 if (background) {

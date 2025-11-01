@@ -68,7 +68,7 @@ public class ShutdownService {
             waitForPendingOperations(shutdownTime, nextAlertTime);
 
             ConfigHandler.performDisable();
-            Chat.console(Phrase.build(Phrase.DISABLE_SUCCESS, "CoreProtect v" + plugin.getDescription().getVersion()));
+            Chat.console(Phrase.build(Phrase.DISABLE_SUCCESS, "Griefus v" + plugin.getDescription().getVersion()));
         }
         catch (Exception e) {
             e.printStackTrace();

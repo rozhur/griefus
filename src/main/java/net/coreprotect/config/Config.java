@@ -26,14 +26,13 @@ public class Config extends Language {
     private static final Map<String, String[]> HEADERS = new HashMap<>();
     private static final Map<String, String> DEFAULT_VALUES = new LinkedHashMap<>();
     private static final Map<String, Config> CONFIG_BY_WORLD_NAME = new HashMap<>();
-    private static final String DEFAULT_FILE_HEADER = "# CoreProtect Config";
+    private static final String DEFAULT_FILE_HEADER = "# Griefus Config";
     public static final String LINE_SEPARATOR = "\n";
 
     private static final Config GLOBAL = new Config();
     private final HashMap<String, String> config;
     private Config defaults;
 
-    public String DONATION_KEY;
     public String PREFIX;
     public String MYSQL_HOST;
     public String MYSQL_DATABASE;
@@ -142,11 +141,10 @@ public class Config extends Language {
         DEFAULT_VALUES.put("username-changes", "true");
         DEFAULT_VALUES.put("worldedit", "true");
 
-        HEADERS.put("donation-key", new String[] { "# CoreProtect is donationware. Obtain a donation key from coreprotect.net/donate/" });
         HEADERS.put("use-mysql", new String[] { "# MySQL is optional and not required.", "# If you prefer to use MySQL, enable the following and fill out the fields." });
-        HEADERS.put("language", new String[] { "# If modified, will automatically attempt to translate languages phrases.", "# List of language codes: https://coreprotect.net/languages/" });
-        HEADERS.put("check-updates", new String[] { "# If enabled, CoreProtect will check for updates when your server starts up.", "# If an update is available, you'll be notified via your server console.", });
-        HEADERS.put("api-enabled", new String[] { "# If enabled, other plugins will be able to utilize the CoreProtect API.", });
+        HEADERS.put("language", new String[] { "# If modified, will automatically attempt to translate languages phrases.", "# List of language codes: https://griefus.zhdev.org/languages/" });
+        HEADERS.put("check-updates", new String[] { "# If enabled, Griefus will check for updates when your server starts up.", "# If an update is available, you'll be notified via your server console.", });
+        HEADERS.put("api-enabled", new String[] { "# If enabled, other plugins will be able to utilize the Griefus API.", });
         HEADERS.put("verbose", new String[] { "# If enabled, extra data is displayed during rollbacks and restores.", "# Can be manually triggered by adding \"#verbose\" to your rollback command." });
         HEADERS.put("default-radius", new String[] { "# If no radius is specified in a rollback or restore, this value will be", "# used as the radius. Set to \"0\" to disable automatically adding a radius." });
         HEADERS.put("max-radius", new String[] { "# The maximum radius that can be used in a command. Set to \"0\" to disable.", "# To run a rollback or restore without a radius, you can use \"r:#global\"." });
@@ -197,7 +195,6 @@ public class Config extends Language {
         this.NETWORK_DEBUG = this.getBoolean("network-debug", false);
         this.UNKNOWN_LOGGING = this.getBoolean("unknown-logging", false);
         this.MAXIMUM_POOL_SIZE = this.getInt("maximum-pool-size", 10);
-        this.DONATION_KEY = this.getString("donation-key");
         this.MYSQL = this.getBoolean("use-mysql");
         this.PREFIX = this.getString("table-prefix");
         this.MYSQL_HOST = this.getString("mysql-host");

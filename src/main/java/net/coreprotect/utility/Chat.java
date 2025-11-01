@@ -48,18 +48,18 @@ public final class Chat {
             Bukkit.getLogger().log(Level.INFO, string);
         }
         else {
-            Bukkit.getLogger().log(Level.INFO, "[CoreProtect] " + string);
+            Bukkit.getLogger().log(Level.INFO, "[Griefus] " + string);
         }
     }
 
     public static void sendGlobalMessage(CommandSender user, String string) {
         if (user instanceof ConsoleCommandSender) {
-            sendMessage(user, Color.DARK_AQUA + "[CoreProtect] " + Color.WHITE + string);
+            sendMessage(user, Color.DARK_AQUA + "[Griefus] " + Color.WHITE + string);
             return;
         }
 
         Server server = Bukkit.getServer();
-        server.getConsoleSender().sendMessage("[CoreProtect] " + string);
+        server.getConsoleSender().sendMessage("[Griefus] " + string);
         for (Player player : server.getOnlinePlayers()) {
             if (player.isOp() && !player.getName().equals(user.getName())) {
                 sendMessage(player, Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + string);
