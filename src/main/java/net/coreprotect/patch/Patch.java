@@ -313,7 +313,7 @@ public class Patch {
                 currentVersion[2] = 0;
                 lastVersion[2] = 0;
                 if (VersionUtils.newVersion(currentVersion, lastVersion)) {
-                    Chat.sendConsoleMessage(Color.RED + "[CoreProtect] " + Phrase.build(Phrase.VERSION_REQUIRED, "CoreProtect", "v" + lastVersion[1] + "." + lastVersion[2]));
+                    Chat.sendConsoleMessage(Color.RED + "[CoreProtect] " + Phrase.build(Phrase.VERSION_REQUIRED, Griefus, "v" + lastVersion[1] + "." + lastVersion[2]));
                     return false;
                 }
             }

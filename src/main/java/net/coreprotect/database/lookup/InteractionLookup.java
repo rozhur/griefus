@@ -126,10 +126,10 @@ public class InteractionLookup {
             }
             else {
                 if (rowMax > count && count > 0) {
-                    result = Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_RESULTS_PAGE, Selector.SECOND);
+                    result = Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.NO_RESULTS_PAGE, Selector.SECOND);
                 }
                 else {
-                    result = Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_DATA_LOCATION, Selector.THIRD);
+                    result = Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.NO_DATA_LOCATION, Selector.THIRD);
                 }
             }
 
