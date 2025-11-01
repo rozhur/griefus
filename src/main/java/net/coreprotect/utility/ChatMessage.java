@@ -7,7 +7,7 @@ public class ChatMessage {
     /**
      * Returns the plugin name with the DARK_AQUA chat color.
      */
-    String pluginName = Color.DARK_AQUA + Griefus;
+    String pluginName = Color.DARK_AQUA + "CoreProtect";
 
     String message;
     String textColor = Color.WHITE;

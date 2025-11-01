@@ -16,7 +16,7 @@ public class Extensions {
         }
         catch (Exception e) {
             // plugin not compiled with extension
-            Chat.sendMessage(user, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.COMMAND_NOT_FOUND, Color.WHITE, "/co " + command));
+            Chat.sendMessage(user, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.COMMAND_NOT_FOUND, Color.WHITE, "/co " + command));
         }
     }
 

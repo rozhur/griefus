@@ -46,7 +46,7 @@ public class VersionCheckService {
 
             // Patch version validation
             if (VersionUtils.newVersion(ConfigHandler.PATCH_VERSION, VersionUtils.getPluginVersion()) && !VersionUtils.isBranch("dev")) {
-                Chat.console(Phrase.build(Phrase.VERSION_INCOMPATIBLE, Griefus, "v" + VersionUtils.getPluginVersion()));
+                Chat.console(Phrase.build(Phrase.VERSION_INCOMPATIBLE, "CoreProtect", "v" + VersionUtils.getPluginVersion()));
                 Chat.sendConsoleMessage(Color.GREY + "[CoreProtect] " + Phrase.build(Phrase.INVALID_BRANCH_2));
                 return false;
             }

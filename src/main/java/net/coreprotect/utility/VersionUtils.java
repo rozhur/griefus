@@ -49,12 +49,12 @@ public class VersionUtils {
         CoreProtect instance = CoreProtect.getInstance();
         // Return default name if instance is null
         if (instance == null) {
-            return Griefus;
+            return "CoreProtect";
         }
 
         // Return default name if description is null
         if (instance.getDescription() == null) {
-            return Griefus;
+            return "CoreProtect";
         }
 
         String name = instance.getDescription().getName();

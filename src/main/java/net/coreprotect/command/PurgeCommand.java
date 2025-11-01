@@ -53,23 +53,23 @@ public class PurgeCommand extends Consumer {
         }
 
         if (ConfigHandler.converterRunning || ConfigHandler.migrationRunning) {
-            Chat.sendMessage(player, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.UPGRADE_IN_PROGRESS));
+            Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.UPGRADE_IN_PROGRESS));
             return;
         }
         if (ConfigHandler.purgeRunning) {
-            Chat.sendMessage(player, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.PURGE_IN_PROGRESS));
+            Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.PURGE_IN_PROGRESS));
             return;
         }
         if (!permission) {
-            Chat.sendMessage(player, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.NO_PERMISSION));
+            Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_PERMISSION));
             return;
         }
         if (resultc <= 1) {
-            Chat.sendMessage(player, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.MISSING_PARAMETERS, "/co purge t:<time>"));
+            Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.MISSING_PARAMETERS, "/co purge t:<time>"));
             return;
         }
         if (endTime <= 0) {
-            Chat.sendMessage(player, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.MISSING_PARAMETERS, "/co purge t:<time>"));
+            Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.MISSING_PARAMETERS, "/co purge t:<time>"));
             return;
         }
         if (argRadius != null) {
@@ -82,16 +82,16 @@ public class PurgeCommand extends Consumer {
             return;
         }
         if (player instanceof Player && endTime < 2592000) {
-            Chat.sendMessage(player, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.PURGE_MINIMUM_TIME, "30", Selector.FIRST)); // 30 days
+            Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.PURGE_MINIMUM_TIME, "30", Selector.FIRST)); // 30 days
             return;
         }
         else if (endTime < 86400) {
-            Chat.sendMessage(player, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.PURGE_MINIMUM_TIME, "24", Selector.SECOND)); // 24 hours
+            Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.PURGE_MINIMUM_TIME, "24", Selector.SECOND)); // 24 hours
             return;
         }
         for (int action : argAction) {
             if (!supportedActions.contains(action)) {
-                Chat.sendMessage(player, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.ACTION_NOT_SUPPORTED));
+                Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.ACTION_NOT_SUPPORTED));
                 // Functions.sendMessage(player, new ChatMessage("Please specify a valid purge action.").build());
                 return;
             }
@@ -159,7 +159,7 @@ public class PurgeCommand extends Consumer {
         }
 
         if (entity) {
-            Chat.sendMessage(player, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.ACTION_NOT_SUPPORTED));
+            Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.ACTION_NOT_SUPPORTED));
             return;
         }
 

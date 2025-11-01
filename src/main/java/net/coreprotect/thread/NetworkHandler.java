@@ -73,7 +73,7 @@ public class NetworkHandler extends Language implements Runnable {
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("GET");
                     connection.setRequestProperty("Accept-Charset", "UTF-8");
-                    connection.setRequestProperty("User-Agent", Griefus);
+                    connection.setRequestProperty("User-Agent", "CoreProtect");
                     connection.setDoOutput(true);
                     connection.setInstanceFollowRedirects(true);
                     connection.setConnectTimeout(5000);
@@ -201,7 +201,7 @@ public class NetworkHandler extends Language implements Runnable {
                                 connection.setRequestMethod("POST");
                                 connection.setRequestProperty("Accept-Charset", "UTF-8");
                                 connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
-                                connection.setRequestProperty("User-Agent", Griefus);
+                                connection.setRequestProperty("User-Agent", "CoreProtect");
                                 connection.setRequestProperty("Content-Length", Integer.toString(postDataLength));
                                 connection.setDoOutput(true);
                                 connection.setInstanceFollowRedirects(true);
@@ -386,7 +386,7 @@ public class NetworkHandler extends Language implements Runnable {
                     connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("GET");
                     connection.setRequestProperty("Accept-Charset", "UTF-8");
-                    connection.setRequestProperty("User-Agent", Griefus);
+                    connection.setRequestProperty("User-Agent", "CoreProtect");
                     connection.setConnectTimeout(5000);
                     connection.connect();
                     connection.getResponseCode();

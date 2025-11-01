@@ -37,22 +37,22 @@ public final class HangingBreakByEntityListener extends Queue implements Listene
             @Override
             public void run() {
                 if (!player.hasPermission("coreprotect.inspect")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.NO_PERMISSION));
+                    Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_PERMISSION));
                     ConfigHandler.inspecting.put(player.getName(), false);
                     return;
                 }
                 if (ConfigHandler.converterRunning) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.UPGRADE_IN_PROGRESS));
+                    Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.UPGRADE_IN_PROGRESS));
                     return;
                 }
                 if (ConfigHandler.purgeRunning) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.PURGE_IN_PROGRESS));
+                    Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.PURGE_IN_PROGRESS));
                     return;
                 }
                 if (ConfigHandler.lookupThrottle.get(player.getName()) != null) {
                     Object[] lookupThrottle = ConfigHandler.lookupThrottle.get(player.getName());
                     if ((boolean) lookupThrottle[0] || ((System.currentTimeMillis() - (long) lookupThrottle[1])) < 100) {
-                        Chat.sendMessage(player, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
+                        Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
                         return;
                     }
                 }
@@ -75,7 +75,7 @@ public final class HangingBreakByEntityListener extends Queue implements Listene
                         statement.close();
                     }
                     else {
-                        Chat.sendMessage(player, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
+                        Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
                     }
                 }
                 catch (Exception e) {

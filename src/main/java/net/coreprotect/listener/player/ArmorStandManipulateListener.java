@@ -33,22 +33,22 @@ public final class ArmorStandManipulateListener extends Queue implements Listene
             @Override
             public void run() {
                 if (!finalPlayer.hasPermission("coreprotect.inspect")) {
-                    Chat.sendMessage(finalPlayer, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.NO_PERMISSION));
+                    Chat.sendMessage(finalPlayer, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_PERMISSION));
                     ConfigHandler.inspecting.put(finalPlayer.getName(), false);
                     return;
                 }
                 if (ConfigHandler.converterRunning) {
-                    Chat.sendMessage(finalPlayer, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.UPGRADE_IN_PROGRESS));
+                    Chat.sendMessage(finalPlayer, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.UPGRADE_IN_PROGRESS));
                     return;
                 }
                 if (ConfigHandler.purgeRunning) {
-                    Chat.sendMessage(finalPlayer, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.PURGE_IN_PROGRESS));
+                    Chat.sendMessage(finalPlayer, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.PURGE_IN_PROGRESS));
                     return;
                 }
                 if (ConfigHandler.lookupThrottle.get(finalPlayer.getName()) != null) {
                     Object[] lookupThrottle = ConfigHandler.lookupThrottle.get(finalPlayer.getName());
                     if ((boolean) lookupThrottle[0] || ((System.currentTimeMillis() - (long) lookupThrottle[1])) < 100) {
-                        Chat.sendMessage(finalPlayer, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
+                        Chat.sendMessage(finalPlayer, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
                         return;
                     }
                 }
@@ -64,7 +64,7 @@ public final class ArmorStandManipulateListener extends Queue implements Listene
                         statement.close();
                     }
                     else {
-                        Chat.sendMessage(finalPlayer, Color.DARK_AQUA + Griefus  + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
+                        Chat.sendMessage(finalPlayer, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
                     }
                 }
                 catch (Exception e) {
