@@ -4,8 +4,8 @@ version: ${project.version}
 branch: ${project.branch}
 api-version: 1.16
 folia-supported: true
-website: http://coreprotect.net
-author: Intelli
+website: https://git.zhira.net/zhdev/griefus
+authors: [Intelli, rozhur]
 softdepend: [WorldEdit,AdvancedChests]
 description: >
              Provides block protection for your server.
