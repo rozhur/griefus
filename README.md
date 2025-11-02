@@ -13,7 +13,7 @@ Maven
 ```
 ```xml
 <dependency>
-    <groupId>org.zhdev</groupId>
+    <groupId>org.zhdev.griefus</groupId>
     <artifactId>griefus</artifactId>
     <version>23.0</version>
     <scope>provided</scope>
