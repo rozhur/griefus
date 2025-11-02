@@ -27,12 +27,12 @@ commands:
     usage: /<command> <params>
   gus:
     description: Utilize the plugin
-    permission: coreprotect.coreprotect
+    permission: coreprotect.gus
     permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
   griefus:
     description: Utilize the plugin
-    permission: coreprotect.coreprotect
+    permission: coreprotect.griefus
     permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
 permissions:
@@ -72,6 +72,12 @@ permissions:
     coreprotect.coreprotect:
         description: Has permission to access the Griefus /coreprotect command
         default: false
+    coreprotect.gus:
+      description: Has permission to access the Griefus /gus command
+      default: true
+    coreprotect.griefus:
+      description: Has permission to access the Griefus /griefus command
+      default: false
     coreprotect.lookup:
         description: Has permission to use the lookup command
         default: op

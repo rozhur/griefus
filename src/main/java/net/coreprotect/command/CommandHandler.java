@@ -7,13 +7,10 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import net.coreprotect.config.ConfigHandler;
 import net.coreprotect.language.Phrase;
-import net.coreprotect.thread.NetworkHandler;
 import net.coreprotect.utility.Chat;
 import net.coreprotect.utility.Color;
 import net.coreprotect.utility.Extensions;
-import net.coreprotect.utility.VersionUtils;
 
 public class CommandHandler implements CommandExecutor {
     private static CommandHandler instance;
@@ -30,7 +27,7 @@ public class CommandHandler implements CommandExecutor {
     public boolean onCommand(CommandSender user, Command command, String commandLabel, String[] argumentArray) {
         String commandName = command.getName().toLowerCase(Locale.ROOT);
 
-        if (commandName.equals("core") || commandName.equals("coreprotect") || commandName.equals("co")) {
+        if (commandName.equals("core") || commandName.equals("coreprotect") || commandName.equals("co") || commandName.equals("griefus") || commandName.equals("gus")) {
             int resultc = argumentArray.length;
             if (resultc > -1) {
                 String corecommand = "help";
