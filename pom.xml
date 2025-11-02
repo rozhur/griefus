@@ -96,10 +96,6 @@
               </artifactSet>
               <relocations>
                 <relocation>
-                  <pattern>org.bstats</pattern>
-                  <shadedPattern>net.coreprotect</shadedPattern>
-                </relocation>
-                <relocation>
                   <pattern>com.zaxxer</pattern>
                   <shadedPattern>net.coreprotect</shadedPattern>
                 </relocation>
