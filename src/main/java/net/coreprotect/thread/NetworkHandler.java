@@ -15,7 +15,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
@@ -23,7 +22,6 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.stream.Stream;
 
-import org.bukkit.Bukkit;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -43,7 +41,6 @@ public class NetworkHandler extends Language implements Runnable {
     private boolean translate = true;
     private static String latestVersion = null;
     private static String latestEdgeVersion = null;
-    private static String donationKey = null;
 
     public NetworkHandler(boolean startup, boolean background) {
         this.startup = startup;
@@ -58,86 +55,9 @@ public class NetworkHandler extends Language implements Runnable {
         return latestEdgeVersion;
     }
 
-    public static String donationKey() {
-        return donationKey;
-    }
-
     @Override
     public void run() {
         try {
-            try {
-                boolean keyValidated = true;
-                String keyConfig = Config.getGlobal().DONATION_KEY.trim();
-                if (keyConfig.length() > 0) {
-                    URL url = new URL("http://griefus.zhdev.org/license/" + keyConfig);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setRequestMethod("GET");
-                    connection.setRequestProperty("Accept-Charset", "UTF-8");
-                    connection.setRequestProperty("User-Agent", "Griefus");
-                    connection.setDoOutput(true);
-                    connection.setInstanceFollowRedirects(true);
-                    connection.setConnectTimeout(5000);
-                    connection.connect();
-                    int status = connection.getResponseCode();
-
-                    if (status == 200) {
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                        String response = reader.readLine();
-                        if (response != null && response.length() > 0) {
-                            String[] remoteKey = response.replaceAll("[^a-zA-Z0-9;]", "").split(";");
-                            if (remoteKey.length > 1 && remoteKey[1].equals("1") && remoteKey[0].length() == 8) {
-                                donationKey = remoteKey[0];
-                            }
-                            else if (remoteKey.length > 1) {
-                                donationKey = null;
-                            }
-                            else {
-                                keyValidated = false;
-                            }
-                        }
-                        reader.close();
-                    }
-                    else {
-                        keyValidated = false;
-                    }
-                }
-                else {
-                    donationKey = null;
-                }
-
-                try {
-                    Path licensePath = Paths.get(ConfigHandler.path + ".license");
-                    if (keyValidated && donationKey == null) {
-                        if (keyConfig.length() > 0) {
-                            Chat.console(Phrase.build(Phrase.INVALID_DONATION_KEY) + " " + Phrase.build(Phrase.CHECK_CONFIG) + ".");
-                        }
-                        Files.write(licensePath, "".getBytes());
-                    }
-                    else if (keyValidated) {
-                        Files.write(licensePath, donationKey.getBytes());
-                    }
-                    else if (Files.isReadable(licensePath)) {
-                        List<String> licenseFile = Files.readAllLines(licensePath);
-                        if (licenseFile.size() == 1) {
-                            donationKey = licenseFile.get(0);
-                            if (donationKey == null || donationKey.length() != 8 || !donationKey.matches("^[A-Z0-9]+$")) {
-                                donationKey = null;
-                            }
-                        }
-                    }
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            catch (Exception e) {
-                // Unable to connect to griefus.zhdev.org
-            }
-
-            if (donationKey != null) {
-                // valid donation key, continue initialization
-            }
-
             if (translate) {
                 try {
                     String lang = Config.getGlobal().LANGUAGE;
@@ -155,7 +75,7 @@ public class NetworkHandler extends Language implements Runnable {
                                 Optional<String> languageHeader = stream.findFirst();
                                 if (languageHeader.isPresent()) {
                                     String headerString = languageHeader.get();
-                                    if (headerString.startsWith("# CoreProtect")) { // verify that valid cache file
+                                    if (headerString.startsWith("# Griefus")) { // verify that valid cache file
                                         String[] split = headerString.split(" ");
                                         if (split.length == 6 && split[2].length() > 2 && split[5].length() > 2) {
                                             String cacheVersion = split[2].substring(1);
@@ -283,131 +203,6 @@ public class NetworkHandler extends Language implements Runnable {
 
             if (startup) {
                 Thread.sleep(1000);
-            }
-
-            while (ConfigHandler.serverRunning) {
-                int status = 0;
-                int statusEdge = 0;
-                HttpURLConnection connection = null;
-                HttpURLConnection connectionEdge = null;
-                String version = VersionUtils.getPluginVersion();
-
-                try {
-                    // CoreProtect Community Edition
-                    URL url = new URL("http://update.griefus.zhdev.org/version/");
-                    connection = (HttpURLConnection) url.openConnection();
-                    connection.setRequestMethod("GET");
-                    connection.setRequestProperty("Accept-Charset", "UTF-8");
-                    connection.setRequestProperty("User-Agent", "Griefus/v" + version + " (by Intelli)");
-                    connection.setDoOutput(true);
-                    connection.setInstanceFollowRedirects(true);
-                    connection.setConnectTimeout(5000);
-                    connection.connect();
-                    status = connection.getResponseCode();
-
-                    // CoreProtect Edge
-                    url = new URL("http://update.griefus.zhdev.org/version-edge/");
-                    connectionEdge = (HttpURLConnection) url.openConnection();
-                    connectionEdge.setRequestMethod("GET");
-                    connectionEdge.setRequestProperty("Accept-Charset", "UTF-8");
-                    connectionEdge.setRequestProperty("User-Agent", "Griefus/v" + version + " (by Intelli)");
-                    connectionEdge.setDoOutput(true);
-                    connectionEdge.setInstanceFollowRedirects(true);
-                    connectionEdge.setConnectTimeout(5000);
-                    connectionEdge.connect();
-                    statusEdge = connectionEdge.getResponseCode();
-                }
-                catch (Exception e) {
-                    // Unable to connect to update.griefus.zhdev.org
-                }
-
-                if (status == 200) {
-                    try {
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                        String response = reader.readLine();
-
-                        if (response.length() > 0 && response.length() < 10) {
-                            String remoteVersion = response.replaceAll("[^0-9.]", "");
-                            if (remoteVersion.contains(".")) {
-                                boolean newVersion = VersionUtils.newVersion(version, remoteVersion);
-                                if (newVersion) {
-                                    latestVersion = remoteVersion;
-                                    if (startup) {
-                                        Chat.console("--------------------");
-                                        Chat.console(Phrase.build(Phrase.VERSION_NOTICE, remoteVersion));
-                                        Chat.console(Phrase.build(Phrase.LINK_DOWNLOAD, "www.griefus.zhdev.org/download/"));
-                                        Chat.console("--------------------");
-                                        startup = false;
-                                    }
-                                }
-                                else {
-                                    latestVersion = null;
-                                }
-                            }
-                        }
-
-                        reader.close();
-                    }
-                    catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                if (statusEdge == 200) {
-                    try {
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(connectionEdge.getInputStream()));
-                        String response = reader.readLine();
-
-                        if (response.length() > 0 && response.length() < 10) {
-                            String remoteVersion = response.replaceAll("[^0-9.]", "");
-                            if (remoteVersion.contains(".")) {
-                                boolean newVersion = VersionUtils.newVersion(version, remoteVersion);
-                                if (newVersion) {
-                                    latestEdgeVersion = remoteVersion;
-                                }
-                                else {
-                                    latestEdgeVersion = null;
-                                }
-                            }
-                        }
-
-                        reader.close();
-                    }
-                    catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                try {
-                    /* Stat gathering */
-                    int port = Bukkit.getServer().getPort();
-                    String stats = port + ":" + (donationKey != null ? donationKey : "") + ":" + version + ConfigHandler.EDITION_BRANCH;
-                    URL url = new URL("http://stats.griefus.zhdev.org/u/?data=" + stats);
-                    connection = (HttpURLConnection) url.openConnection();
-                    connection.setRequestMethod("GET");
-                    connection.setRequestProperty("Accept-Charset", "UTF-8");
-                    connection.setRequestProperty("User-Agent", "Griefus");
-                    connection.setConnectTimeout(5000);
-                    connection.connect();
-                    connection.getResponseCode();
-                    connection.disconnect();
-                }
-                catch (Exception e) {
-                    // Unable to connect to stats.griefus.zhdev.org
-                }
-
-                if (background) {
-                    long time = System.currentTimeMillis();
-                    long sleepTime = time + 3600000; // 1 hour
-
-                    while (ConfigHandler.serverRunning && (time < sleepTime)) {
-                        time = System.currentTimeMillis();
-                        Thread.sleep(1000);
-                    }
-                }
-                else {
-                    break;
-                }
             }
         }
         catch (Exception e) {
