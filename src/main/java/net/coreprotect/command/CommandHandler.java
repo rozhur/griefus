@@ -1,7 +1,6 @@
 package net.coreprotect.command;
 
 import java.util.Locale;
-import java.util.concurrent.ConcurrentHashMap;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,7 +13,6 @@ import net.coreprotect.utility.Extensions;
 
 public class CommandHandler implements CommandExecutor {
     private static CommandHandler instance;
-    private static ConcurrentHashMap<String, Boolean> versionAlert = new ConcurrentHashMap<>();
 
     public static CommandHandler getInstance() {
         if (instance == null) {
