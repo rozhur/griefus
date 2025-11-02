@@ -120,12 +120,7 @@ public class CommandHandler implements CommandExecutor {
                     NetworkDebugCommand.runCommand(user, permission, argumentArray);
                 }
                 else if (corecommand.equals("migrate-db")) {
-                    if (!VersionUtils.validDonationKey()) {
-                        Chat.sendMessage(user, Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + Phrase.build(Phrase.DONATION_KEY_REQUIRED));
-                    }
-                    else {
-                        Extensions.runDatabaseMigration(corecommand, user, argumentArray);
-                    }
+                    Extensions.runDatabaseMigration(corecommand, user, argumentArray);
                 }
                 else {
                     Chat.sendMessage(user, Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + Phrase.build(Phrase.COMMAND_NOT_FOUND, Color.WHITE, "/co " + corecommand));
@@ -133,35 +128,6 @@ public class CommandHandler implements CommandExecutor {
             }
             else {
                 Chat.sendMessage(user, Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + Phrase.build(Phrase.MISSING_PARAMETERS, Color.WHITE, "/co <parameters>"));
-            }
-
-            if (user.isOp() && versionAlert.get(user.getName()) == null) {
-                String latestVersion = NetworkHandler.latestVersion();
-                String latestEdgeVersion = NetworkHandler.latestEdgeVersion();
-                if (latestVersion != null || latestEdgeVersion != null) {
-                    versionAlert.put(user.getName(), true);
-                    class updateAlert implements Runnable {
-                        @Override
-                        public void run() {
-                            try {
-                                Thread.sleep(5000);
-                                Chat.sendMessage(user, Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.UPDATE_HEADER, "Griefus" + (VersionUtils.isCommunityEdition() ? " " + ConfigHandler.COMMUNITY_EDITION : "")) + Color.WHITE + " -----");
-                                if (latestVersion != null) {
-                                    Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.UPDATE_NOTICE, Color.WHITE, "Griefus CE v" + latestVersion));
-                                    Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.LINK_DOWNLOAD, Color.WHITE, "www.griefus.zhdev.org/download/"));
-                                }
-                                else if (!VersionUtils.isCommunityEdition()) {
-                                    Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.UPDATE_NOTICE, Color.WHITE, "Griefus v" + latestEdgeVersion));
-                                    Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.LINK_DOWNLOAD, Color.WHITE, "www.griefus.zhdev.org/latest/"));
-                                }
-                            }
-                            catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                    (new Thread(new updateAlert())).start();
-                }
             }
 
             return true;

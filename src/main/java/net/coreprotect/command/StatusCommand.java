@@ -14,11 +14,9 @@ import net.coreprotect.consumer.process.Process;
 import net.coreprotect.language.Phrase;
 import net.coreprotect.language.Selector;
 import net.coreprotect.patch.Patch;
-import net.coreprotect.thread.NetworkHandler;
 import net.coreprotect.utility.Chat;
 import net.coreprotect.utility.Color;
 import net.coreprotect.utility.SystemUtils;
-import net.coreprotect.utility.VersionUtils;
 
 public class StatusCommand {
     private static ConcurrentHashMap<String, Boolean> alert = new ConcurrentHashMap<>();
@@ -36,28 +34,8 @@ public class StatusCommand {
                     CoreProtect instance = CoreProtect.getInstance();
                     PluginDescriptionFile pdfFile = instance.getDescription();
 
-                    String versionCheck = "";
-                    if (Config.getGlobal().CHECK_UPDATES) {
-                        String latestVersion = NetworkHandler.latestVersion();
-                        String latestEdgeVersion = NetworkHandler.latestEdgeVersion();
-                        if (latestVersion != null) {
-                            versionCheck = " (" + Phrase.build(Phrase.LATEST_VERSION, "v" + latestVersion) + ")";
-                        }
-                        else if (latestEdgeVersion != null && !VersionUtils.isCommunityEdition()) {
-                            versionCheck = " (" + Phrase.build(Phrase.LATEST_VERSION, "v" + latestEdgeVersion) + ")";
-                        }
-                    }
-
-                    Chat.sendMessage(player, Color.WHITE + "----- " + Color.DARK_AQUA + "Griefus" + (VersionUtils.isCommunityEdition() ? " " + ConfigHandler.COMMUNITY_EDITION : "") + Color.WHITE + " -----");
-                    Chat.sendMessage(player, Color.DARK_AQUA + Phrase.build(Phrase.STATUS_VERSION, Color.WHITE, ConfigHandler.EDITION_NAME + " v" + pdfFile.getVersion() + ".") + versionCheck);
-
-                    String donationKey = NetworkHandler.donationKey();
-                    if (donationKey != null) {
-                        Chat.sendMessage(player, Color.DARK_AQUA + Phrase.build(Phrase.STATUS_LICENSE, Color.WHITE, Phrase.build(Phrase.VALID_DONATION_KEY)) + " (" + donationKey + ")");
-                    }
-                    else {
-                        Chat.sendMessage(player, Color.DARK_AQUA + Phrase.build(Phrase.STATUS_LICENSE, Color.WHITE, Phrase.build(Phrase.INVALID_DONATION_KEY)) + Color.GREY + Color.ITALIC + " (" + Phrase.build(Phrase.CHECK_CONFIG) + ")");
-                    }
+                    Chat.sendMessage(player, Color.WHITE + "----- " + Color.DARK_AQUA + "Griefus" + Color.WHITE + " -----");
+                    Chat.sendMessage(player, Color.DARK_AQUA + Phrase.build(Phrase.STATUS_VERSION, Color.WHITE, ConfigHandler.EDITION_NAME + " v" + pdfFile.getVersion()));
 
                     /*
                         Items processed (since server start)

@@ -39,20 +39,10 @@ public class NetworkHandler extends Language implements Runnable {
     private boolean startup = true;
     private boolean background = false;
     private boolean translate = true;
-    private static String latestVersion = null;
-    private static String latestEdgeVersion = null;
 
     public NetworkHandler(boolean startup, boolean background) {
         this.startup = startup;
         this.background = background;
-    }
-
-    public static String latestVersion() {
-        return latestVersion;
-    }
-
-    public static String latestEdgeVersion() {
-        return latestEdgeVersion;
     }
 
     @Override
