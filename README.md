@@ -15,7 +15,7 @@ Maven
 <dependency>
     <groupId>org.zhdev.griefus</groupId>
     <artifactId>griefus</artifactId>
-    <version>23.0</version>
+    <version>23.1</version>
     <scope>provided</scope>
 </dependency>
 ```
