@@ -2,6 +2,8 @@ package net.coreprotect.utility;
 
 import java.util.logging.Level;
 
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.ParsingException;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
@@ -36,7 +38,12 @@ public final class Chat {
             message = message.replace(Color.DARK_AQUA, ChatColor.DARK_AQUA.toString());
         }
 
-        sender.sendMessage(message);
+        try {
+            MiniMessage miniMessage = MiniMessage.miniMessage();
+            sender.sendMessage(miniMessage.deserialize(message));
+        } catch (ParsingException e) {
+            sender.sendMessage(message);
+        }
     }
 
     public static void sendConsoleMessage(String string) {
@@ -62,12 +69,12 @@ public final class Chat {
         server.getConsoleSender().sendMessage("[Griefus] " + string);
         for (Player player : server.getOnlinePlayers()) {
             if (player.isOp() && !player.getName().equals(user.getName())) {
-                sendMessage(player, Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + string);
+                sendMessage(player, string);
             }
         }
         if (user instanceof Player) {
             if (((Player) user).isOnline()) {
-                sendMessage(user, Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + string);
+                sendMessage(user, string);
             }
         }
     }
