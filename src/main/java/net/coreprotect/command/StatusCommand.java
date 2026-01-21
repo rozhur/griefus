@@ -23,7 +23,7 @@ public class StatusCommand {
 
     protected static void runCommand(CommandSender player, boolean permission, String[] args) {
         if (!permission) {
-            Chat.sendMessage(player, Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + Phrase.build(Phrase.NO_PERMISSION));
+            Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
             return;
         }
 

@@ -123,7 +123,7 @@ public class HelpCommand {
             }
         }
         else {
-            Chat.sendMessage(player, Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + Phrase.build(Phrase.NO_PERMISSION));
+            Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
         }
     }
 }

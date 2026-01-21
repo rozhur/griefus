@@ -190,7 +190,7 @@ public class StandardLookupThread implements Runnable {
                     }
                     if (count) {
                         String row_format = NumberFormat.getInstance().format(rows);
-                        Chat.sendMessage(player, Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + Phrase.build(Phrase.LOOKUP_ROWS_FOUND, row_format, (rows == 1 ? Selector.FIRST : Selector.SECOND)));
+                        Chat.sendMessage(player, Phrase.build(Phrase.LOOKUP_ROWS_FOUND, row_format, (rows == 1 ? Selector.FIRST : Selector.SECOND)));
                     }
                     else if (pageStart < rows) {
                         List<String[]> lookupList = Lookup.performPartialLookup(statement, player, uuidList, userList, blockList, excludedBlocks, excludedUsers, actions, finalLocation, radius, rowData, timeStart, timeEnd, (int) pageStart, displayResults, restrict_world, true);
@@ -446,19 +446,19 @@ public class StandardLookupThread implements Runnable {
                         }
                     }
                     else if (rows > 0) {
-                        Chat.sendMessage(player, Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + Phrase.build(Phrase.NO_RESULTS_PAGE, Selector.FIRST));
+                        Chat.sendMessage(player, Phrase.build(Phrase.NO_RESULTS_PAGE, Selector.FIRST));
                     }
                     else {
-                        Chat.sendMessage(player, Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + Phrase.build(Phrase.NO_RESULTS));
+                        Chat.sendMessage(player, Phrase.build(Phrase.NO_RESULTS));
                     }
                 }
                 else {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + Phrase.build(Phrase.USER_NOT_FOUND, baduser));
+                    Chat.sendMessage(player, Phrase.build(Phrase.USER_NOT_FOUND, baduser));
                 }
                 statement.close();
             }
             else {
-                Chat.sendMessage(player, Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
+                Chat.sendMessage(player, Phrase.build(Phrase.DATABASE_BUSY));
             }
         }
         catch (Exception e) {

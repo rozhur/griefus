@@ -164,10 +164,10 @@ public class SignMessageLookup {
             }
             else {
                 if (rowMax > count && count > 0) {
-                    result.add(Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + Phrase.build(Phrase.NO_RESULTS_PAGE, Selector.SECOND));
+                    result.add(Phrase.build(Phrase.NO_RESULTS_PAGE, Selector.SECOND));
                 }
                 else {
-                    result.add(Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + Phrase.build(Phrase.NO_DATA_LOCATION, Selector.FOURTH));
+                    result.add(Phrase.build(Phrase.NO_DATA_LOCATION, Selector.FOURTH));
                 }
             }
 

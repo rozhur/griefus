@@ -78,7 +78,7 @@ public class BlockLookupThread implements Runnable {
                 statement.close();
             }
             else {
-                Chat.sendMessage(player, Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
+                Chat.sendMessage(player, Phrase.build(Phrase.DATABASE_BUSY));
             }
         }
         catch (Exception e) {

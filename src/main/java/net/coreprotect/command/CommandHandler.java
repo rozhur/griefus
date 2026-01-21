@@ -118,11 +118,11 @@ public class CommandHandler implements CommandExecutor {
                     Extensions.runDatabaseMigration(corecommand, user, argumentArray);
                 }
                 else {
-                    Chat.sendMessage(user, Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + Phrase.build(Phrase.COMMAND_NOT_FOUND, Color.WHITE, "/co " + corecommand));
+                    Chat.sendMessage(user, Phrase.build(Phrase.COMMAND_NOT_FOUND, Color.WHITE, "/co " + corecommand));
                 }
             }
             else {
-                Chat.sendMessage(user, Color.DARK_AQUA + "Griefus " + Color.WHITE + "- " + Phrase.build(Phrase.MISSING_PARAMETERS, Color.WHITE, "/co <parameters>"));
+                Chat.sendMessage(user, Phrase.build(Phrase.MISSING_PARAMETERS, Color.WHITE, "/co <parameters>"));
             }
 
             return true;
