@@ -22,7 +22,8 @@ public class SpigotHandler extends SpigotAdapter implements SpigotInterface {
     public static ChatColor DARK_AQUA = ChatColor.of("#31b0e8");
 
     public SpigotHandler() {
-        Color.DARK_AQUA = SpigotHandler.DARK_AQUA.toString();
+        //Color.DARK_AQUA = SpigotHandler.DARK_AQUA.toString();
+        Color.DARK_AQUA = "<#31b0e8>"; // griefus
     }
 
     @Override

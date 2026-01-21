@@ -2,6 +2,7 @@ package net.coreprotect.utility;
 
 import net.coreprotect.language.Phrase;
 import net.coreprotect.language.Selector;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.command.ConsoleCommandSender;
 
 import java.text.DecimalFormat;
@@ -17,7 +18,8 @@ public class ChatUtils {
     }
 
     public static String getCoordinates(String command, int worldId, int x, int y, int z, boolean displayWorld, boolean italic) {
-        StringBuilder message = new StringBuilder(Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_COMMAND);
+        //StringBuilder message = new StringBuilder(Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_COMMAND);
+        StringBuilder message = new StringBuilder("<click:run_command:\""); // griefus
 
         StringBuilder worldDisplay = new StringBuilder();
         if (displayWorld) {
@@ -26,12 +28,18 @@ public class ChatUtils {
 
         // command
         DecimalFormat decimalFormat = new DecimalFormat("#.##", new DecimalFormatSymbols(Locale.ROOT));
-        message.append("|/" + command + " teleport wid:" + worldId + " " + decimalFormat.format(x + 0.50) + " " + y + " " + decimalFormat.format(z + 0.50) + "|");
+        //message.append("|/" + command + " teleport wid:" + worldId + " " + decimalFormat.format(x + 0.50) + " " + y + " " + decimalFormat.format(z + 0.50) + "|");
+
+        // griefus start
+        String commandLine = "/" + command + " teleport wid:" + worldId + " " + decimalFormat.format(x + 0.50) + " " + y + " " + decimalFormat.format(z + 0.50) + "|";
+        message.append(commandLine + "\"><hover:show_text:\"" + escape(commandLine) + "\">");
+        // griefus end
 
         // chat output
         message.append(Color.GREY + (italic ? Color.ITALIC : "") + "(x" + x + "/y" + y + "/z" + z + worldDisplay.toString() + ")");
 
-        return message.append(Chat.COMPONENT_TAG_CLOSE).toString();
+        //return message.append(Chat.COMPONENT_TAG_CLOSE).toString();
+        return message.append("</hover></click>").toString(); // griefus
     }
 
     public static String getPageNavigation(String command, int page, int totalPages) {
@@ -41,21 +49,24 @@ public class ChatUtils {
         String backArrow = "";
         if (page > 1) {
             backArrow = "◀ ";
-            backArrow = Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_COMMAND + "|/" + command + " l " + (page - 1) + "|" + backArrow + Chat.COMPONENT_TAG_CLOSE;
+            //backArrow = Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_COMMAND + "|/" + command + " l " + (page - 1) + "|" + backArrow + Chat.COMPONENT_TAG_CLOSE;
+            backArrow = "<click:run_command:/" + command + " l " + (page - 1) + ">" + backArrow + "</click>"; // griefus
         }
 
         // next arrow
         String nextArrow = " ";
         if (page < totalPages) {
             nextArrow = " ▶ ";
-            nextArrow = Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_COMMAND + "|/" + command + " l " + (page + 1) + "|" + nextArrow + Chat.COMPONENT_TAG_CLOSE;
+            //nextArrow = Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_COMMAND + "|/" + command + " l " + (page + 1) + "|" + nextArrow + Chat.COMPONENT_TAG_CLOSE;
+            nextArrow = "<click:run_command:/" + command + " l " + (page + 1) + ">" + nextArrow + "</click>"; // griefus
         }
 
         StringBuilder pagination = new StringBuilder();
         if (totalPages > 1) {
             pagination.append(Color.GREY + "(");
             if (page > 3) {
-                pagination.append(Color.WHITE + Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_COMMAND + "|/" + command + " l " + 1 + "|" + "1 " + Chat.COMPONENT_TAG_CLOSE);
+                //pagination.append(Color.WHITE + Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_COMMAND + "|/" + command + " l " + 1 + "|" + "1 " + Chat.COMPONENT_TAG_CLOSE);
+                pagination.append(Color.WHITE + "<click:run_command:/").append(command).append(" l ").append(1).append(">").append("1 </click>"); //griefus
                 if (page > 4 && totalPages > 7) {
                     pagination.append(Color.GREY + "... ");
                 }
@@ -99,7 +110,8 @@ public class ChatUtils {
 
             for (int displayPage = displayStart; displayPage <= displayEnd; displayPage++) {
                 if (page != displayPage) {
-                    pagination.append(Color.WHITE + Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_COMMAND + "|/" + command + " l " + displayPage + "|" + displayPage + (displayPage < totalPages ? " " : "") + Chat.COMPONENT_TAG_CLOSE);
+                    //pagination.append(Color.WHITE + Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_COMMAND + "|/" + command + " l " + displayPage + "|" + displayPage + (displayPage < totalPages ? " " : "") + Chat.COMPONENT_TAG_CLOSE);
+                    pagination.append(Color.WHITE + "<click:run_command:/" + command + " l " + displayPage + ">" + displayPage + (displayPage < totalPages ? " " : "") + "</click>"); // griefus
                 }
                 else {
                     pagination.append(Color.WHITE + Color.UNDERLINE + displayPage + Color.RESET + (displayPage < totalPages ? " " : ""));
@@ -117,7 +129,8 @@ public class ChatUtils {
                     pagination.append(Color.GREY + "| ");
                 }
                 if (page != totalPages) {
-                    pagination.append(Color.WHITE + Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_COMMAND + "|/" + command + " l " + totalPages + "|" + totalPages + Chat.COMPONENT_TAG_CLOSE);
+                    //pagination.append(Color.WHITE + Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_COMMAND + "|/" + command + " l " + totalPages + "|" + totalPages + Chat.COMPONENT_TAG_CLOSE);
+                    pagination.append(Color.WHITE + "<click:run_command:/" + command + " l " + totalPages + ">" + totalPages + "</click>"); // griefus
                 }
                 else {
                     pagination.append(Color.WHITE + Color.UNDERLINE + totalPages);
@@ -163,7 +176,8 @@ public class ChatUtils {
             Date logDate = new Date(resultTime * 1000L);
             String formattedTimestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z").format(logDate);
 
-            return Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_POPUP + "|" + Color.GREY + formattedTimestamp + "|" + Color.GREY + message.toString() + Chat.COMPONENT_TAG_CLOSE;
+            //return Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_POPUP + "|" + Color.GREY + formattedTimestamp + "|" + Color.GREY + message.toString() + Chat.COMPONENT_TAG_CLOSE;
+            return "<hover:show_text:\"<gray>" + escape(formattedTimestamp) + "</gray>\"><gray>" + message + "</hover>"; // griefus
         }
 
         return message.toString();
@@ -174,19 +188,27 @@ public class ChatUtils {
             return phrase;
         }
 
-        StringBuilder message = new StringBuilder(Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_POPUP);
+        //StringBuilder message = new StringBuilder(Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_POPUP);
+        StringBuilder message = new StringBuilder("<hover:show_text:"); // griefus
 
         // tooltip
-        message.append("|" + tooltip.replace("|", Chat.COMPONENT_PIPE) + "|");
+        //message.append("|" + tooltip.replace("|", Chat.COMPONENT_PIPE) + "|");
+        message.append(escape(tooltip)); // griefus
 
         // chat output
         message.append(phrase);
 
-        return message.append(Chat.COMPONENT_TAG_CLOSE).toString();
+        //return message.append(Chat.COMPONENT_TAG_CLOSE).toString();
+        return message.append("</hover>").toString(); // griefus
     }
 
     // This theoretically initializes the component code, to prevent gson adapter errors
     public static void sendConsoleComponentStartup(ConsoleCommandSender consoleSender, String string) {
-        Chat.sendComponent(consoleSender, Color.RESET + "[Griefus] " + string + Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_POPUP + "| | " + Chat.COMPONENT_TAG_CLOSE);
+        //Chat.sendComponent(consoleSender, Color.RESET + "[Griefus] " + string + Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_POPUP + "| | " + Chat.COMPONENT_TAG_CLOSE);
+        Chat.sendComponent(consoleSender, Color.RESET + "[Griefus] " + MiniMessage.miniMessage().stripTags(string)); // griefus
+    }
+
+    public static String escape(String string) {
+        return MiniMessage.miniMessage().escapeTags(string).replace("\"", "\\");
     }
 } 

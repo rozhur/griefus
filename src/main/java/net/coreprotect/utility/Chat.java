@@ -26,24 +26,32 @@ public final class Chat {
     }
 
     public static void sendComponent(CommandSender sender, String string, String bypass) {
-        SpigotAdapter.ADAPTER.sendComponent(sender, string, bypass);
+        //SpigotAdapter.ADAPTER.sendComponent(sender, string, bypass);
+        sendMessage(sender, string + bypass); // griefus
     }
 
     public static void sendComponent(CommandSender sender, String string) {
-        sendComponent(sender, string, null);
+        //sendComponent(sender, string, null);
+        sendMessage(sender, string); // griefus
     }
 
     public static void sendMessage(CommandSender sender, String message) {
+        // griefus start
+        try {
+            MiniMessage miniMessage = MiniMessage.miniMessage();
+            sender.sendMessage(miniMessage.deserialize(message));
+            return;
+        } catch (ParsingException ignored) {
+            ignored.printStackTrace();
+        }
+        // griefus end
+
         if (sender instanceof ConsoleCommandSender) {
             message = message.replace(Color.DARK_AQUA, ChatColor.DARK_AQUA.toString());
         }
 
-        try {
-            MiniMessage miniMessage = MiniMessage.miniMessage();
-            sender.sendMessage(miniMessage.deserialize(message));
-        } catch (ParsingException e) {
-            sender.sendMessage(message);
-        }
+        sender.sendMessage(message);
+
     }
 
     public static void sendConsoleMessage(String string) {
