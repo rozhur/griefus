@@ -3,6 +3,7 @@ package net.coreprotect.utility;
 import java.util.Locale;
 import java.util.Set;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 
 import net.coreprotect.config.ConfigHandler;
@@ -212,5 +213,10 @@ public class MaterialUtils extends Queue {
             default: // no rollbacks
                 return isInventory ? 2 : 1;
         }
+    }
+
+    // Griefus
+    public static String asTranslatable(Material material) {
+        return "<lang:" + material.translationKey() + ">";
     }
 }
