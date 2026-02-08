@@ -25,6 +25,14 @@ public class CommandHandler implements CommandExecutor {
     public boolean onCommand(CommandSender user, Command command, String commandLabel, String[] argumentArray) {
         String commandName = command.getName().toLowerCase(Locale.ROOT);
 
+        // Griefus begin
+        if (commandName.equals("coi") || commandName.equals("gusi")) {
+            boolean permission = user.hasPermission("coreprotect.inspect");
+            InspectCommand.runCommand(user, permission, argumentArray);
+            return true;
+        }
+        // Griefus end
+
         if (commandName.equals("core") || commandName.equals("coreprotect") || commandName.equals("co") || commandName.equals("griefus") || commandName.equals("gus")) {
             int resultc = argumentArray.length;
             if (resultc > -1) {

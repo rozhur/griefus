@@ -35,6 +35,16 @@ commands:
     permission: coreprotect.griefus
     permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
+  coi:
+    description: Inspector mode shortcut
+    permission: coreprotect.inspect
+    permission-message: §3Griefus §f- You do not have permission to do that.
+    usage: /<command> <params>
+  gusi:
+    description: Inspector mode shortcut
+    permission: coreprotect.inspect
+    permission-message: §3Griefus §f- You do not have permission to do that.
+    usage: /<command> <params>
 permissions:
     coreprotect.*:
         description: Gives access to all Griefus actions and commands
