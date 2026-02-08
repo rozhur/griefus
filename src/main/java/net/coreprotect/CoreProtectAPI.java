@@ -7,7 +7,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.sk89q.worldedit.util.formatting.text.serializer.plain.PlainComponentSerializer;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.serializer.json.JSONComponentSerializer;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -252,7 +256,15 @@ public class CoreProtectAPI extends Queue {
      * @return True if the message was logged
      */
     public boolean logChat(CommandSender sender, Component component) {
-        return logChat(sender, component.insertion());
+        return logChat(sender, MiniMessage.miniMessage().serialize(component));
+    }
+    // API Stub
+    public boolean logChat(Player sender, String message) {
+        return logChat((CommandSender) sender, message);
+    }
+    // API Stub
+    public boolean logChat(Player sender, Component component) {
+        return logChat(sender, MiniMessage.miniMessage().serialize(component));
     }
 
     /**
