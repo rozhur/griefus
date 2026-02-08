@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -232,6 +233,30 @@ public class CoreProtectAPI extends Queue {
 
         long timestamp = System.currentTimeMillis() / 1000L;
         Queue.queuePlayerChat(player, message, timestamp);
+        return true;
+    }
+
+    /**
+     * Logs a componentized chat message for a player.
+     *
+     * @param player
+     *            The player who sent the message
+     * @param component
+     *            The chat message
+     * @return True if the message was logged
+     */
+    public boolean logChat(Player player, Component component) {
+        if (!isEnabledForPlayer(player) || !Config.getConfig(player.getWorld()).PLAYER_MESSAGES) {
+            return false;
+        }
+
+        if (component == null) {
+            return false;
+        }
+
+        long timestamp = System.currentTimeMillis() / 1000L;
+        // TODO: proper implementation
+        Queue.queuePlayerChat(player, component.insertion(), timestamp);
         return true;
     }
 
