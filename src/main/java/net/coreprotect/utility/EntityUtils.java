@@ -137,4 +137,8 @@ public class EntityUtils extends Queue {
 
         return result;
     }
+
+    public static String asTranslatable(EntityType type){
+        return "<lang:" + type.translationKey() + ">";
+    }
 }
