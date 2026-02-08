@@ -15,6 +15,7 @@ import org.bukkit.Server;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.data.BlockData;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
@@ -216,15 +217,19 @@ public class CoreProtectAPI extends Queue {
     /**
      * Logs a chat message for a player.
      * 
-     * @param player
+     * @param sender
      *            The player who sent the message
      * @param message
      *            The chat message
      * @return True if the message was logged
      */
-    public boolean logChat(Player player, String message) {
-        if (!isEnabledForPlayer(player) || !Config.getConfig(player.getWorld()).PLAYER_MESSAGES) {
-            return false;
+    public boolean logChat(CommandSender sender, String message) {
+        Player player = null;
+        if (sender instanceof Player) {
+            player = (Player) sender;
+            if (!isEnabledForPlayer(player) || !Config.getConfig(player.getWorld()).PLAYER_MESSAGES) {
+                return false;
+            }
         }
 
         if (message == null || message.isEmpty() || message.startsWith("/")) {
@@ -232,32 +237,22 @@ public class CoreProtectAPI extends Queue {
         }
 
         long timestamp = System.currentTimeMillis() / 1000L;
-        Queue.queuePlayerChat(player, message, timestamp);
+        if(player == null) Queue.queueChat(sender, message, timestamp);
+        else Queue.queuePlayerChat(player, message, timestamp);
         return true;
     }
 
     /**
      * Logs a componentized chat message for a player.
      *
-     * @param player
+     * @param sender
      *            The player who sent the message
      * @param component
      *            The chat message
      * @return True if the message was logged
      */
-    public boolean logChat(Player player, Component component) {
-        if (!isEnabledForPlayer(player) || !Config.getConfig(player.getWorld()).PLAYER_MESSAGES) {
-            return false;
-        }
-
-        if (component == null) {
-            return false;
-        }
-
-        long timestamp = System.currentTimeMillis() / 1000L;
-        // TODO: proper implementation
-        Queue.queuePlayerChat(player, component.insertion(), timestamp);
-        return true;
+    public boolean logChat(CommandSender sender, Component component) {
+        return logChat(sender, component.insertion());
     }
 
     /**

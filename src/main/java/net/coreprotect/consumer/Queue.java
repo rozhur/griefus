@@ -13,6 +13,7 @@ import org.bukkit.block.data.Bisected;
 import org.bukkit.block.data.Bisected.Half;
 import org.bukkit.block.data.type.Bed;
 import org.bukkit.block.data.type.Bed.Part;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -301,6 +302,14 @@ public class Queue {
         addConsumer(currentConsumer, new Object[] { consumerId, Process.PLAYER_CHAT, null, 0, null, 0, 0, null });
         Consumer.consumerStrings.get(currentConsumer).put(consumerId, message);
         queueStandardData(consumerId, currentConsumer, new String[] { player.getName(), null }, new Object[] { timestamp, player.getLocation().clone() });
+    }
+
+    protected static void queueChat(CommandSender sender, String message, long timestamp) {
+        int currentConsumer = Consumer.currentConsumer;
+        int consumerId = Consumer.newConsumerId(currentConsumer);
+        addConsumer(currentConsumer, new Object[] { consumerId, Process.PLAYER_CHAT, null, 0, null, 0, 0, null });
+        Consumer.consumerStrings.get(currentConsumer).put(consumerId, message);
+        queueStandardData(consumerId, currentConsumer, new String[] { sender.getName(), null }, new Object[] { timestamp, null });
     }
 
     protected static void queuePlayerCommand(Player player, String message, long timestamp) {
