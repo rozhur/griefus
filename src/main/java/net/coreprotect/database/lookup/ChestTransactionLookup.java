@@ -112,6 +112,9 @@ public class ChestTransactionLookup {
                 if (resultMaterial == null) {
                     resultMaterial = Material.AIR;
                 }
+                // Griefus begin
+                String target = MaterialUtils.asTranslatable(resultMaterial);
+                /*
                 String target = resultMaterial.name().toLowerCase(Locale.ROOT);
                 target = StringUtils.nameFilter(target, resultData);
                 if (target.length() > 0) {
@@ -122,6 +125,8 @@ public class ChestTransactionLookup {
                 if (target.startsWith("minecraft:")) {
                     target = target.split(":")[1];
                 }
+                 */
+                // Griefus end
 
                 result.add(new StringBuilder(timeAgo + " " + tag + " " + Phrase.build(Phrase.LOOKUP_CONTAINER, Color.DARK_AQUA + rbFormat + resultUser + Color.WHITE + rbFormat, "x" + resultAmount, ChatUtils.createTooltip(Color.DARK_AQUA + rbFormat + target, tooltip) + Color.WHITE, selector)).toString());
                 PluginChannelListener.getInstance().sendData(commandSender, resultTime, Phrase.LOOKUP_CONTAINER, selector, resultUser, target, resultAmount, x, y, z, worldId, rbFormat, true, tag.contains("+"));

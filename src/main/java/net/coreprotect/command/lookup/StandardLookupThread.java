@@ -286,7 +286,11 @@ public class StandardLookupThread implements Runnable {
                                 String rbd = ((Integer.parseInt(data[8]) == 2 || Integer.parseInt(data[8]) == 3) ? Color.STRIKETHROUGH : "");
                                 String timeago = ChatUtils.getTimeSince(Integer.parseInt(time), unixtimestamp, true);
                                 Material blockType = ItemUtils.itemFilter(MaterialUtils.getType(dtype), (Integer.parseInt(data[13]) == 0));
-                                String dname = StringUtils.nameFilter(blockType.name().toLowerCase(Locale.ROOT), ddata);
+
+                                // Griefus begin
+                                //String dname = StringUtils.nameFilter(blockType.name().toLowerCase(Locale.ROOT), ddata);
+                                String dname = MaterialUtils.asTranslatable(blockType);
+                                // Griefus end
                                 byte[] metadata = data[11] == null ? null : data[11].getBytes(StandardCharsets.ISO_8859_1);
                                 String tooltip = ItemUtils.getEnchantments(metadata, dtype, amount);
 
@@ -362,13 +366,19 @@ public class StandardLookupThread implements Runnable {
                                         isPlayer = true;
                                     }
                                     else {
-                                        dname = EntityUtils.getEntityType(dtype).name();
+                                        // Griefus begin
+                                       // dname = EntityUtils.getEntityType(dtype).name();
+                                        dname = EntityUtils.asTranslatable(EntityUtils.getEntityType(dtype));
+                                        // Griefus end
                                     }
                                 }
                                 else {
-                                    dname = MaterialUtils.getType(dtype).name().toLowerCase(Locale.ROOT);
-                                    dname = StringUtils.nameFilter(dname, ddata);
+                                    // Griefus begin
+                                    //dname = MaterialUtils.getType(dtype).name().toLowerCase(Locale.ROOT);
+                                    //dname = StringUtils.nameFilter(dname, ddata);
+                                    dname = MaterialUtils.asTranslatable(MaterialUtils.getType(dtype));
                                 }
+                                /*
                                 if (dname.length() > 0 && !isPlayer) {
                                     dname = "minecraft:" + dname.toLowerCase(Locale.ROOT) + "";
                                 }
@@ -378,6 +388,8 @@ public class StandardLookupThread implements Runnable {
                                     String[] blockNameSplit = dname.split(":");
                                     dname = blockNameSplit[1];
                                 }
+                                 */
+                                // Griefus end
 
                                 // Functions.sendMessage(player2, timeago+" " + ChatColors.WHITE + "- " + ChatColors.DARK_AQUA+rbd+""+dplayer+" " + ChatColors.WHITE+rbd+""+a+" " + ChatColors.DARK_AQUA+rbd+"#"+dtype+ChatColors.WHITE + ". " + ChatColors.GREY + "(x"+x+"/y"+y+"/z"+z+")");
 

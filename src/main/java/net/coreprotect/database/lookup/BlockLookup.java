@@ -109,24 +109,30 @@ public class BlockLookup {
 
                 String target;
                 if (resultAction == 3) {
-                    target = EntityUtils.getEntityType(resultType).name();
+                    // Griefus begin
+                    //target = EntityUtils.getEntityType(resultType).name();
+                    target = EntityUtils.asTranslatable(EntityUtils.getEntityType(resultType));
+                    // Griefus end
                 }
                 else {
                     Material resultMaterial = MaterialUtils.getType(resultType);
                     if (resultMaterial == null) {
                         resultMaterial = Material.AIR;
                     }
-                    target = StringUtils.nameFilter(resultMaterial.name().toLowerCase(Locale.ROOT), resultData);
-                    target = "minecraft:" + target.toLowerCase(Locale.ROOT);
+                    // Griefus begin
+                    //target = StringUtils.nameFilter(resultMaterial.name().toLowerCase(Locale.ROOT), resultData);
+                    //target = "minecraft:" + target.toLowerCase(Locale.ROOT);
+                    target = MaterialUtils.asTranslatable(resultMaterial);
                 }
-                if (target.length() > 0) {
+                /*if (target.length() > 0) {
                     target = "" + target + "";
-                }
+                }*/
 
-                // Hide "minecraft:" for now.
-                if (target.startsWith("minecraft:")) {
+                // Hide "minecraft:" for now. - do not!!
+                /*if (target.startsWith("minecraft:")) {
                     target = target.split(":")[1];
-                }
+                } */
+                // Griefus end
 
                 resultTextBuilder.append(timeAgo + " " + tag + " ").append(Phrase.build(phrase, Color.DARK_AQUA + rbFormat + resultUser + Color.WHITE + rbFormat, Color.DARK_AQUA + rbFormat + target + Color.WHITE, selector)).append("\n");
                 PluginChannelListener.getInstance().sendData(commandSender, resultTime, phrase, selector, resultUser, target, -1, x, y, z, worldId, rbFormat, false, tag.contains("+"));
@@ -150,7 +156,10 @@ public class BlockLookup {
                     // resultText = Color.WHITE + "No block data found at " + Color.ITALIC + "x" + x + "/y" + y + "/z" + z + ".";
                     resultText = Phrase.build(Phrase.NO_DATA_LOCATION, Selector.FIRST);
                     if (!blockName.equals("air") && !blockName.equals("cave_air")) {
-                        resultText = Phrase.build(Phrase.NO_DATA, Color.ITALIC + block.getType().name().toLowerCase(Locale.ROOT) + Color.WHITE) + "\n";
+                        // Griefus begin
+                        //resultText = Phrase.build(Phrase.NO_DATA, Color.ITALIC + block.getType().name().toLowerCase(Locale.ROOT) + Color.WHITE) + "\n";
+                        resultText = Phrase.build(Phrase.NO_DATA, Color.ITALIC + MaterialUtils.asTranslatable(block.getType()) + Color.WHITE) + "\n";
+                        // Griefus end
                     }
                 }
             }

@@ -100,6 +100,9 @@ public class InteractionLookup {
                 if (resultMaterial == null) {
                     resultMaterial = Material.AIR;
                 }
+                // Griefus begin
+                String target = MaterialUtils.asTranslatable(resultMaterial);
+                /*
                 String target = resultMaterial.name().toLowerCase(Locale.ROOT);
                 target = StringUtils.nameFilter(target, resultData);
                 if (target.length() > 0) {
@@ -110,6 +113,8 @@ public class InteractionLookup {
                 if (target.startsWith("minecraft:")) {
                     target = target.split(":")[1];
                 }
+                 */
+                // Griefus end
 
                 resultBuilder.append(timeAgo + " " + Color.WHITE + "- ").append(Phrase.build(Phrase.LOOKUP_INTERACTION, Color.DARK_AQUA + rbFormat + resultUser + Color.WHITE + rbFormat, Color.DARK_AQUA + rbFormat + target + Color.WHITE, Selector.FIRST)).append("\n");
                 PluginChannelListener.getInstance().sendData(commandSender, resultTime, Phrase.LOOKUP_INTERACTION, Selector.FIRST, resultUser, target, -1, x, y, z, worldId, rbFormat, false, false);
