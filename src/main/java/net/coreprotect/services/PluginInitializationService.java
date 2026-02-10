@@ -94,6 +94,8 @@ public class PluginInitializationService {
         plugin.getCommand("griefus").setTabCompleter(new TabHandler());
         plugin.getCommand("gus").setExecutor(CommandHandler.getInstance());
         plugin.getCommand("gus").setTabCompleter(new TabHandler());
+        plugin.getCommand("coi").setExecutor(CommandHandler.getInstance());
+        plugin.getCommand("gusi").setExecutor(CommandHandler.getInstance());
     }
 
     /**
