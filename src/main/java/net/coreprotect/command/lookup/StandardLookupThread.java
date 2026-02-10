@@ -202,12 +202,28 @@ public class StandardLookupThread implements Runnable {
                                 String dplayer = data[1];
                                 String message = data[2];
                                 String timeago = ChatUtils.getTimeSince(Integer.parseInt(time), unixtimestamp, true);
+                                // griefus start
+                                int wid = Integer.parseInt(data[3]);
+                                int dataX = Integer.parseInt(data[4]);
+                                int dataY = Integer.parseInt(data[5]);
+                                int dataZ = Integer.parseInt(data[6]);
+                                int timeLength = 50 + (ChatUtils.getTimeSince(Integer.parseInt(time), unixtimestamp, false).replaceAll("[^0-9]", "").length() * 6);
+                                String leftPadding = Strings.padStart("", 10, ' ');
+                                if (timeLength % 4 == 0) {
+                                    leftPadding = Strings.padStart("", timeLength / 4, ' ');
+                                }
+                                else {
+                                    leftPadding = leftPadding + Color.WHITE + Strings.padStart("", (timeLength - 50) / 4, ' ');
+                                }
+                                // griefus end
+
                                 Chat.sendComponent(player, timeago + " " + Color.WHITE + "- " + Color.DARK_AQUA + dplayer + ": " + Color.WHITE, message);
+                                Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)); // griefus
                                 if (PluginChannelHandshakeListener.getInstance().isPluginChannelPlayer(player)) {
-                                    int wid = Integer.parseInt(data[3]);
-                                    int dataX = Integer.parseInt(data[4]);
-                                    int dataY = Integer.parseInt(data[5]);
-                                    int dataZ = Integer.parseInt(data[6]);
+                                    //int wid = Integer.parseInt(data[3]);
+                                    //int dataX = Integer.parseInt(data[4]);
+                                    //int dataY = Integer.parseInt(data[5]);
+                                    //int dataZ = Integer.parseInt(data[6]);
                                     PluginChannelListener.getInstance().sendMessageData(player, Integer.parseInt(time), dplayer, message, false, dataX, dataY, dataZ, wid);
                                 }
                             }
@@ -317,7 +333,19 @@ public class StandardLookupThread implements Runnable {
                                     tag = (daction == 0 ? Color.GREEN + "+" : Color.RED + "-");
                                 }
 
+                                // griefus start
+                                int timeLength = 50 + (ChatUtils.getTimeSince(Integer.parseInt(time), unixtimestamp, false).replaceAll("[^0-9]", "").length() * 6);
+                                String leftPadding = Strings.padStart("", 10, ' ');
+                                if (timeLength % 4 == 0) {
+                                    leftPadding = Strings.padStart("", timeLength / 4, ' ');
+                                }
+                                else {
+                                    leftPadding = leftPadding + Color.WHITE + Strings.padStart("", (timeLength - 50) / 4, ' ');
+                                }
+                                // griefus end
+
                                 Chat.sendComponent(player, timeago + " " + tag + " " + Phrase.build(Phrase.LOOKUP_CONTAINER, Color.DARK_AQUA + rbd + dplayer + Color.WHITE + rbd, "x" + amount, ChatUtils.createTooltip(Color.DARK_AQUA + rbd + dname, tooltip) + Color.WHITE, selector));
+                                Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)); // griefus
                                 PluginChannelListener.getInstance().sendData(player, Integer.parseInt(time), Phrase.LOOKUP_CONTAINER, selector, dplayer, dname, amount, dataX, dataY, dataZ, wid, rbd, true, tag.contains("+"));
                             }
                         }
@@ -439,9 +467,9 @@ public class StandardLookupThread implements Runnable {
                         }
                         if (rows > displayResults) {
                             int total_pages = (int) Math.ceil(rows / (displayResults + 0.0));
-                            if (actions.contains(6) || actions.contains(7) || actions.contains(9) || (actions.contains(4) && actions.contains(11))) {
-                                Chat.sendMessage(player, "-----");
-                            }
+                            //if (actions.contains(6) || actions.contains(7) || actions.contains(9) || (actions.contains(4) && actions.contains(11))) {
+                            //    Chat.sendMessage(player, "-----");
+                            //}
                             Chat.sendComponent(player, ChatUtils.getPageNavigation(command.getName(), page, total_pages));
                         }
                     }

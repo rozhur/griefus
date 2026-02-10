@@ -56,14 +56,14 @@ public class LookupRaw extends Queue {
                     int resultUserId = results.getInt("user");
                     String resultMessage = results.getString("message");
 
-                    Object[] dataArray = new Object[] { resultId, resultTime, resultUserId, resultMessage };
-                    if (PluginChannelHandshakeListener.getInstance().isPluginChannelPlayer(user)) {
+                    Object[] dataArray/* = new Object[] { resultId, resultTime, resultUserId, resultMessage }*/;
+                    //if (PluginChannelHandshakeListener.getInstance().isPluginChannelPlayer(user)) {
                         int resultWorldId = results.getInt("wid");
                         int resultX = results.getInt("x");
                         int resultY = results.getInt("y");
                         int resultZ = results.getInt("z");
                         dataArray = new Object[] { resultId, resultTime, resultUserId, resultMessage, resultWorldId, resultX, resultY, resultZ };
-                    }
+                    //}
                     list.add(dataArray);
                 }
                 else if (actionList.contains(8)) {
@@ -447,6 +447,7 @@ public class LookupRaw extends Queue {
             for (Integer value : actionList) {
                 if (validActions.contains(value)) {
                     validAction = true;
+                    break; // griefus
                 }
             }
 
@@ -551,9 +552,9 @@ public class LookupRaw extends Queue {
             else if (actionList.contains(6) || actionList.contains(7)) {
                 queryTable = "chat";
                 rows = "rowid as id,time,user,message";
-                if (PluginChannelHandshakeListener.getInstance().isPluginChannelPlayer(user)) {
+                //if (PluginChannelHandshakeListener.getInstance().isPluginChannelPlayer(user)) {
                     rows += ",wid,x,y,z";
-                }
+                //}
 
                 if (actionList.contains(7)) {
                     queryTable = "command";
