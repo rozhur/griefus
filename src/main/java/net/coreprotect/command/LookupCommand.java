@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import net.coreprotect.CoreProtect;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -31,6 +32,9 @@ public class LookupCommand {
     public static void runCommand(CommandSender player, Command command, boolean permission, String[] args) {
         int resultc = args.length;
         args = CommandParser.parsePage(args);
+        // Griefus begin
+        String parsedMessage = CommandParser.parseMessage(args);
+        // Griefus end
         Location lo = CommandParser.parseLocation(player, args);
         // List<String> arg_uuids = new ArrayList<String>();
         List<String> argUsers = CommandParser.parseUsers(args);
@@ -594,8 +598,7 @@ public class LookupCommand {
                             timeEnd = (System.currentTimeMillis() / 1000L) - endTime;
                         }
                     }
-
-                    Runnable runnable = new StandardLookupThread(player, command, rollbackusers, argBlocks, argExclude, argExcludeUsers, argAction, argRadius, lo, x, y, z, wid, argWid, timeStart, timeEnd, argNoisy, argExcluded, argRestricted, pa, re, type, ts, count);
+                    Runnable runnable = new StandardLookupThread(player, command, rollbackusers, argBlocks, argExclude, argExcludeUsers, argAction, argRadius, lo, x, y, z, wid, argWid, timeStart, timeEnd, argNoisy, argExcluded, argRestricted, pa, re, type, ts, count, parsedMessage);
                     Thread thread = new Thread(runnable);
                     thread.start();
                 }

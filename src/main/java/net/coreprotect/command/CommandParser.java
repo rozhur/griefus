@@ -5,16 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.coreprotect.command.parser.*;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
-
-import net.coreprotect.command.parser.ActionParser;
-import net.coreprotect.command.parser.LocationParser;
-import net.coreprotect.command.parser.MaterialParser;
-import net.coreprotect.command.parser.TimeParser;
-import net.coreprotect.command.parser.UserParser;
-import net.coreprotect.command.parser.WorldParser;
 
 /**
  * Main parser class for CoreProtect commands.
@@ -324,6 +318,15 @@ public class CommandParser {
      */
     private static String timeString(BigDecimal input) {
         return input.stripTrailingZeros().toPlainString();
+    }
+
+    /**
+     * Parse chat/command message from command arguments
+     * @param inputArguments The command arguments
+     * @return A parsed message
+     */
+    protected static String parseMessage(String[] inputArguments) {
+        return MessageParser.parseMessage(inputArguments);
     }
 
 }

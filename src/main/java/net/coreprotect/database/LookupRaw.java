@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import net.coreprotect.CoreProtect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -27,7 +28,7 @@ import net.coreprotect.utility.WorldUtils;
 
 public class LookupRaw extends Queue {
 
-    protected static List<Object[]> performLookupRaw(Statement statement, CommandSender user, List<String> checkUuids, List<String> checkUsers, List<Object> restrictList, Map<Object, Boolean> excludeList, List<String> excludeUserList, List<Integer> actionList, Location location, Integer[] radius, Long[] rowData, long startTime, long endTime, int limitOffset, int limitCount, boolean restrictWorld, boolean lookup) {
+    protected static List<Object[]> performLookupRaw(Statement statement, CommandSender user, List<String> checkUuids, List<String> checkUsers, List<Object> restrictList, Map<Object, Boolean> excludeList, List<String> excludeUserList, List<Integer> actionList, Location location, Integer[] radius, Long[] rowData, long startTime, long endTime, int limitOffset, int limitCount, boolean restrictWorld, String filterMessage, boolean lookup) {
         List<Object[]> list = new ArrayList<>();
         List<Integer> invalidRollbackActions = new ArrayList<>();
         invalidRollbackActions.add(2);
@@ -47,7 +48,7 @@ public class LookupRaw extends Queue {
 
             Consumer.isPaused = true;
 
-            ResultSet results = rawLookupResultSet(statement, user, checkUuids, checkUsers, restrictList, excludeList, excludeUserList, actionList, location, radius, rowData, startTime, endTime, limitOffset, limitCount, restrictWorld, lookup, false);
+            ResultSet results = rawLookupResultSet(statement, user, checkUuids, checkUsers, restrictList, excludeList, excludeUserList, actionList, location, radius, rowData, startTime, endTime, limitOffset, limitCount, restrictWorld, lookup, false, filterMessage);
 
             while (results.next()) {
                 if (actionList.contains(6) || actionList.contains(7)) {
@@ -219,7 +220,7 @@ public class LookupRaw extends Queue {
         return list;
     }
 
-    static ResultSet rawLookupResultSet(Statement statement, CommandSender user, List<String> checkUuids, List<String> checkUsers, List<Object> restrictList, Map<Object, Boolean> excludeList, List<String> excludeUserList, List<Integer> actionList, Location location, Integer[] radius, Long[] rowData, long startTime, long endTime, int limitOffset, int limitCount, boolean restrictWorld, boolean lookup, boolean count) {
+    static ResultSet rawLookupResultSet(Statement statement, CommandSender user, List<String> checkUuids, List<String> checkUsers, List<Object> restrictList, Map<Object, Boolean> excludeList, List<String> excludeUserList, List<Integer> actionList, Location location, Integer[] radius, Long[] rowData, long startTime, long endTime, int limitOffset, int limitCount, boolean restrictWorld, boolean lookup, boolean count, String message) {
         ResultSet results = null;
 
         try {
@@ -234,6 +235,7 @@ public class LookupRaw extends Queue {
             String queryEntity = "";
             String queryLimit = "";
             String queryTable = "block";
+            String queryMessage = "";
             String action = "";
             String actionExclude = "";
             String includeBlock = "";
@@ -526,6 +528,9 @@ public class LookupRaw extends Queue {
             if (queryBlock.length() == 0) {
                 queryBlock = " 1";
             }
+            if (actionList.contains(6) || actionList.contains(7)) {
+                queryMessage = message != null ? "message LIKE '%" + message + "%'" : "";
+            }
 
             queryEntity = queryBlock;
             if (includeBlock.length() > 0 || includeEntity.length() > 0) {
@@ -536,6 +541,7 @@ public class LookupRaw extends Queue {
             }
 
             String baseQuery = ((!includeEntity.isEmpty() || !excludeEntity.isEmpty()) ? queryEntity : queryBlock);
+            baseQuery = queryMessage.isEmpty() ? baseQuery : baseQuery + " AND " + queryMessage;
             if (limitOffset > -1 && limitCount > -1) {
                 queryLimit = " LIMIT " + limitOffset + ", " + limitCount + "";
                 unionLimit = " ORDER BY time DESC, id DESC LIMIT " + (limitOffset + limitCount) + "";
@@ -554,6 +560,7 @@ public class LookupRaw extends Queue {
                 if (PluginChannelHandshakeListener.getInstance().isPluginChannelPlayer(user)) {
                     rows += ",wid,x,y,z";
                 }
+
 
                 if (actionList.contains(7)) {
                     queryTable = "command";

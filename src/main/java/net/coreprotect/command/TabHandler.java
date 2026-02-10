@@ -1,11 +1,6 @@
 package net.coreprotect.command;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.bukkit.Bukkit;
@@ -23,10 +18,11 @@ public class TabHandler implements TabCompleter {
 
     // private static String[] COMMANDS = new String[] { "help", "inspect", "rollback", "restore", "lookup", "purge", "reload", "status", "near", "undo" }; // max 10!
     private static final String[] HELP = new String[] { "inspect", "rollback", "restore", "lookup", "purge", "teleport", "status", "params", "users", "time", "radius", "action", "include", "exclude" };
-    private static final String[] PARAMS = new String[] { "user:", "time:", "radius:", "action:", "include:", "exclude:", "#container" };
+    private static final String[] PARAMS = new String[] { "user:", "message:", "time:", "radius:", "action:", "include:", "exclude:", "#container" };
     private static final String[] ACTIONS = new String[] { "block", "+block", "-block", "click", "kill", "+container", "-container", "container", "chat", "command", "+inventory", "-inventory", "inventory", "item", "+item", "-item", "sign", "session", "+session", "-session", "username" };
     private static final String[] NUMBERS = new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
     private static final String[] TIMES = new String[] { "w", "d", "h", "m", "s" };
+    private static final String[] MESSAGES = new String[] { "foo", "\"foo\"", "\"foo bar\""};
     private static ArrayList<String> materials = null;
 
     @Override
@@ -63,6 +59,9 @@ public class TabHandler implements TabCompleter {
         }
         else if (isMaterialParam(lastArg, currentArg) && hasLookupPermission(sender)) {
             return handleMaterialParamCompletions(currentArg, lastArg);
+        }
+        else if (isMessageParam(lastArg, currentArg) && hasLookupPermission(sender)) {
+            return handleMessageParamCompletions(currentArg, lastArg);
         }
         else if (args.length == 2) {
             return handleSecondArgCompletions(sender, argument0, args[1], paramState);
@@ -144,6 +143,9 @@ public class TabHandler implements TabCompleter {
     private boolean isMaterialParam(String lastArg, String currentArg) {
         return lastArg.equals("i:") || lastArg.equals("include:") || lastArg.equals("item:") || lastArg.equals("items:") || lastArg.equals("b:") || lastArg.equals("block:") || lastArg.equals("blocks:") || currentArg.startsWith("i:") || currentArg.startsWith("include:") || currentArg.startsWith("item:") || currentArg.startsWith("items:") || currentArg.startsWith("b:") || currentArg.startsWith("block:") || currentArg.startsWith("blocks:") || lastArg.equals("e:") || lastArg.equals("exclude:") || currentArg.startsWith("e:") || currentArg.startsWith("exclude:");
     }
+    private boolean isMessageParam(String lastArg, String currentArg) {
+        return lastArg.equals("m:") || lastArg.equals("message:") || currentArg.startsWith("message:") || currentArg.startsWith("m:");
+    }
 
     private static class ParamState {
         boolean hasUser;
@@ -156,6 +158,7 @@ public class TabHandler implements TabCompleter {
         boolean hasCount;
         boolean hasPreview;
         boolean hasPage;
+        boolean hasMessage;
         boolean validContainer;
         boolean pageLookup;
     }
@@ -198,6 +201,9 @@ public class TabHandler implements TabCompleter {
             }
             else if (arg.contains("r:") || arg.contains("radius:")) {
                 state.hasRadius = true;
+            }
+            else if (arg.contains("m:") || arg.contains("message:")) {
+                state.hasMessage = true;
             }
         }
 
@@ -256,6 +262,15 @@ public class TabHandler implements TabCompleter {
         }
 
         return StringUtil.copyPartialMatches(filter + arg, completions, new ArrayList<>(completions.size()));
+    }
+
+    private List<String> handleMessageParamCompletions(String currentArg, String lastArg) {
+        if (!currentArg.endsWith(":")) return Collections.singletonList(currentArg);
+        List<String> completions = new ArrayList<>();
+        for (String mes : MESSAGES) {
+            completions.add(currentArg + mes);
+        }
+        return completions;
     }
 
     private List<String> handleTimeParamCompletions(String currentArg, String lastArg) {
@@ -487,6 +502,9 @@ public class TabHandler implements TabCompleter {
                 params.add(param);
             }
             else if (param.equals("#container") && !state.hasContainer && !state.hasRadius && state.validContainer) {
+                params.add(param);
+            }
+            else if (param.equals("message:") && !state.hasMessage) {
                 params.add(param);
             }
         }
