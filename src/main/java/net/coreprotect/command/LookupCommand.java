@@ -404,7 +404,8 @@ public class LookupCommand {
             boolean defaultRe = true;
             int pa = 1;
             int re = 4;
-            if (argAction.contains(6) || argAction.contains(7) || argAction.contains(9) || (argAction.contains(4) && argAction.contains(11))) {
+            //if (argAction.contains(6) || argAction.contains(7) || argAction.contains(9) || (argAction.contains(4) && argAction.contains(11))) {
+            if (argAction.contains(9)) { // griefus
                 re = 7;
             }
             if (parseRows > 0) {
