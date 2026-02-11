@@ -32,7 +32,7 @@ public class ChatUtils {
 
         // griefus start
         String commandLine = "/" + command + " teleport wid:" + worldId + " " + decimalFormat.format(x + 0.50) + " " + y + " " + decimalFormat.format(z + 0.50) + "|";
-        message.append(commandLine + "\"><hover:show_text:\"" + escape(commandLine) + "\">");
+        message.append(commandLine + "\"><hover:show_text:\"" + escapeAll(commandLine) + "\">");
         // griefus end
 
         // chat output
@@ -177,7 +177,7 @@ public class ChatUtils {
             String formattedTimestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z").format(logDate);
 
             //return Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_POPUP + "|" + Color.GREY + formattedTimestamp + "|" + Color.GREY + message.toString() + Chat.COMPONENT_TAG_CLOSE;
-            return "<hover:show_text:\"<gray>" + escape(formattedTimestamp) + "</gray>\"><gray>" + message + "</hover>"; // griefus
+            return "<hover:show_text:\"<gray>" + escapeAll(formattedTimestamp) + "</gray>\"><gray>" + message + "</hover>"; // griefus
         }
 
         return message.toString();
@@ -193,7 +193,7 @@ public class ChatUtils {
 
         // tooltip
         //message.append("|" + tooltip.replace("|", Chat.COMPONENT_PIPE) + "|");
-        message.append(escape(tooltip)); // griefus
+        message.append('"').append(escape(tooltip)).append("\">"); // griefus
 
         // chat output
         message.append(phrase);
@@ -209,6 +209,10 @@ public class ChatUtils {
     }
 
     public static String escape(String string) {
-        return MiniMessage.miniMessage().escapeTags(string).replace("\"", "\\");
+        return string.replace("\"", "\\");
+    }
+
+    public static String escapeAll(String string) {
+        return escape(MiniMessage.miniMessage().escapeTags(string));
     }
 } 
