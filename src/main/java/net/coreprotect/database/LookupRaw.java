@@ -530,12 +530,13 @@ public class LookupRaw extends Queue {
                 queryBlock = " 1";
             }
             if (actionList.contains(6) || actionList.contains(7)) {
-                queryMessage = message != null ?
-                        // Escape ' and \ here
-                        "message LIKE '%" + message.
-                                replace("'", "\\'").
-                                replace("\\", "\\\\") + "%'" :
-                        "";
+                final char[] escapeSymbols = {'\'', '\\', '[', ']', '%', '_', '^'};
+                if (message != null) {
+                    for (char c : escapeSymbols) {
+                        message = message.replace(String.valueOf(c), "\\" + c);
+                        queryMessage = "message LIKE %'" + message + "%'";
+                    }
+                } else queryMessage = "";
             }
 
             queryEntity = queryBlock;
