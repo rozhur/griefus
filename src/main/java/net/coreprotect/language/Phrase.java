@@ -221,7 +221,12 @@ public enum Phrase {
     VERSION_NOTICE,
     VERSION_INCOMPATIBLE,
     VERSION_REQUIRED,
-    WORLD_NOT_FOUND;
+    WORLD_NOT_FOUND,
+    // Griefus begin
+    NAV_BACK,
+    NAV_NEXT,
+    NAV_FORMAT;
+    // Griefus end
 
     final private static Set<Phrase> HEADERS = new HashSet<>(Arrays.asList(Phrase.CONTAINER_HEADER, Phrase.HELP_HEADER, Phrase.INTERACTIONS_HEADER, Phrase.LOOKUP_HEADER, Phrase.SIGN_HEADER, Phrase.UPDATE_HEADER));
     final private static Set<String> COLORS = new HashSet<>(Arrays.asList(Color.WHITE, Color.DARK_AQUA));

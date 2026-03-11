@@ -239,6 +239,12 @@ public class Language {
         phrases.put(Phrase.VERSION_INCOMPATIBLE, "{0} {1} is not supported.");
         phrases.put(Phrase.VERSION_REQUIRED, "{0} {1} or higher is required.");
         phrases.put(Phrase.WORLD_NOT_FOUND, "World \"{0}\" not found.");
+        // Griefus begin
+        // 1 - active, 2 - inactive
+        phrases.put(Phrase.NAV_BACK, "{<white>|<gray>}◀");
+        phrases.put(Phrase.NAV_NEXT, "{<white>|<gray>}▶");
+        // 0 - back, 1 - current page, 2 - total pages, 3 - next
+        phrases.put(Phrase.NAV_FORMAT, "{0} | {1] of {2} | {3}");
 
         userPhrases.putAll(phrases);
         translatedPhrases.putAll(phrases);
