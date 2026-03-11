@@ -144,7 +144,7 @@ public class BlockLookup {
             if (found) {
                 if (count > limit) {
                     String pageInfo = Color.WHITE + "-----\n";
-                    pageInfo = pageInfo + ChatUtils.getPageNavigation(command, page, totalPages) + "\n";
+                    pageInfo = pageInfo + ChatUtils.getSimplePageNavigation(command, page, totalPages) + "\n";
                     resultText = resultText + pageInfo;
                 }
             }

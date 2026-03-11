@@ -486,7 +486,7 @@ public class StandardLookupThread implements Runnable {
                             //if (actions.contains(6) || actions.contains(7) || actions.contains(9) || (actions.contains(4) && actions.contains(11))) {
                             //    Chat.sendMessage(player, "-----");
                             //}
-                            Chat.sendComponent(player, ChatUtils.getPageNavigation(command.getName(), page, total_pages));
+                            Chat.sendComponent(player, ChatUtils.getSimplePageNavigation(command.getName(), page, total_pages));
                         }
                     }
                     else if (rows > 0) {
