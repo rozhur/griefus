@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import net.coreprotect.utility.*;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -15,12 +16,6 @@ import net.coreprotect.database.statement.UserStatement;
 import net.coreprotect.language.Phrase;
 import net.coreprotect.language.Selector;
 import net.coreprotect.listener.channel.PluginChannelListener;
-import net.coreprotect.utility.ChatUtils;
-import net.coreprotect.utility.Color;
-import net.coreprotect.utility.ItemUtils;
-import net.coreprotect.utility.MaterialUtils;
-import net.coreprotect.utility.StringUtils;
-import net.coreprotect.utility.WorldUtils;
 
 public class ChestTransactionLookup {
 
@@ -97,23 +92,28 @@ public class ChestTransactionLookup {
                 String timeAgo = ChatUtils.getTimeSince(resultTime, time, true);
 
                 if (!found) {
-                    result.add(new StringBuilder(Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.CONTAINER_HEADER) + Color.WHITE + " ----- " + ChatUtils.getCoordinates(command, worldId, x, y, z, false, false)).toString());
+                    // GRIEFUS BEGIN
+                   // result.add(new StringBuilder(Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.CONTAINER_HEADER) + Color.WHITE + " ----- " + ChatUtils.getCoordinates(command, worldId, x, y, z, false, false)).toString());
+                    result.add(Phrase.build(Phrase.CONTAINER_HEADER, ChatUtils.getCoordinates(command, worldId, x, y, z, false, false)));
+                    // GRIEFUS END
                 }
                 found = true;
 
                 String selector = (resultAction != 0 ? Selector.FIRST : Selector.SECOND);
                 String tag = (resultAction != 0 ? Color.GREEN + "+" : Color.RED + "-");
-                String rbFormat = "";
-                if (resultRolledBack == 1 || resultRolledBack == 3) {
-                    rbFormat = Color.STRIKETHROUGH;
-                }
+                // Griefus begin
+                boolean rb = resultRolledBack == 1 || resultRolledBack == 3;
+                // Griefus end
 
                 Material resultMaterial = MaterialUtils.getType(resultType);
                 if (resultMaterial == null) {
                     resultMaterial = Material.AIR;
                 }
                 // Griefus begin
+                boolean spawner = resultMaterial == Material.SPAWNER;
                 String target = MaterialUtils.asTranslatable(resultMaterial);
+                String spawnerMob = spawner ? '(' + EntityUtils.asTranslatable(EntityUtils.getSpawnerType(resultData)) + ')' : "";
+                // Griefus end
                 /*
                 String target = resultMaterial.name().toLowerCase(Locale.ROOT);
                 target = StringUtils.nameFilter(target, resultData);
@@ -126,10 +126,10 @@ public class ChestTransactionLookup {
                     target = target.split(":")[1];
                 }
                  */
+                //result.add(new StringBuilder(timeAgo + " " + tag + " " + Phrase.build(Phrase.LOOKUP_CONTAINER, Color.DARK_AQUA + rbFormat + resultUser + Color.WHITE + rbFormat, "x" + resultAmount, ChatUtils.createTooltip(Color.DARK_AQUA + rbFormat + target, tooltip) + Color.WHITE, selector)).toString());
+                result.add(Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeAgo, resultUser, 'x' + resultAmount + ' ' + target, ""));
+                PluginChannelListener.getInstance().sendData(commandSender, resultTime, Phrase.LOOKUP_CONTAINER, selector, resultUser, target, resultAmount, x, y, z, worldId, rb ? "<strikethrough> " : "", true, tag.contains("+"));
                 // Griefus end
-
-                result.add(new StringBuilder(timeAgo + " " + tag + " " + Phrase.build(Phrase.LOOKUP_CONTAINER, Color.DARK_AQUA + rbFormat + resultUser + Color.WHITE + rbFormat, "x" + resultAmount, ChatUtils.createTooltip(Color.DARK_AQUA + rbFormat + target, tooltip) + Color.WHITE, selector)).toString());
-                PluginChannelListener.getInstance().sendData(commandSender, resultTime, Phrase.LOOKUP_CONTAINER, selector, resultUser, target, resultAmount, x, y, z, worldId, rbFormat, true, tag.contains("+"));
             }
             results.close();
 

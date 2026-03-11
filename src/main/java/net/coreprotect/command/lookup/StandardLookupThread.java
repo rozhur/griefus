@@ -198,8 +198,10 @@ public class StandardLookupThread implements Runnable {
                     }
                     else if (pageStart < rows) {
                         List<String[]> lookupList = Lookup.performPartialLookup(statement, player, uuidList, userList, blockList, excludedBlocks, excludedUsers, actions, finalLocation, radius, rowData, timeStart, timeEnd, (int) pageStart, displayResults, restrict_world, this.message, true);
-
-                        Chat.sendMessage(player, Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.LOOKUP_HEADER, "Griefus" + Color.WHITE + " | " + Color.DARK_AQUA) + Color.WHITE + " -----");
+                        // Griefus begin
+                        //Chat.sendMessage(player, Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.LOOKUP_HEADER, "Griefus" + Color.WHITE + " | " + Color.DARK_AQUA) + Color.WHITE + " -----");
+                        Chat.sendMessage(player, Phrase.build(Phrase.LOOKUP_HEADER));
+                        // Griefus end
                         if (actions.contains(6) || actions.contains(7)) { // Chat/command
                             for (String[] data : lookupList) {
                                 String time = data[0];
@@ -221,8 +223,12 @@ public class StandardLookupThread implements Runnable {
                                 }
                                 // griefus end
 
-                                Chat.sendComponent(player, timeago + " " + Color.WHITE + "- " + Color.DARK_AQUA + dplayer + ": " + Color.WHITE, message);
-                                Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)); // griefus
+                                // griefus begin
+                                //Chat.sendComponent(player, timeago + " " + Color.WHITE + "- " + Color.DARK_AQUA + dplayer + ": " + Color.WHITE, message);
+                                //Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)); // griefus
+                                Chat.sendComponent(player, Phrase.build(Phrase.CHAT_LOOKUP_FORMAT, timeago, dplayer, message));
+                                Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES, leftPadding, ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)));
+                                // griefus end
                                 if (PluginChannelHandshakeListener.getInstance().isPluginChannelPlayer(player)) {
                                     //int wid = Integer.parseInt(data[3]);
                                     //int dataX = Integer.parseInt(data[4]);
@@ -250,10 +256,14 @@ public class StandardLookupThread implements Runnable {
                                 else {
                                     leftPadding = leftPadding + Color.WHITE + Strings.padStart("", (timeLength - 50) / 4, ' ');
                                 }
-
-                                String tag = (action != 0 ? Color.GREEN + "+" : Color.RED + "-");
-                                Chat.sendComponent(player, timeago + " " + tag + " " + Color.DARK_AQUA + Phrase.build(Phrase.LOOKUP_LOGIN, Color.DARK_AQUA + dplayer + Color.WHITE, (action != 0 ? Selector.FIRST : Selector.SECOND)));
-                                Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true) + "");
+                                // Griefus begin
+                                String phraseAction = Phrase.build(Phrase.LOOKUP_LOGIN, dplayer, (action != 0 ? Selector.FIRST : Selector.SECOND));
+                                // String tag = (action != 0 ? Color.GREEN + "+" : Color.RED + "-");
+                               // Chat.sendComponent(player, timeago + " " + tag + " " + Color.DARK_AQUA + Phrase.build(Phrase.LOOKUP_LOGIN, Color.DARK_AQUA + dplayer + Color.WHITE, (action != 0 ? Selector.FIRST : Selector.SECOND)));
+                               // Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true) + "");
+                                Chat.sendComponent(player, Phrase.build(Phrase.LOGIN_LOOKUP_FORMAT, timeago, phraseAction));
+                                Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES, leftPadding, ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)));
+                                // Griefus end
                                 PluginChannelListener.getInstance().sendInfoData(player, Integer.parseInt(time), Phrase.LOOKUP_LOGIN, (action != 0 ? Selector.FIRST : Selector.SECOND), dplayer, -1, dataX, dataY, dataZ, wid);
                             }
                         }
@@ -263,7 +273,10 @@ public class StandardLookupThread implements Runnable {
                                 String user = ConfigHandler.uuidCacheReversed.get(data[1]);
                                 String username = data[2];
                                 String timeago = ChatUtils.getTimeSince(Integer.parseInt(time), unixtimestamp, true);
-                                Chat.sendComponent(player, timeago + " " + Color.WHITE + "- " + Phrase.build(Phrase.LOOKUP_USERNAME, Color.DARK_AQUA + user + Color.WHITE, Color.DARK_AQUA + username + Color.WHITE));
+                                // Griefus begin
+                                //Chat.sendComponent(player, timeago + " " + Color.WHITE + "- " + Phrase.build(Phrase.LOOKUP_USERNAME, Color.DARK_AQUA + user + Color.WHITE, Color.DARK_AQUA + username + Color.WHITE));
+                                Chat.sendComponent(player, Phrase.build(Phrase.USERNAME_LOOKUP_FORMAT, timeago, Phrase.build(Phrase.LOOKUP_USERNAME, user, username)));
+                                // Griefus end
                                 PluginChannelListener.getInstance().sendUsernameData(player, Integer.parseInt(time), user, username);
                             }
                         }
@@ -285,9 +298,12 @@ public class StandardLookupThread implements Runnable {
                                 else {
                                     leftPadding = leftPadding + Color.WHITE + Strings.padStart("", (timeLength - 50) / 4, ' ');
                                 }
-
-                                Chat.sendComponent(player, timeago + " " + Color.WHITE + "- " + Color.DARK_AQUA + dplayer + ": " + Color.WHITE, message);
-                                Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true) + "");
+                                // Griefus begin
+                                //Chat.sendComponent(player, timeago + " " + Color.WHITE + "- " + Color.DARK_AQUA + dplayer + ": " + Color.WHITE, message);
+                                //Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true) + "");
+                                Chat.sendComponent(player, Phrase.build(Phrase.SIGN_LOOKUP_FORMAT, timeago, dplayer, message));
+                                Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES, leftPadding, ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)));
+                                // Griefus end
                                 PluginChannelListener.getInstance().sendMessageData(player, Integer.parseInt(time), dplayer, message, true, dataX, dataY, dataZ, wid);
                             }
                         }
@@ -303,7 +319,9 @@ public class StandardLookupThread implements Runnable {
                                 int dataX = Integer.parseInt(data[2]);
                                 int dataY = Integer.parseInt(data[3]);
                                 int dataZ = Integer.parseInt(data[4]);
-                                String rbd = ((Integer.parseInt(data[8]) == 2 || Integer.parseInt(data[8]) == 3) ? Color.STRIKETHROUGH : "");
+                                //griefus begin
+                                //String rbd = ((Integer.parseInt(data[8]) == 2 || Integer.parseInt(data[8]) == 3) ? Color.STRIKETHROUGH : "");
+                                boolean rb = (Integer.parseInt(data[8]) == 2 || Integer.parseInt(data[8]) == 3);
                                 String timeago = ChatUtils.getTimeSince(Integer.parseInt(time), unixtimestamp, true);
                                 Material blockType = ItemUtils.itemFilter(MaterialUtils.getType(dtype), (Integer.parseInt(data[13]) == 0));
 
@@ -351,19 +369,25 @@ public class StandardLookupThread implements Runnable {
                                     leftPadding = leftPadding + Color.WHITE + Strings.padStart("", (timeLength - 50) / 4, ' ');
                                 }
                                 // griefus end
-
-                                Chat.sendComponent(player, timeago + " " + tag + " " + Phrase.build(Phrase.LOOKUP_CONTAINER, Color.DARK_AQUA + rbd + dplayer + Color.WHITE + rbd, "x" + amount, ChatUtils.createTooltip(Color.DARK_AQUA + rbd + dname, tooltip) + Color.WHITE, selector));
-                                Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)); // griefus
-                                PluginChannelListener.getInstance().sendData(player, Integer.parseInt(time), Phrase.LOOKUP_CONTAINER, selector, dplayer, dname, amount, dataX, dataY, dataZ, wid, rbd, true, tag.contains("+"));
+                                // griefus begin
+                                //Chat.sendComponent(player, timeago + " " + tag + " " + Phrase.build(Phrase.LOOKUP_CONTAINER, Color.DARK_AQUA + rbd + dplayer + Color.WHITE + rbd, "x" + amount, ChatUtils.createTooltip(Color.DARK_AQUA + rbd + dname, tooltip) + Color.WHITE, selector));
+                                //Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)); // griefus
+                                Chat.sendComponent(player, Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeago, dplayer, selector, 'x' + amount + ' ' + dname, ""));
+                                Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES, leftPadding, ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)));
+                                // griefus end
+                                PluginChannelListener.getInstance().sendData(player, Integer.parseInt(time), Phrase.LOOKUP_CONTAINER, selector, dplayer, dname, amount, dataX, dataY, dataZ, wid, String.valueOf(rb), true, tag.contains("+"));
                             }
                         }
                         else {
                             for (String[] data : lookupList) {
                                 int drb = Integer.parseInt(data[8]);
-                                String rbd = "";
+                                // griefus begin
+                                /*String rbd = "";
                                 if (drb == 1 || drb == 3) {
                                     rbd = Color.STRIKETHROUGH;
                                 }
+                                */
+                                boolean rb = (drb == 1 || drb == 3);
 
                                 String time = data[0];
                                 String dplayer = data[1];
@@ -456,9 +480,12 @@ public class StandardLookupThread implements Runnable {
                                         tag = (daction != 0 ? Color.GREEN + "+" : Color.RED + "-");
                                         action = "a:container";
                                     }
-
-                                    Chat.sendComponent(player, timeago + " " + tag + " " + Phrase.build(phrase, Color.DARK_AQUA + rbd + dplayer + Color.WHITE + rbd, "x" + amount, ChatUtils.createTooltip(Color.DARK_AQUA + rbd + dname, tooltip) + Color.WHITE, selector));
-                                    PluginChannelListener.getInstance().sendData(player, Integer.parseInt(time), phrase, selector, dplayer, dname, (tag.contains("+") ? 1 : -1), dataX, dataY, dataZ, wid, rbd, action.contains("container"), tag.contains("+"));
+                                    String dselector = Phrase.build(phrase, selector);
+                                    // Griefus begin
+                                    //Chat.sendComponent(player, timeago + " " + tag + " " + Phrase.build(phrase, Color.DARK_AQUA + rbd + dplayer + Color.WHITE + rbd, "x" + amount, ChatUtils.createTooltip(Color.DARK_AQUA + rbd + dname, tooltip) + Color.WHITE, selector));
+                                    Chat.sendComponent(player, Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeago, dplayer, dselector, "x" + amount + " " + dname, ""));
+                                    // Griefus end
+                                    PluginChannelListener.getInstance().sendData(player, Integer.parseInt(time), phrase, selector, dplayer, dname, (tag.contains("+") ? 1 : -1), dataX, dataY, dataZ, wid, String.valueOf(rb), action.contains("container"), tag.contains("+"));
                                 }
                                 else {
                                     if (daction == 2 || daction == 3) {
@@ -472,13 +499,19 @@ public class StandardLookupThread implements Runnable {
                                         selector = (daction != 0 ? Selector.FIRST : Selector.SECOND);
                                         tag = (daction != 0 ? Color.GREEN + "+" : Color.RED + "-");
                                     }
-
-                                    Chat.sendComponent(player, timeago + " " + tag + " " + Phrase.build(phrase, Color.DARK_AQUA + rbd + dplayer + Color.WHITE + rbd, Color.DARK_AQUA + rbd + dname + Color.WHITE, selector));
-                                    PluginChannelListener.getInstance().sendData(player, Integer.parseInt(time), phrase, selector, dplayer, dname, (tag.contains("+") ? 1 : -1), dataX, dataY, dataZ, wid, rbd, false, tag.contains("+"));
+                                    // Griefus begin
+                                    String dselector = Phrase.build(phrase, selector);
+                                    //Chat.sendComponent(player, timeago + " " + tag + " " + Phrase.build(phrase, Color.DARK_AQUA + rbd + dplayer + Color.WHITE + rbd, Color.DARK_AQUA + rbd + dname + Color.WHITE, selector));
+                                    Chat.sendComponent(player, Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeago, dplayer, dselector, dname, ""));
+                                    // Griefus end
+                                    PluginChannelListener.getInstance().sendData(player, Integer.parseInt(time), phrase, selector, dplayer, dname, (tag.contains("+") ? 1 : -1), dataX, dataY, dataZ, wid, String.valueOf(rb), false, tag.contains("+"));
                                 }
 
                                 action = (actions.size() == 0 ? " (" + action + ")" : "");
-                                Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true) + Color.GREY + Color.ITALIC + action);
+                                // Griefus begin
+                                //Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true) + Color.GREY + Color.ITALIC + action);
+                                Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES_ACTION, leftPadding, ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true), action));
+                                // Griefus end
                             }
                         }
                         if (rows > displayResults) {

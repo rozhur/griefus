@@ -244,8 +244,21 @@ public class Language {
         phrases.put(Phrase.NAV_BACK, "{<white>|<gray>}◀");
         phrases.put(Phrase.NAV_NEXT, "{<white>|<gray>}▶");
         // 0 - back, 1 - current page, 2 - total pages, 3 - next
-        phrases.put(Phrase.NAV_FORMAT, "{0} | {1] of {2} | {3}");
-
+        phrases.put(Phrase.NAV_FORMAT, "{0} | {1} of {2} | {3}");
+        // 0 - date, 1 - player, 2 - action - 3 - item, 4 - extra
+        phrases.put(Phrase.GENERIC_LOOKUP_FORMAT, "{0} - {1} {2} {3} ({4})");
+        phrases.put(Phrase.GENERIC_LOOKUP_FORMAT_RB, "<strikethrough>{0} - {1} {2} {3} {4}</strikethrough");
+        // 0 - padding, 1 - coordinates
+        phrases.put(Phrase.GENERIC_LOOKUP_COORDINATES, "{0}<gray>^ {1}");
+        phrases.put(Phrase.GENERIC_LOOKUP_COORDINATES_ACTION, "{0}<gray>^ {1} {2}");
+        // 0 - time ago, 1 - player, 2 - message
+        phrases.put(Phrase.CHAT_LOOKUP_FORMAT, "{0} - {1}: {2}");
+        // 0 - time ago, 1 - action
+        phrases.put(Phrase.LOGIN_LOOKUP_FORMAT, "{0} - {1}");
+        // 0 - time ago, 1 - action
+        phrases.put(Phrase.USERNAME_LOOKUP_FORMAT, "{0} - {1}");
+        // 0 - time ago, 1 - player, 2 - message
+        phrases.put(Phrase.SIGN_LOOKUP_FORMAT, "{0} - {1}: {2}");
         userPhrases.putAll(phrases);
         translatedPhrases.putAll(phrases);
     }
