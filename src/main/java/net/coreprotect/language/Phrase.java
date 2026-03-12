@@ -233,7 +233,8 @@ public enum Phrase {
     CHAT_LOOKUP_FORMAT,
     LOGIN_LOOKUP_FORMAT,
     USERNAME_LOOKUP_FORMAT,
-    SIGN_LOOKUP_FORMAT;
+    SIGN_LOOKUP_FORMAT,
+    INSPECT_HEADER;
     // Griefus end
 
     final private static Set<Phrase> HEADERS = new HashSet<>(Arrays.asList(Phrase.CONTAINER_HEADER, Phrase.HELP_HEADER, Phrase.INTERACTIONS_HEADER, Phrase.LOOKUP_HEADER, Phrase.SIGN_HEADER, Phrase.UPDATE_HEADER));

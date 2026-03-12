@@ -259,6 +259,8 @@ public class Language {
         phrases.put(Phrase.USERNAME_LOOKUP_FORMAT, "{0} - {1}");
         // 0 - time ago, 1 - player, 2 - message
         phrases.put(Phrase.SIGN_LOOKUP_FORMAT, "{0} - {1}: {2}");
+        // 0 - coordinates
+        phrases.put(Phrase.INSPECT_HEADER, "----- Griefus ----- {0}");
         userPhrases.putAll(phrases);
         translatedPhrases.putAll(phrases);
     }

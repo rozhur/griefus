@@ -87,13 +87,19 @@ public class InteractionLookup {
                 String timeAgo = ChatUtils.getTimeSince(resultTime, time, true);
 
                 if (!found) {
-                    resultBuilder = new StringBuilder(Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.INTERACTIONS_HEADER) + Color.WHITE + " ----- " + ChatUtils.getCoordinates(command, worldId, x, y, z, false, false) + "\n");
+                    // Griefus begin
+                    //resultBuilder = new StringBuilder(Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.INTERACTIONS_HEADER) + Color.WHITE + " ----- " + ChatUtils.getCoordinates(command, worldId, x, y, z, false, false) + "\n");
+                    resultBuilder = new StringBuilder(Phrase.build(Phrase.INTERACTIONS_HEADER, ChatUtils.getCoordinates(command, worldId, x, y, z, false, false)));
+                    // Griefus end
                 }
                 found = true;
 
-                String rbFormat = "";
+                // Griefus begin
+                //String rbFormat = "";
+                boolean rb = false;
                 if (resultRolledBack == 1 || resultRolledBack == 3) {
-                    rbFormat = Color.STRIKETHROUGH;
+                    //rbFormat = Color.STRIKETHROUGH;
+                    rb = true;
                 }
 
                 Material resultMaterial = MaterialUtils.getType(resultType);
@@ -115,9 +121,11 @@ public class InteractionLookup {
                 }
                  */
                 // Griefus end
-
-                resultBuilder.append(timeAgo + " " + Color.WHITE + "- ").append(Phrase.build(Phrase.LOOKUP_INTERACTION, Color.DARK_AQUA + rbFormat + resultUser + Color.WHITE + rbFormat, Color.DARK_AQUA + rbFormat + target + Color.WHITE, Selector.FIRST)).append("\n");
-                PluginChannelListener.getInstance().sendData(commandSender, resultTime, Phrase.LOOKUP_INTERACTION, Selector.FIRST, resultUser, target, -1, x, y, z, worldId, rbFormat, false, false);
+                // Griefus begin
+                String dselector = Phrase.build(Phrase.LOOKUP_INTERACTION, Selector.FIRST);
+                //resultBuilder.append(timeAgo + " " + Color.WHITE + "- ").append(Phrase.build(Phrase.LOOKUP_INTERACTION, Color.DARK_AQUA + rbFormat + resultUser + Color.WHITE + rbFormat, Color.DARK_AQUA + rbFormat + target + Color.WHITE, Selector.FIRST)).append("\n");
+                resultBuilder.append(Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeAgo, resultUser, dselector, target, ""));
+                PluginChannelListener.getInstance().sendData(commandSender, resultTime, Phrase.LOOKUP_INTERACTION, Selector.FIRST, resultUser, target, -1, x, y, z, worldId, String.valueOf(rb), false, false);
             }
             result = resultBuilder.toString();
             results.close();
