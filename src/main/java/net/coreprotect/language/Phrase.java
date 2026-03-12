@@ -266,11 +266,11 @@ public enum Phrase {
         }
 
         String color = "";
-
-        if (HEADERS.contains(phrase)) {
-            output = StringUtils.capitalize(output, true);
-        }
-
+        // Griefus begin
+        //if (HEADERS.contains(phrase)) {
+        //    output = StringUtils.capitalize(output, true);
+        //}
+        // Griefus end
         int index = 0;
         int indexExtra = 0;
         for (String param : params) {
