@@ -132,8 +132,8 @@ public class InteractionLookup {
 
             if (found) {
                 if (count > limit) {
-                    String pageInfo = Color.WHITE + "-----\n";
-                    pageInfo = pageInfo + ChatUtils.getSimplePageNavigation(command, page, totalPages) + "\n";
+                    //String pageInfo = Color.WHITE + "-----\n";
+                    String pageInfo = ChatUtils.getSimplePageNavigation(command, page, totalPages) + "\n";
                     result = result + pageInfo;
                 }
             }

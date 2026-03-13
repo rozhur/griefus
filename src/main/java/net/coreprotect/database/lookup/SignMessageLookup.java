@@ -164,7 +164,7 @@ public class SignMessageLookup {
 
             if (found) {
                 if (count > limit) {
-                    result.add(Color.WHITE + "-----");
+                    //result.add(Color.WHITE + "-----");
                     result.add(ChatUtils.getSimplePageNavigation(command, page, totalPages));
                 }
             }
