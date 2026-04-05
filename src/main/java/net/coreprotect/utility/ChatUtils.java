@@ -143,6 +143,26 @@ public class ChatUtils {
         return message.append(Color.WHITE + backArrow + Color.DARK_AQUA + Phrase.build(Phrase.LOOKUP_PAGE, Color.WHITE + page + "/" + totalPages) + nextArrow + pagination).toString();
     }
 
+
+    // Griefus - simplified customizable page navigator
+     public static String getSimplePageNavigation(String command, int page, int total) {
+        String back = Phrase.build(Phrase.NAV_BACK, page > 1 ? Selector.FIRST : Selector.SECOND);
+        String next = Phrase.build(Phrase.NAV_NEXT, page < total ? Selector.FIRST : Selector.SECOND);
+        String clickableBack = back;
+        String clickableNext = next;
+        if (page > 1) {
+            clickableBack = "<click:run_command:/" + command + " l " + (page - 1) + ">" + back + "</click>";
+        }
+         if (page < total) {
+             clickableNext = "<click:run_command:/" + command + " l " + (page + 1) + ">" + next + "</click>";
+         }
+         return Phrase.build(Phrase.NAV_FORMAT,
+                 clickableBack,
+                 String.valueOf(page),
+                 String.valueOf(total),
+                 clickableNext);
+    }
+
     public static String getTimeSince(long resultTime, long currentTime, boolean component) {
         StringBuilder message = new StringBuilder();
         double timeSince = currentTime - (resultTime + 0.00);

@@ -135,19 +135,19 @@ public class Language {
         phrases.put(Phrase.LINK_WIKI_ENTITY, "Entity Names: {0}");
         phrases.put(Phrase.LOGGING_ITEMS, "{0} items left to log. Please wait...");
         phrases.put(Phrase.LOGGING_TIME_LIMIT, "Logging time limit reached. Discarding data and shutting down.");
-        phrases.put(Phrase.LOOKUP_BLOCK, "{0} {placed|broke} {1}.");
-        phrases.put(Phrase.LOOKUP_CONTAINER, "{0} {added|removed} {1} {2}.");
-        phrases.put(Phrase.LOOKUP_HEADER, "{0} Lookup Results");
-        phrases.put(Phrase.LOOKUP_INTERACTION, "{0} {clicked|killed} {1}.");
-        phrases.put(Phrase.LOOKUP_ITEM, "{0} {picked up|dropped} {1} {2}.");
-        phrases.put(Phrase.LOOKUP_LOGIN, "{0} logged {in|out}.");
+        phrases.put(Phrase.LOOKUP_BLOCK, "{placed|broke}");
+        phrases.put(Phrase.LOOKUP_CONTAINER, "{added|removed}");
+        phrases.put(Phrase.LOOKUP_HEADER, "Lookup Results");
+        phrases.put(Phrase.LOOKUP_INTERACTION, "{clicked|killed}");
+        phrases.put(Phrase.LOOKUP_ITEM, "{picked up|dropped}");
+        phrases.put(Phrase.LOOKUP_LOGIN, "logged {in|out}");
         phrases.put(Phrase.LOOKUP_PAGE, "Page {0}");
-        phrases.put(Phrase.LOOKUP_PROJECTILE, "{0} {threw|shot} {1} {2}.");
+        phrases.put(Phrase.LOOKUP_PROJECTILE, "{threw|shot}");
         phrases.put(Phrase.LOOKUP_ROWS_FOUND, "{0} {row|rows} found.");
         phrases.put(Phrase.LOOKUP_SEARCHING, "Lookup searching. Please wait...");
-        phrases.put(Phrase.LOOKUP_STORAGE, "{0} {deposited|withdrew} {1} {2}.");
+        phrases.put(Phrase.LOOKUP_STORAGE, "{deposited|withdrew}");
         phrases.put(Phrase.LOOKUP_TIME, "{0} ago");
-        phrases.put(Phrase.LOOKUP_USERNAME, "{0} logged in as {1}.");
+        phrases.put(Phrase.LOOKUP_USERNAME, "{0} logged in as {1}");
         phrases.put(Phrase.MAXIMUM_RADIUS, "The maximum {lookup|rollback|restore} radius is {0}.");
         phrases.put(Phrase.MISSING_ACTION_USER, "To use that action, please specify a user.");
         phrases.put(Phrase.MISSING_LOOKUP_TIME, "Please specify the amount of time to {lookup|rollback|restore}.");
@@ -239,7 +239,28 @@ public class Language {
         phrases.put(Phrase.VERSION_INCOMPATIBLE, "{0} {1} is not supported.");
         phrases.put(Phrase.VERSION_REQUIRED, "{0} {1} or higher is required.");
         phrases.put(Phrase.WORLD_NOT_FOUND, "World \"{0}\" not found.");
-
+        // Griefus begin
+        // 1 - active, 2 - inactive
+        phrases.put(Phrase.NAV_BACK, "{<white>|<gray>}◀");
+        phrases.put(Phrase.NAV_NEXT, "{<white>|<gray>}▶");
+        // 0 - back, 1 - current page, 2 - total pages, 3 - next
+        phrases.put(Phrase.NAV_FORMAT, "{0} | {1} of {2} | {3}");
+        // 0 - date, 1 - player, 2 - action - 3 - item, 4 - extra
+        phrases.put(Phrase.GENERIC_LOOKUP_FORMAT, "{0} - {1} {2} {3} {4}");
+        phrases.put(Phrase.GENERIC_LOOKUP_FORMAT_RB, "<strikethrough>{0} - {1} {2} {3} {4}</strikethrough");
+        // 0 - padding, 1 - coordinates
+        phrases.put(Phrase.GENERIC_LOOKUP_COORDINATES, "{0}<gray>^ {1}");
+        phrases.put(Phrase.GENERIC_LOOKUP_COORDINATES_ACTION, "{0}<gray>^ {1} {2}");
+        // 0 - time ago, 1 - player, 2 - message
+        phrases.put(Phrase.CHAT_LOOKUP_FORMAT, "{0} - {1}: {2}");
+        // 0 - time ago, 1 - action
+        phrases.put(Phrase.LOGIN_LOOKUP_FORMAT, "{0} - {1}");
+        // 0 - time ago, 1 - action
+        phrases.put(Phrase.USERNAME_LOOKUP_FORMAT, "{0} - {1}");
+        // 0 - time ago, 1 - player, 2 - message
+        phrases.put(Phrase.SIGN_LOOKUP_FORMAT, "{0} - {1}: {2}");
+        // 0 - coordinates
+        phrases.put(Phrase.INSPECT_HEADER, "----- Griefus ----- {0}");
         userPhrases.putAll(phrases);
         translatedPhrases.putAll(phrases);
     }

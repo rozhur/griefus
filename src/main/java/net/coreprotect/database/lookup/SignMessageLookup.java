@@ -148,18 +148,24 @@ public class SignMessageLookup {
                 String timeAgo = ChatUtils.getTimeSince(resultTime, time, true);
 
                 if (!found) {
-                    result.add(new StringBuilder(Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.SIGN_HEADER) + Color.WHITE + " ----- " + ChatUtils.getCoordinates(command, worldId, x, y, z, false, false) + "").toString());
+                    // Griefus begin
+                    //result.add(new StringBuilder(Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.SIGN_HEADER) + Color.WHITE + " ----- " + ChatUtils.getCoordinates(command, worldId, x, y, z, false, false) + "").toString());
+                    result.add(Phrase.build(Phrase.SIGN_HEADER, ChatUtils.getCoordinates(command, worldId, x, y, z, false, false)));
+                    // Griefus end
                 }
                 found = true;
-                result.add(timeAgo + Color.WHITE + " - " + Color.DARK_AQUA + resultUser + ": " + Color.WHITE + "\n" + parsedMessage + Color.WHITE);
+                // Griefus begin
+                //result.add(timeAgo + Color.WHITE + " - " + Color.DARK_AQUA + resultUser + ": " + Color.WHITE + "\n" + parsedMessage + Color.WHITE);
+                result.add(Phrase.build(Phrase.SIGN_LOOKUP_FORMAT, timeAgo, resultUser, parsedMessage));
+                // Griefus end
                 PluginChannelListener.getInstance().sendMessageData(commandSender, resultTime, resultUser, message.toString(), true, x, y, z, worldId);
             }
             results.close();
 
             if (found) {
                 if (count > limit) {
-                    result.add(Color.WHITE + "-----");
-                    result.add(ChatUtils.getPageNavigation(command, page, totalPages));
+                    //result.add(Color.WHITE + "-----");
+                    result.add(ChatUtils.getSimplePageNavigation(command, page, totalPages));
                 }
             }
             else {

@@ -84,7 +84,10 @@ public class BlockLookup {
                 String timeAgo = ChatUtils.getTimeSince(resultTime, time, true);
 
                 if (!found) {
-                    resultTextBuilder = new StringBuilder(Color.WHITE + "----- " + Color.DARK_AQUA + "Griefus " + Color.WHITE + "----- " + ChatUtils.getCoordinates(command, worldId, x, y, z, false, false) + "\n");
+                    // Griefus begin
+                    //resultTextBuilder = new StringBuilder(Color.WHITE + "----- " + Color.DARK_AQUA + "Griefus " + Color.WHITE + "----- " + ChatUtils.getCoordinates (command, worldId, x, y, z, false, false) + "\n");
+                    resultTextBuilder = new StringBuilder(Phrase.build(Phrase.INSPECT_HEADER, ChatUtils.getCoordinates(command, worldId, x, y, z, false, false) + "\n"));
+                    // Griefus end
                 }
                 found = true;
 
@@ -101,11 +104,15 @@ public class BlockLookup {
                     selector = (resultAction != 0 ? Selector.FIRST : Selector.SECOND);
                     tag = (resultAction != 0 ? Color.GREEN + "+" : Color.RED + "-");
                 }
-
-                String rbFormat = "";
+                String dselector = Phrase.build(phrase, selector);
+                // Griefus begin
+                //String rbFormat = "";
+                boolean rb = false;
                 if (resultRolledBack == 1 || resultRolledBack == 3) {
-                    rbFormat = Color.STRIKETHROUGH;
+                    //rbFormat = Color.STRIKETHROUGH;
+                    rb = true;
                 }
+                // Griefus end
 
                 String target;
                 if (resultAction == 3) {
@@ -133,9 +140,11 @@ public class BlockLookup {
                     target = target.split(":")[1];
                 } */
                 // Griefus end
-
-                resultTextBuilder.append(timeAgo + " " + tag + " ").append(Phrase.build(phrase, Color.DARK_AQUA + rbFormat + resultUser + Color.WHITE + rbFormat, Color.DARK_AQUA + rbFormat + target + Color.WHITE, selector)).append("\n");
-                PluginChannelListener.getInstance().sendData(commandSender, resultTime, phrase, selector, resultUser, target, -1, x, y, z, worldId, rbFormat, false, tag.contains("+"));
+                // Griefus begin
+                //resultTextBuilder.append(timeAgo + " " + tag + " ").append(Phrase.build(phrase, Color.DARK_AQUA + rbFormat + resultUser + Color.WHITE + rbFormat, Color.DARK_AQUA + rbFormat + target + Color.WHITE, selector)).append("\n");
+                resultTextBuilder.append(Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeAgo, resultUser, dselector, target, "")).append('\n');
+                // Griefus end
+                PluginChannelListener.getInstance().sendData(commandSender, resultTime, phrase, selector, resultUser, target, -1, x, y, z, worldId, String.valueOf(rb), false, tag.contains("+"));
             }
 
             resultText = resultTextBuilder.toString();
@@ -143,8 +152,8 @@ public class BlockLookup {
 
             if (found) {
                 if (count > limit) {
-                    String pageInfo = Color.WHITE + "-----\n";
-                    pageInfo = pageInfo + ChatUtils.getPageNavigation(command, page, totalPages) + "\n";
+                    //String pageInfo = Color.WHITE + "-----\n";
+                    String pageInfo = ChatUtils.getSimplePageNavigation(command, page, totalPages) + "\n";
                     resultText = resultText + pageInfo;
                 }
             }

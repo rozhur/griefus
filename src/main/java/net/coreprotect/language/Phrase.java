@@ -221,7 +221,21 @@ public enum Phrase {
     VERSION_NOTICE,
     VERSION_INCOMPATIBLE,
     VERSION_REQUIRED,
-    WORLD_NOT_FOUND;
+    WORLD_NOT_FOUND,
+    // Griefus begin
+    NAV_BACK,
+    NAV_NEXT,
+    NAV_FORMAT,
+    GENERIC_LOOKUP_FORMAT,
+    GENERIC_LOOKUP_FORMAT_RB,
+    GENERIC_LOOKUP_COORDINATES,
+    GENERIC_LOOKUP_COORDINATES_ACTION,
+    CHAT_LOOKUP_FORMAT,
+    LOGIN_LOOKUP_FORMAT,
+    USERNAME_LOOKUP_FORMAT,
+    SIGN_LOOKUP_FORMAT,
+    INSPECT_HEADER;
+    // Griefus end
 
     final private static Set<Phrase> HEADERS = new HashSet<>(Arrays.asList(Phrase.CONTAINER_HEADER, Phrase.HELP_HEADER, Phrase.INTERACTIONS_HEADER, Phrase.LOOKUP_HEADER, Phrase.SIGN_HEADER, Phrase.UPDATE_HEADER));
     final private static Set<String> COLORS = new HashSet<>(Arrays.asList(Color.WHITE, Color.DARK_AQUA));
@@ -253,11 +267,11 @@ public enum Phrase {
         }
 
         String color = "";
-
-        if (HEADERS.contains(phrase)) {
-            output = StringUtils.capitalize(output, true);
-        }
-
+        // Griefus begin
+        //if (HEADERS.contains(phrase)) {
+        //    output = StringUtils.capitalize(output, true);
+        //}
+        // Griefus end
         int index = 0;
         int indexExtra = 0;
         for (String param : params) {
