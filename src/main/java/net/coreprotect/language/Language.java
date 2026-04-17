@@ -43,7 +43,7 @@ public class Language {
         phrases.put(Phrase.COMMAND_THROTTLED, "Please wait a moment and try again.");
         phrases.put(Phrase.CONSUMER_ERROR, "Consumer queue processing already {paused|resumed}.");
         phrases.put(Phrase.CONSUMER_TOGGLED, "Consumer queue processing has been {paused|resumed}.");
-        phrases.put(Phrase.CONTAINER_HEADER, "Container Transactions");
+        phrases.put(Phrase.CONTAINER_HEADER, "----- Container Transactions -----");
         phrases.put(Phrase.CPU_CORES, "CPU cores.");
         phrases.put(Phrase.DATABASE_BUSY, "Database busy. Please try again later.");
         phrases.put(Phrase.DATABASE_INDEX_ERROR, "Unable to validate database indexes.");
@@ -64,50 +64,6 @@ public class Language {
         phrases.put(Phrase.FIRST_VERSION, "Initial DB: {0}");
         phrases.put(Phrase.GLOBAL_LOOKUP, "Don't specify a radius to do a global lookup.");
         phrases.put(Phrase.GLOBAL_ROLLBACK, "Use \"{0}\" to do a global {rollback|restore}");
-        phrases.put(Phrase.HELP_ACTION_1, "Restrict the lookup to a certain action.");
-        phrases.put(Phrase.HELP_ACTION_2, "Examples: [a:block], [a:+block], [a:-block] [a:click], [a:container], [a:inventory], [a:item], [a:kill], [a:chat], [a:command], [a:sign], [a:session], [a:username]");
-        phrases.put(Phrase.HELP_COMMAND, "Display more info for that command.");
-        phrases.put(Phrase.HELP_EXCLUDE_1, "Exclude blocks/users.");
-        phrases.put(Phrase.HELP_EXCLUDE_2, "Examples: [e:stone], [e:Notch], [e:stone,Notch]");
-        phrases.put(Phrase.HELP_HEADER, "{0} Help");
-        phrases.put(Phrase.HELP_INCLUDE_1, "Include specific blocks/entities.");
-        phrases.put(Phrase.HELP_INCLUDE_2, "Examples: [i:stone], [i:zombie], [i:stone,wood,bedrock]");
-        phrases.put(Phrase.HELP_INSPECT_1, "With the inspector enabled, you can do the following:");
-        phrases.put(Phrase.HELP_INSPECT_2, "Left-click a block to see who placed that block.");
-        phrases.put(Phrase.HELP_INSPECT_3, "Right-click a block to see what adjacent block was broken.");
-        phrases.put(Phrase.HELP_INSPECT_4, "Place a block to see what block was broken at that location.");
-        phrases.put(Phrase.HELP_INSPECT_5, "Place a block in liquid (etc) to see who placed it.");
-        phrases.put(Phrase.HELP_INSPECT_6, "Right-click on a door, chest, etc, to see who last used it.");
-        phrases.put(Phrase.HELP_INSPECT_7, "Tip: You can use just \"/co i\" for quicker access.");
-        phrases.put(Phrase.HELP_INSPECT_COMMAND, "Turns the block inspector on or off.");
-        phrases.put(Phrase.HELP_LIST, "Displays a list of all commands.");
-        phrases.put(Phrase.HELP_LOOKUP_1, "Command shortcut.");
-        phrases.put(Phrase.HELP_LOOKUP_2, "Use after inspecting a block to view logs.");
-        phrases.put(Phrase.HELP_LOOKUP_COMMAND, "Advanced block data lookup.");
-        phrases.put(Phrase.HELP_NO_INFO, "Information for command \"{0}\" not found.");
-        phrases.put(Phrase.HELP_PARAMETER, "Please see \"{0}\" for detailed parameter info.");
-        phrases.put(Phrase.HELP_PARAMS_1, "Perform the {lookup|rollback|restore}.");
-        phrases.put(Phrase.HELP_PARAMS_2, "Specify the user(s) to {lookup|rollback|restore}.");
-        phrases.put(Phrase.HELP_PARAMS_3, "Specify the amount of time to {lookup|rollback|restore}.");
-        phrases.put(Phrase.HELP_PARAMS_4, "Specify a radius area to limit the {lookup|rollback|restore} to.");
-        phrases.put(Phrase.HELP_PARAMS_5, "Restrict the {lookup|rollback|restore} to a certain action.");
-        phrases.put(Phrase.HELP_PARAMS_6, "Include specific blocks/entities in the {lookup|rollback|restore}.");
-        phrases.put(Phrase.HELP_PARAMS_7, "Exclude blocks/users from the {lookup|rollback|restore}.");
-        phrases.put(Phrase.HELP_PURGE_1, "Delete data older than specified time.");
-        phrases.put(Phrase.HELP_PURGE_2, "For example, \"{0}\" will delete all data older than one month, and only keep the last 30 days of data.");
-        phrases.put(Phrase.HELP_PURGE_COMMAND, "Delete old block data.");
-        phrases.put(Phrase.HELP_RADIUS_1, "Specify a radius area.");
-        phrases.put(Phrase.HELP_RADIUS_2, "Examples: [r:10] (Only make changes within 10 blocks of you)");
-        phrases.put(Phrase.HELP_RELOAD_COMMAND, "Reloads the configuration file.");
-        phrases.put(Phrase.HELP_RESTORE_COMMAND, "Restore block data.");
-        phrases.put(Phrase.HELP_ROLLBACK_COMMAND, "Rollback block data.");
-        phrases.put(Phrase.HELP_STATUS, "View the plugin status and version information.");
-        phrases.put(Phrase.HELP_STATUS_COMMAND, "Displays the plugin status.");
-        phrases.put(Phrase.HELP_TELEPORT, "Teleport to a location.");
-        phrases.put(Phrase.HELP_TIME_1, "Specify the amount of time to lookup.");
-        phrases.put(Phrase.HELP_TIME_2, "Examples: [t:2w,5d,7h,2m,10s], [t:5d2h], [t:2.50h]");
-        phrases.put(Phrase.HELP_USER_1, "Specify the user(s) to lookup.");
-        phrases.put(Phrase.HELP_USER_2, "Examples: [u:Notch], [u:Notch,#enderman]");
         phrases.put(Phrase.INCOMPATIBLE_ACTION, "\"{0}\" can't be used with that action.");
         phrases.put(Phrase.INSPECTOR_ERROR, "Inspector already {enabled|disabled}.");
         phrases.put(Phrase.INSPECTOR_TOGGLED, "Inspector now {enabled|disabled}.");
@@ -131,13 +87,11 @@ public class Language {
         phrases.put(Phrase.LINK_DISCORD, "Discord: {0}");
         phrases.put(Phrase.LINK_DOWNLOAD, "Download: {0}");
         phrases.put(Phrase.LINK_PATREON, "Patreon: {0}");
-        phrases.put(Phrase.LINK_WIKI_BLOCK, "Block Names: {0}");
-        phrases.put(Phrase.LINK_WIKI_ENTITY, "Entity Names: {0}");
         phrases.put(Phrase.LOGGING_ITEMS, "{0} items left to log. Please wait...");
         phrases.put(Phrase.LOGGING_TIME_LIMIT, "Logging time limit reached. Discarding data and shutting down.");
         phrases.put(Phrase.LOOKUP_BLOCK, "{placed|broke}");
         phrases.put(Phrase.LOOKUP_CONTAINER, "{added|removed}");
-        phrases.put(Phrase.LOOKUP_HEADER, "Lookup Results");
+        phrases.put(Phrase.LOOKUP_HEADER, "----- Lookup Results -----");
         phrases.put(Phrase.LOOKUP_INTERACTION, "{clicked|killed}");
         phrases.put(Phrase.LOOKUP_ITEM, "{picked up|dropped}");
         phrases.put(Phrase.LOOKUP_LOGIN, "logged {in|out}");
@@ -247,7 +201,7 @@ public class Language {
         phrases.put(Phrase.NAV_FORMAT, "{0} | {1} of {2} | {3}");
         // 0 - date, 1 - player, 2 - action - 3 - item, 4 - extra
         phrases.put(Phrase.GENERIC_LOOKUP_FORMAT, "{0} - {1} {2} {3} {4}");
-        phrases.put(Phrase.GENERIC_LOOKUP_FORMAT_RB, "<strikethrough>{0} - {1} {2} {3} {4}</strikethrough");
+        phrases.put(Phrase.GENERIC_LOOKUP_FORMAT_RB, "<strikethrough>{0} - {1} {2} {3} {4}</strikethrough>");
         // 0 - padding, 1 - coordinates
         phrases.put(Phrase.GENERIC_LOOKUP_COORDINATES, "{0}<gray>^ {1}");
         phrases.put(Phrase.GENERIC_LOOKUP_COORDINATES_ACTION, "{0}<gray>^ {1} {2}");
@@ -261,6 +215,133 @@ public class Language {
         phrases.put(Phrase.SIGN_LOOKUP_FORMAT, "{0} - {1}: {2}");
         // 0 - coordinates
         phrases.put(Phrase.INSPECT_HEADER, "----- Griefus ----- {0}");
+
+        phrases.put(Phrase.HELP_MAIN_HEADER, "----- Griefus Help -----");
+        phrases.put(Phrase.HELP_MAIN_COMMAND, "<aqua>/co <white>help <dark_aqua><command> <white>- List all available commands");
+        phrases.put(Phrase.HELP_MAIN_INSPECT, "<dark_aqua>/co <white>inspect - Toggle inspection mode");
+        phrases.put(Phrase.HELP_MAIN_ROLLBACK, "<dark_aqua>/co <white>rollback <dark_aqua><params> <white>- Rollback changes");
+        phrases.put(Phrase.HELP_MAIN_RESTORE, "<dark_aqua>/co <white>restore <dark_aqua><params> <white>- Restore changes");
+        phrases.put(Phrase.HELP_MAIN_LOOKUP, "<dark_aqua>/co <white>lookup <dark_aqua><params> <white>- Lookup block history");
+        phrases.put(Phrase.HELP_MAIN_PURGE, "<dark_aqua>/co <white>purge <dark_aqua><params> <white>- Purge old data");
+        phrases.put(Phrase.HELP_MAIN_RELOAD, "<dark_aqua>/co <white>reload - Reload configuration");
+        phrases.put(Phrase.HELP_MAIN_STATUS, "<dark_aqua>/co <white>status - Show plugin status");
+
+        phrases.put(Phrase.HELP_CO_HELP, "<dark_aqua>/co help <white>- List all available commands");
+
+        phrases.put(Phrase.HELP_INSPECT_1, "<dark_aqua>Inspection Mode Help:");
+        phrases.put(Phrase.HELP_INSPECT_2, "<white>* Left-click a block to see its history");
+        phrases.put(Phrase.HELP_INSPECT_3, "<white>* Right-click a block to see container history");
+        phrases.put(Phrase.HELP_INSPECT_4, "<white>* Left-click air to see nearby interactions");
+        phrases.put(Phrase.HELP_INSPECT_5, "<white>* Right-click air to exit inspection mode");
+        phrases.put(Phrase.HELP_INSPECT_6, "<white>* Use /co inspect again to toggle");
+        phrases.put(Phrase.HELP_INSPECT_7, "<gray><italic>Use /co help params for filtering options");
+
+        phrases.put(Phrase.HELP_PARAMS_HEADER, "<dark_aqua>/co lookup <gray><params> <white>- {0}");
+        phrases.put(Phrase.HELP_PARAMS_USER, "<dark_aqua>| <gray>u:<users> <white>- {0}");
+        phrases.put(Phrase.HELP_PARAMS_TIME, "<dark_aqua>| <gray>t:<time> <white>- {0}");
+        phrases.put(Phrase.HELP_PARAMS_RADIUS, "<dark_aqua>| <gray>r:<radius> <white>- {0}");
+        phrases.put(Phrase.HELP_PARAMS_ACTION, "<dark_aqua>| <gray>a:<action> <white>- {0}");
+        phrases.put(Phrase.HELP_PARAMS_INCLUDE, "<dark_aqua>| <gray>i:<include> <white>- {0}");
+        phrases.put(Phrase.HELP_PARAMS_EXCLUDE, "<dark_aqua>| <gray>e:<exclude> <white>- {0}");
+        phrases.put(Phrase.HELP_PARAMETER_FOOTER, "<gray><italic>Use {0} for more info");
+
+        phrases.put(Phrase.HELP_ROLLBACK_HEADER, "<dark_aqua>/co rollback <gray><params> <white>- {0}");
+        phrases.put(Phrase.HELP_ROLLBACK_USER, "<dark_aqua>| <gray>u:<users> <white>- {0}");
+        phrases.put(Phrase.HELP_ROLLBACK_TIME, "<dark_aqua>| <gray>t:<time> <white>- {0}");
+        phrases.put(Phrase.HELP_ROLLBACK_RADIUS, "<dark_aqua>| <gray>r:<radius> <white>- {0}");
+        phrases.put(Phrase.HELP_ROLLBACK_ACTION, "<dark_aqua>| <gray>a:<action> <white>- {0}");
+        phrases.put(Phrase.HELP_ROLLBACK_INCLUDE, "<dark_aqua>| <gray>i:<include> <white>- {0}");
+        phrases.put(Phrase.HELP_ROLLBACK_EXCLUDE, "<dark_aqua>| <gray>e:<exclude> <white>- {0}");
+
+        phrases.put(Phrase.HELP_RESTORE_HEADER, "<dark_aqua>/co restore <gray><params> <white>- {0}");
+        phrases.put(Phrase.HELP_RESTORE_USER, "<dark_aqua>| <gray>u:<users> <white>- {0}");
+        phrases.put(Phrase.HELP_RESTORE_TIME, "<dark_aqua>| <gray>t:<time> <white>- {0}");
+        phrases.put(Phrase.HELP_RESTORE_RADIUS, "<dark_aqua>| <gray>r:<radius> <white>- {0}");
+        phrases.put(Phrase.HELP_RESTORE_ACTION, "<dark_aqua>| <gray>a:<action> <white>- {0}");
+        phrases.put(Phrase.HELP_RESTORE_INCLUDE, "<dark_aqua>| <gray>i:<include> <white>- {0}");
+        phrases.put(Phrase.HELP_RESTORE_EXCLUDE, "<dark_aqua>| <gray>e:<exclude> <white>- {0}");
+
+        phrases.put(Phrase.HELP_LOOKUP_HEADER, "<dark_aqua>/co lookup <params>");
+        phrases.put(Phrase.HELP_LOOKUP_ALIAS, "<dark_aqua>/co l <params> <white>- {0}");
+        phrases.put(Phrase.HELP_LOOKUP_PAGE, "<dark_aqua>/co lookup <page> <white>- {0}");
+
+        phrases.put(Phrase.HELP_PURGE_MAIN, "<dark_aqua>/co purge t:<time> <white>- {0}");
+        phrases.put(Phrase.HELP_PURGE_EXAMPLE, "<gray><italic>Example: {0}");
+
+        phrases.put(Phrase.HELP_RELOAD, "<dark_aqua>/co reload <white>- {0}");
+
+        phrases.put(Phrase.HELP_STATUS, "<dark_aqua>/co status <white>- {0}");
+
+        phrases.put(Phrase.HELP_TELEPORT, "<dark_aqua>/co teleport <world> <x> <y> <z> <white>- {0}");
+
+        phrases.put(Phrase.HELP_USER_MAIN, "<dark_aqua>/co lookup u:<users> <white>- {0}");
+        phrases.put(Phrase.HELP_USER_NOTE, "<gray><italic>Separate multiple users with commas (no spaces)");
+
+        phrases.put(Phrase.HELP_TIME_MAIN, "<dark_aqua>/co lookup t:<time> <white>- {0}");
+        phrases.put(Phrase.HELP_TIME_NOTE, "<gray><italic>Examples: 1h, 30m, 2d, 1w, 2y");
+
+        phrases.put(Phrase.HELP_RADIUS_MAIN, "<dark_aqua>/co lookup r:<radius> <white>- {0}");
+        phrases.put(Phrase.HELP_RADIUS_NOTE, "<gray><italic>Radius in blocks from your current position");
+
+        phrases.put(Phrase.HELP_ACTION_MAIN, "<dark_aqua>/co lookup a:<action> <white>- {0}");
+        phrases.put(Phrase.HELP_ACTION_NOTE, "<gray><italic>Actions: block-break, block-place, container, chat, command, etc.");
+
+        phrases.put(Phrase.HELP_INCLUDE_MAIN, "<dark_aqua>/co lookup i:<include> <white>- {0}");
+        phrases.put(Phrase.HELP_INCLUDE_NOTE, "<gray><italic>Filter by specific blocks or entities");
+
+        phrases.put(Phrase.HELP_EXCLUDE_MAIN, "<dark_aqua>/co lookup e:<exclude> <white>- {0}");
+        phrases.put(Phrase.HELP_EXCLUDE_NOTE, "<gray><italic>Exclude specific blocks or entities");
+
+        phrases.put(Phrase.HELP_NO_INFO, "<white>No help information available for <gray>{0}<white>. Try <gray>/co help<white>.");
+
+        phrases.put(Phrase.LINK_WIKI_BLOCK, "<gray><italic>Block list: {0}");
+        phrases.put(Phrase.LINK_WIKI_ENTITY, "<gray><italic>Entity list: {0}");
+
+        phrases.put(Phrase.HELP_LIST, "");
+        phrases.put(Phrase.HELP_INSPECT_COMMAND, "");
+        phrases.put(Phrase.HELP_ROLLBACK_COMMAND, "");
+        phrases.put(Phrase.HELP_RESTORE_COMMAND, "");
+        phrases.put(Phrase.HELP_LOOKUP_COMMAND, "");
+        phrases.put(Phrase.HELP_PURGE_COMMAND, "");
+        phrases.put(Phrase.HELP_RELOAD_COMMAND, "");
+        phrases.put(Phrase.HELP_STATUS_COMMAND, "");
+
+        phrases.put(Phrase.HELP_PARAMS_1, "Parameters for filtering results");
+        phrases.put(Phrase.HELP_PARAMS_2, "Filter by usernames");
+        phrases.put(Phrase.HELP_PARAMS_3, "Filter by time range");
+        phrases.put(Phrase.HELP_PARAMS_4, "Filter by radius");
+        phrases.put(Phrase.HELP_PARAMS_5, "Filter by action type");
+        phrases.put(Phrase.HELP_PARAMS_6, "Include specific blocks/entities");
+        phrases.put(Phrase.HELP_PARAMS_7, "Exclude specific blocks/entities");
+
+        phrases.put(Phrase.HELP_LOOKUP_1, "Alias for /co lookup");
+        phrases.put(Phrase.HELP_LOOKUP_2, "View a specific page of results");
+
+        phrases.put(Phrase.HELP_PURGE_1, "Purge data older than time");
+        phrases.put(Phrase.HELP_PURGE_2, "Example: {0} - purges data older than 30 days");
+
+        phrases.put(Phrase.HELP_USER_1, "Filter by specific users");
+        phrases.put(Phrase.HELP_USER_2, "Separate multiple users with commas (no spaces)");
+
+        phrases.put(Phrase.HELP_TIME_1, "Filter by time range");
+        phrases.put(Phrase.HELP_TIME_2, "Examples: 1h, 30m, 2d, 1w, 2y");
+
+        phrases.put(Phrase.HELP_RADIUS_1, "Filter by radius from current position");
+        phrases.put(Phrase.HELP_RADIUS_2, "Radius is measured in blocks");
+
+        phrases.put(Phrase.HELP_ACTION_1, "Filter by specific actions");
+        phrases.put(Phrase.HELP_ACTION_2, "Actions: block-break, block-place, container, chat, command");
+
+        phrases.put(Phrase.HELP_INCLUDE_1, "Include specific blocks or entities");
+        phrases.put(Phrase.HELP_INCLUDE_2, "Use block/entity names");
+
+        phrases.put(Phrase.HELP_EXCLUDE_1, "Exclude specific blocks or entities");
+        phrases.put(Phrase.HELP_EXCLUDE_2, "Use block/entity names");
+
+        phrases.put(Phrase.HELP_PARAMETER, "Use {0} for more information about parameters");
+        phrases.put(Phrase.HELP_COMMAND, "Show help for a specific command");
+        phrases.put(Phrase.HELP_HEADER, "");
+        // Griefus end
         userPhrases.putAll(phrases);
         translatedPhrases.putAll(phrases);
     }

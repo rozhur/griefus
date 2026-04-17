@@ -100,6 +100,7 @@ public class ChestTransactionLookup {
                 found = true;
 
                 String selector = (resultAction != 0 ? Selector.FIRST : Selector.SECOND);
+                String dselector = Phrase.build(Phrase.LOOKUP_CONTAINER, selector);
                 String tag = (resultAction != 0 ? Color.GREEN + "+" : Color.RED + "-");
                 // Griefus begin
                 boolean rb = resultRolledBack == 1 || resultRolledBack == 3;
@@ -127,7 +128,7 @@ public class ChestTransactionLookup {
                 }
                  */
                 //result.add(new StringBuilder(timeAgo + " " + tag + " " + Phrase.build(Phrase.LOOKUP_CONTAINER, Color.DARK_AQUA + rbFormat + resultUser + Color.WHITE + rbFormat, "x" + resultAmount, ChatUtils.createTooltip(Color.DARK_AQUA + rbFormat + target, tooltip) + Color.WHITE, selector)).toString());
-                result.add(Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeAgo, resultUser, 'x' + resultAmount + ' ' + target, ""));
+                result.add(Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeAgo, resultUser, dselector, "x" + resultAmount + ' ' + target, ""));
                 PluginChannelListener.getInstance().sendData(commandSender, resultTime, Phrase.LOOKUP_CONTAINER, selector, resultUser, target, resultAmount, x, y, z, worldId, rb ? "<strikethrough> " : "", true, tag.contains("+"));
                 // Griefus end
             }

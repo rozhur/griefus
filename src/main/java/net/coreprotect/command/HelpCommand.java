@@ -17,112 +17,94 @@ public class HelpCommand {
                 String helpcommand_original = args[1];
                 String helpcommand = args[1].toLowerCase(Locale.ROOT);
                 helpcommand = helpcommand.replaceAll("[^a-zA-Z]", "");
-                Chat.sendMessage(player, Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.HELP_HEADER, "Griefus") + Color.WHITE + " -----");
+                Chat.sendMessage(player, Phrase.build(Phrase.HELP_HEADER));
                 if (helpcommand.equals("help")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co help " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_LIST));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_CO_HELP));
+                } else if (helpcommand.equals("inspect") || helpcommand.equals("inspector") || helpcommand.equals("in")) {
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_INSPECT_1));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_INSPECT_2));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_INSPECT_3));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_INSPECT_4));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_INSPECT_5));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_INSPECT_6));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_INSPECT_7));
+                } else if (helpcommand.equals("params") || helpcommand.equals("param") || helpcommand.equals("parameters") || helpcommand.equals("parameter")) {
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMS_HEADER));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMS_USER));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMS_TIME));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMS_RADIUS));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMS_ACTION));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMS_INCLUDE));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMS_EXCLUDE));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMETER_FOOTER));
+                } else if (helpcommand.equals("rollback") || helpcommand.equals("rollbacks") || helpcommand.equals("rb") || helpcommand.equals("ro")) {
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_ROLLBACK_HEADER));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_ROLLBACK_USER));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_ROLLBACK_TIME));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_ROLLBACK_RADIUS));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_ROLLBACK_ACTION));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_ROLLBACK_INCLUDE));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_ROLLBACK_EXCLUDE));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMETER_FOOTER));
+                } else if (helpcommand.equals("restore") || helpcommand.equals("restores") || helpcommand.equals("re") || helpcommand.equals("rs")) {
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_RESTORE_HEADER));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_RESTORE_USER));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_RESTORE_TIME));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_RESTORE_RADIUS));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_RESTORE_ACTION));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_RESTORE_INCLUDE));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_RESTORE_EXCLUDE));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMETER_FOOTER));
+                } else if (helpcommand.equals("lookup") || helpcommand.equals("lookups") || helpcommand.equals("l")) {
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_LOOKUP_HEADER, Color.DARK_AQUA));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_LOOKUP_ALIAS));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_LOOKUP_PAGE));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMETER_FOOTER));
+                } else if (helpcommand.equals("purge") || helpcommand.equals("purges")) {
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PURGE_MAIN));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PURGE_EXAMPLE));
+                } else if (helpcommand.equals("reload")) {
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_RELOAD));
+                } else if (helpcommand.equals("status")) {
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_STATUS));
+                } else if (helpcommand.equals("teleport")) {
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_TELEPORT));
+                } else if (helpcommand.equals("u") || helpcommand.equals("user") || helpcommand.equals("users") || helpcommand.equals("uuser") || helpcommand.equals("uusers")) {
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_USER_MAIN));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_USER_NOTE));
+                } else if (helpcommand.equals("t") || helpcommand.equals("time") || helpcommand.equals("ttime")) {
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_TIME_MAIN));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_TIME_NOTE));
+                } else if (helpcommand.equals("r") || helpcommand.equals("radius") || helpcommand.equals("rradius")) {
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_RADIUS_MAIN));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_RADIUS_NOTE));
+                } else if (helpcommand.equals("a") || helpcommand.equals("action") || helpcommand.equals("actions") || helpcommand.equals("aaction")) {
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_ACTION_MAIN));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_ACTION_NOTE));
+                } else if (helpcommand.equals("i") || helpcommand.equals("include") || helpcommand.equals("iinclude") || helpcommand.equals("b") || helpcommand.equals("block") || helpcommand.equals("blocks") || helpcommand.equals("bblock") || helpcommand.equals("bblocks")) {
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_INCLUDE_MAIN));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_INCLUDE_NOTE));
+                    Chat.sendMessage(player, Phrase.build(Phrase.LINK_WIKI_BLOCK));
+                    Chat.sendMessage(player, Phrase.build(Phrase.LINK_WIKI_ENTITY));
+                } else if (helpcommand.equals("e") || helpcommand.equals("exclude") || helpcommand.equals("eexclude")) {
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_EXCLUDE_MAIN));
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_EXCLUDE_NOTE));
+                    Chat.sendMessage(player, Phrase.build(Phrase.LINK_WIKI_BLOCK));
+                } else {
+                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_NO_INFO, Color.WHITE, helpcommand_original));
                 }
-                else if (helpcommand.equals("inspect") || helpcommand.equals("inspector") || helpcommand.equals("in")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + Phrase.build(Phrase.HELP_INSPECT_1));
-                    Chat.sendMessage(player, "* " + Phrase.build(Phrase.HELP_INSPECT_2));
-                    Chat.sendMessage(player, "* " + Phrase.build(Phrase.HELP_INSPECT_3));
-                    Chat.sendMessage(player, "* " + Phrase.build(Phrase.HELP_INSPECT_4));
-                    Chat.sendMessage(player, "* " + Phrase.build(Phrase.HELP_INSPECT_5));
-                    Chat.sendMessage(player, "* " + Phrase.build(Phrase.HELP_INSPECT_6));
-                    Chat.sendMessage(player, Color.GREY + Color.ITALIC + Phrase.build(Phrase.HELP_INSPECT_7));
-                }
-                else if (helpcommand.equals("params") || helpcommand.equals("param") || helpcommand.equals("parameters") || helpcommand.equals("parameter")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co lookup " + Color.GREY + "<params> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_1, Selector.FIRST));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "u:<users> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_2, Selector.FIRST));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "t:<time> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_3, Selector.FIRST));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "r:<radius> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_4, Selector.FIRST));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "a:<action> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_5, Selector.FIRST));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "i:<include> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_6, Selector.FIRST));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "e:<exclude> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_7, Selector.FIRST));
-                    Chat.sendMessage(player, Color.GREY + Color.ITALIC + Phrase.build(Phrase.HELP_PARAMETER, "/co help <param>"));
-                }
-                else if (helpcommand.equals("rollback") || helpcommand.equals("rollbacks") || helpcommand.equals("rb") || helpcommand.equals("ro")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co rollback " + Color.GREY + "<params> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_1, Selector.SECOND));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "u:<users> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_2, Selector.SECOND));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "t:<time> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_3, Selector.SECOND));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "r:<radius> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_4, Selector.SECOND));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "a:<action> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_5, Selector.SECOND));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "i:<include> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_6, Selector.SECOND));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "e:<exclude> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_7, Selector.SECOND));
-                    Chat.sendMessage(player, Color.GREY + Color.ITALIC + Phrase.build(Phrase.HELP_PARAMETER, "/co help <param>"));
-                }
-                else if (helpcommand.equals("restore") || helpcommand.equals("restores") || helpcommand.equals("re") || helpcommand.equals("rs")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co restore " + Color.GREY + "<params> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_1, Selector.THIRD));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "u:<users> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_2, Selector.THIRD));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "t:<time> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_3, Selector.THIRD));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "r:<radius> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_4, Selector.THIRD));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "a:<action> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_5, Selector.THIRD));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "i:<include> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_6, Selector.THIRD));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "| " + Color.GREY + "e:<exclude> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PARAMS_7, Selector.THIRD));
-                    Chat.sendMessage(player, Color.GREY + Color.ITALIC + Phrase.build(Phrase.HELP_PARAMETER, "/co help <param>"));
-                }
-                else if (helpcommand.equals("lookup") || helpcommand.equals("lookups") || helpcommand.equals("l")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co lookup <params>");
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co l <params> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_LOOKUP_1));
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co lookup <page> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_LOOKUP_2));
-                    Chat.sendMessage(player, Color.GREY + Color.ITALIC + Phrase.build(Phrase.HELP_PARAMETER, "/co help params"));
-                }
-                else if (helpcommand.equals("purge") || helpcommand.equals("purges")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co purge t:<time> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PURGE_1));
-                    Chat.sendMessage(player, Color.GREY + Color.ITALIC + "" + Phrase.build(Phrase.HELP_PURGE_2, "/co purge t:30d"));
-                }
-                else if (helpcommand.equals("reload")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co reload " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_RELOAD_COMMAND));
-                }
-                else if (helpcommand.equals("status")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co status " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_STATUS));
-                }
-                else if (helpcommand.equals("teleport")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co teleport <world> <x> <y> <z> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_TELEPORT));
-                }
-                else if (helpcommand.equals("u") || helpcommand.equals("user") || helpcommand.equals("users") || helpcommand.equals("uuser") || helpcommand.equals("uusers")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co lookup u:<users> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_USER_1));
-                    Chat.sendMessage(player, Color.GREY + Color.ITALIC + Phrase.build(Phrase.HELP_USER_2));
-                }
-                else if (helpcommand.equals("t") || helpcommand.equals("time") || helpcommand.equals("ttime")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co lookup t:<time> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_TIME_1));
-                    Chat.sendMessage(player, Color.GREY + Color.ITALIC + Phrase.build(Phrase.HELP_TIME_2));
-                }
-                else if (helpcommand.equals("r") || helpcommand.equals("radius") || helpcommand.equals("rradius")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co lookup r:<radius> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_RADIUS_1));
-                    Chat.sendMessage(player, Color.GREY + Color.ITALIC + Phrase.build(Phrase.HELP_RADIUS_2));
-                }
-                else if (helpcommand.equals("a") || helpcommand.equals("action") || helpcommand.equals("actions") || helpcommand.equals("aaction")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co lookup a:<action> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_ACTION_1));
-                    Chat.sendMessage(player, Color.GREY + Color.ITALIC + Phrase.build(Phrase.HELP_ACTION_2));
-                }
-                else if (helpcommand.equals("i") || helpcommand.equals("include") || helpcommand.equals("iinclude") || helpcommand.equals("b") || helpcommand.equals("block") || helpcommand.equals("blocks") || helpcommand.equals("bblock") || helpcommand.equals("bblocks")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co lookup i:<include> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_INCLUDE_1));
-                    Chat.sendMessage(player, Color.GREY + Color.ITALIC + Phrase.build(Phrase.HELP_INCLUDE_2));
-                    Chat.sendMessage(player, Color.GREY + Color.ITALIC + Phrase.build(Phrase.LINK_WIKI_BLOCK, "https://griefus.zhdev.org/wiki-blocks"));
-                    Chat.sendMessage(player, Color.GREY + Color.ITALIC + Phrase.build(Phrase.LINK_WIKI_ENTITY, "https://griefus.zhdev.org/wiki-entities"));
-                }
-                else if (helpcommand.equals("e") || helpcommand.equals("exclude") || helpcommand.equals("eexclude")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "/co lookup e:<exclude> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_EXCLUDE_1));
-                    Chat.sendMessage(player, Color.GREY + Color.ITALIC + Phrase.build(Phrase.HELP_EXCLUDE_2));
-                    Chat.sendMessage(player, Color.GREY + Color.ITALIC + Phrase.build(Phrase.LINK_WIKI_BLOCK, "https://griefus.zhdev.org/wiki-blocks"));
-                }
-                else {
-                    Chat.sendMessage(player, Color.WHITE + Phrase.build(Phrase.HELP_NO_INFO, Color.WHITE, "/co help " + helpcommand_original));
-                }
+            } else {
+                Chat.sendMessage(player, Phrase.build(Phrase.HELP_MAIN_HEADER, Color.WHITE, Color.DARK_AQUA));
+                Chat.sendMessage(player, Phrase.build(Phrase.HELP_MAIN_COMMAND));
+                Chat.sendMessage(player, Phrase.build(Phrase.HELP_MAIN_INSPECT));
+                Chat.sendMessage(player, Phrase.build(Phrase.HELP_MAIN_ROLLBACK));
+                Chat.sendMessage(player, Phrase.build(Phrase.HELP_MAIN_RESTORE));
+                Chat.sendMessage(player, Phrase.build(Phrase.HELP_MAIN_LOOKUP));
+                Chat.sendMessage(player, Phrase.build(Phrase.HELP_MAIN_PURGE));
+                Chat.sendMessage(player, Phrase.build(Phrase.HELP_MAIN_RELOAD));
+                Chat.sendMessage(player, Phrase.build(Phrase.HELP_MAIN_STATUS));
             }
-            else {
-                Chat.sendMessage(player, Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.HELP_HEADER, "Griefus") + Color.WHITE + " -----");
-                Chat.sendMessage(player, Color.DARK_AQUA + "/co help " + Color.GREY + "<command> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_COMMAND));
-                Chat.sendMessage(player, Color.DARK_AQUA + "/co " + Color.GREY + "inspect " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_INSPECT_COMMAND));
-                Chat.sendMessage(player, Color.DARK_AQUA + "/co " + Color.GREY + "rollback " + Color.DARK_AQUA + "<params> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_ROLLBACK_COMMAND));
-                Chat.sendMessage(player, Color.DARK_AQUA + "/co " + Color.GREY + "restore " + Color.DARK_AQUA + "<params> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_RESTORE_COMMAND));
-                Chat.sendMessage(player, Color.DARK_AQUA + "/co " + Color.GREY + "lookup " + Color.DARK_AQUA + "<params> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_LOOKUP_COMMAND));
-                Chat.sendMessage(player, Color.DARK_AQUA + "/co " + Color.GREY + "purge " + Color.DARK_AQUA + "<params> " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_PURGE_COMMAND));
-                Chat.sendMessage(player, Color.DARK_AQUA + "/co " + Color.GREY + "reload " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_RELOAD_COMMAND));
-                Chat.sendMessage(player, Color.DARK_AQUA + "/co " + Color.GREY + "status " + Color.WHITE + "- " + Phrase.build(Phrase.HELP_STATUS_COMMAND));
-            }
-        }
-        else {
+        } else {
             Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
         }
     }

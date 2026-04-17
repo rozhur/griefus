@@ -534,7 +534,7 @@ public class LookupRaw extends Queue {
                 if (message != null) {
                     for (char c : escapeSymbols) {
                         message = message.replace(String.valueOf(c), "\\" + c);
-                        queryMessage = "message LIKE %'" + message + "%'";
+                        queryMessage = "message LIKE %'" + message + "'%";
                     }
                 } else queryMessage = "";
             }
