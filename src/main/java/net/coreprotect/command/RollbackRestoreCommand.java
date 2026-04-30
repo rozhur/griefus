@@ -415,13 +415,13 @@ public class RollbackRestoreCommand {
                                                 Chat.sendMessage(player2, Phrase.build(Phrase.PREVIEW_CANCELLING));
                                             }
                                             else if (finalPreview == 1) {
-                                                Chat.sendMessage(player2, Phrase.build(Phrase.ROLLBACK_STARTED, users, Selector.THIRD));
+                                                Chat.sendMessage(player2, Phrase.build(Phrase.ROLLBACK_STARTED_PREVIEW, users));
                                             }
                                             else if (action == 0) {
-                                                Chat.sendMessage(player2, Phrase.build(Phrase.ROLLBACK_STARTED, users, Selector.FIRST));
+                                                Chat.sendMessage(player2, Phrase.build(Phrase.ROLLBACK_STARTED, users));
                                             }
                                             else {
-                                                Chat.sendMessage(player2, Phrase.build(Phrase.ROLLBACK_STARTED, users, Selector.SECOND));
+                                                Chat.sendMessage(player2, Phrase.build(Phrase.ROLLBACK_STARTED_RESTORE, users));
                                             }
 
                                             if (finalArgAction.contains(5)) {
