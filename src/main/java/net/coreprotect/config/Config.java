@@ -50,6 +50,7 @@ public class Config extends Language {
     public boolean MYSQL;
     public boolean CHECK_UPDATES;
     public boolean API_ENABLED;
+    public boolean ANNOUNCE_ROLLBACKS;
     public boolean VERBOSE;
     public boolean ROLLBACK_ITEMS;
     public boolean ROLLBACK_ENTITIES;
@@ -86,6 +87,7 @@ public class Config extends Language {
     public boolean UNKNOWN_LOGGING;
     public boolean USERNAME_CHANGES;
     public boolean WORLDEDIT;
+    public boolean TRANSLATE_MATERIALS;
     public int MAXIMUM_POOL_SIZE;
     public int MYSQL_PORT;
     public int DEFAULT_RADIUS;
@@ -140,6 +142,8 @@ public class Config extends Language {
         DEFAULT_VALUES.put("player-sessions", "true");
         DEFAULT_VALUES.put("username-changes", "true");
         DEFAULT_VALUES.put("worldedit", "true");
+        DEFAULT_VALUES.put("announce-rollbacks", "false");
+        DEFAULT_VALUES.put("translate-materials", "false");
 
         HEADERS.put("use-mysql", new String[] { "# MySQL is optional and not required.", "# If you prefer to use MySQL, enable the following and fill out the fields." });
         HEADERS.put("language", new String[] { "# If modified, will automatically attempt to translate languages phrases.", "# List of language codes: https://griefus.zhdev.org/languages/" });
@@ -182,6 +186,8 @@ public class Config extends Language {
         HEADERS.put("player-sessions", new String[] { "# Logs the logins and logouts of players." });
         HEADERS.put("username-changes", new String[] { "# Logs when a player changes their Minecraft username." });
         HEADERS.put("worldedit", new String[] { "# Logs changes made via the plugin \"WorldEdit\" if it's in use on your server." });
+        HEADERS.put("announce-rollbacks", new String[] {"# Announces completed rollbacks for users with the \"coreprotect.rollback-announce\" permission."});
+        HEADERS.put("translate-materials", new String[] {"# Use translatable keys for materials and entities. This will make all items/blocks/entities to display in the player's client locale."});
     }
 
     private void readValues() {
@@ -242,6 +248,8 @@ public class Config extends Language {
         this.PLAYER_SESSIONS = this.getBoolean("player-sessions");
         this.USERNAME_CHANGES = this.getBoolean("username-changes");
         this.WORLDEDIT = this.getBoolean("worldedit");
+        this.ANNOUNCE_ROLLBACKS = this.getBoolean("announce-rollbacks");
+        this.TRANSLATE_MATERIALS = this.getBoolean("translate-materials");
     }
 
     public static void init() throws IOException {
