@@ -45,13 +45,13 @@ public class RollbackComplete {
             }
 
             if (preview > 0) {
-                Chat.sendMessage(user, Phrase.build(Phrase.ROLLBACK_COMPLETED, users, Selector.THIRD)); // preview
+                Chat.sendMessage(user, Phrase.build(Phrase.ROLLBACK_COMPLETED_PREVIEW, users)); // preview
             }
             else if (rollbackType == 0) {
-                Chat.sendMessage(user, Phrase.build(Phrase.ROLLBACK_COMPLETED, users, Selector.FIRST)); // rollback
+                Chat.sendMessage(user, Phrase.build(Phrase.ROLLBACK_COMPLETED, users)); // rollback
             }
             else if (rollbackType == 1) {
-                Chat.sendMessage(user, Phrase.build(Phrase.ROLLBACK_COMPLETED, users, Selector.SECOND)); // restore
+                Chat.sendMessage(user, Phrase.build(Phrase.ROLLBACK_COMPLETED_RESTORE, users)); // restore
             }
 
             if (preview == 1 || rollbackType == 0 || rollbackType == 1) {
@@ -294,7 +294,8 @@ public class RollbackComplete {
                 Chat.sendMessage(user, Phrase.build(Phrase.ROLLBACK_LENGTH, decimalSeconds.stripTrailingZeros().toPlainString(), (decimalSeconds.doubleValue() == 1 ? Selector.FIRST : Selector.SECOND)));
             }
 
-            Chat.sendMessage(user, "-----");
+            //Chat.sendMessage(user, "-----");
+            Chat.sendMessage(user, Phrase.build(Phrase.ROLLBACK_SEPARATOR));
             if (preview > 0) {
                 Chat.sendMessage(user, Phrase.build(Phrase.PLEASE_SELECT, "/co apply", "/co cancel"));
             }

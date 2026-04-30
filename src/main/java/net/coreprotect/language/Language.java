@@ -151,7 +151,9 @@ public class Language {
         phrases.put(Phrase.ROLLBACK_ABORTED, "Rollback or restore aborted.");
         phrases.put(Phrase.ROLLBACK_CHUNKS_FOUND, "Found {0} {chunk|chunks} to modify.");
         phrases.put(Phrase.ROLLBACK_CHUNKS_MODIFIED, "Modified {0}/{1} {chunk|chunks}.");
-        phrases.put(Phrase.ROLLBACK_COMPLETED, "{Rollback|Restore|Preview} completed for \"{0}\".");
+        phrases.put(Phrase.ROLLBACK_COMPLETED, "Rollback completed for \"{0}\".");
+        phrases.put(Phrase.ROLLBACK_COMPLETED_RESTORE, "Restore completed for \"{0}\".");
+        phrases.put(Phrase.ROLLBACK_COMPLETED_PREVIEW, "Preview completed for \"{0}\".");
         phrases.put(Phrase.ROLLBACK_EXCLUDED_USERS, "Excluded {user|users}: \"{0}\".");
         phrases.put(Phrase.ROLLBACK_INCLUDE, "{Included|Excluded} {block|entity|target} {type|types}: \"{0}\".");
         phrases.put(Phrase.ROLLBACK_IN_PROGRESS, "A rollback/restore is already in progress.");
