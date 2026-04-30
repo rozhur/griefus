@@ -164,6 +164,7 @@ public class Language {
         phrases.put(Phrase.ROLLBACK_STARTED_PREVIEW, "Preview started on \"{0}\".");
         phrases.put(Phrase.ROLLBACK_TIME, "Time range: {0}.");
         phrases.put(Phrase.ROLLBACK_WORLD_ACTION, "Restricted to {world|action} \"{0}\".");
+        phrases.put(Phrase.ROLLBACK_SEPARATOR, "-----");
         phrases.put(Phrase.SIGN_HEADER, "Sign Messages");
         phrases.put(Phrase.STATUS_CONSUMER, "Consumer: {0} {item|items} in queue.");
         phrases.put(Phrase.STATUS_DATABASE, "Database: Using {0}.");

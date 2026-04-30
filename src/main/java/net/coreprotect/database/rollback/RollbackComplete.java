@@ -26,7 +26,8 @@ public class RollbackComplete {
                 return;
             }
 
-            Chat.sendMessage(user, "-----");
+            //Chat.sendMessage(user, "-----");
+            Chat.sendMessage(user, Phrase.build(Phrase.ROLLBACK_SEPARATOR));
 
             StringBuilder usersBuilder = new StringBuilder();
             for (String value : checkUsers) {
