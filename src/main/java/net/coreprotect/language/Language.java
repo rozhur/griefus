@@ -221,7 +221,7 @@ public class Language {
         phrases.put(Phrase.HELP_MAIN_INSPECT, "<dark_aqua>/co <white>inspect - Toggle inspection mode");
         phrases.put(Phrase.HELP_MAIN_ROLLBACK, "<dark_aqua>/co <white>rollback <dark_aqua><params> <white>- Rollback changes");
         phrases.put(Phrase.HELP_MAIN_RESTORE, "<dark_aqua>/co <white>restore <dark_aqua><params> <white>- Restore changes");
-        phrases.put(Phrase.HELP_MAIN_LOOKUP, "<dark_aqua>/co <white>lookup <dark_aqua><params> <white>- Lookup block history");
+        phrases.put(Phrase.HELP_MAIN_LOOKUP, "<dark_aqua>/co <white>lookup <dark_aqua><params> <white>- Lookup changes");
         phrases.put(Phrase.HELP_MAIN_PURGE, "<dark_aqua>/co <white>purge <dark_aqua><params> <white>- Purge old data");
         phrases.put(Phrase.HELP_MAIN_RELOAD, "<dark_aqua>/co <white>reload - Reload configuration");
         phrases.put(Phrase.HELP_MAIN_STATUS, "<dark_aqua>/co <white>status - Show plugin status");
@@ -236,66 +236,65 @@ public class Language {
         phrases.put(Phrase.HELP_INSPECT_6, "<white>* Use /co inspect again to toggle");
         phrases.put(Phrase.HELP_INSPECT_7, "<gray><italic>Use /co help params for filtering options");
 
-        phrases.put(Phrase.HELP_PARAMS_HEADER, "<dark_aqua>/co lookup <gray><params> <white>- {0}");
-        phrases.put(Phrase.HELP_PARAMS_USER, "<dark_aqua>| <gray>u:<users> <white>- {0}");
-        phrases.put(Phrase.HELP_PARAMS_TIME, "<dark_aqua>| <gray>t:<time> <white>- {0}");
-        phrases.put(Phrase.HELP_PARAMS_RADIUS, "<dark_aqua>| <gray>r:<radius> <white>- {0}");
-        phrases.put(Phrase.HELP_PARAMS_ACTION, "<dark_aqua>| <gray>a:<action> <white>- {0}");
-        phrases.put(Phrase.HELP_PARAMS_INCLUDE, "<dark_aqua>| <gray>i:<include> <white>- {0}");
-        phrases.put(Phrase.HELP_PARAMS_EXCLUDE, "<dark_aqua>| <gray>e:<exclude> <white>- {0}");
-        phrases.put(Phrase.HELP_PARAMETER_FOOTER, "<gray><italic>Use {0} for more info");
+        phrases.put(Phrase.HELP_PARAMS_HEADER, "<dark_aqua>Rollback/restore/lookup parameters");
+        phrases.put(Phrase.HELP_PARAMS_USER, "<dark_aqua>| <gray>u:<users> <white>- choose user(s)");
+        phrases.put(Phrase.HELP_PARAMS_TIME, "<dark_aqua>| <gray>t:<time> <white>- choose time");
+        phrases.put(Phrase.HELP_PARAMS_RADIUS, "<dark_aqua>| <gray>r:<radius> <white>- choose a radius");
+        phrases.put(Phrase.HELP_PARAMS_ACTION, "<dark_aqua>| <gray>a:<action> <white>- choose an action");
+        phrases.put(Phrase.HELP_PARAMS_INCLUDE, "<dark_aqua>| <gray>i:<include> <white>- choose which items/blocks to include");
+        phrases.put(Phrase.HELP_PARAMS_EXCLUDE, "<dark_aqua>| <gray>e:<exclude> <white>- choose which items/blocks to exclude");
 
-        phrases.put(Phrase.HELP_ROLLBACK_HEADER, "<dark_aqua>/co rollback <gray><params> <white>- {0}");
-        phrases.put(Phrase.HELP_ROLLBACK_USER, "<dark_aqua>| <gray>u:<users> <white>- {0}");
-        phrases.put(Phrase.HELP_ROLLBACK_TIME, "<dark_aqua>| <gray>t:<time> <white>- {0}");
-        phrases.put(Phrase.HELP_ROLLBACK_RADIUS, "<dark_aqua>| <gray>r:<radius> <white>- {0}");
-        phrases.put(Phrase.HELP_ROLLBACK_ACTION, "<dark_aqua>| <gray>a:<action> <white>- {0}");
-        phrases.put(Phrase.HELP_ROLLBACK_INCLUDE, "<dark_aqua>| <gray>i:<include> <white>- {0}");
-        phrases.put(Phrase.HELP_ROLLBACK_EXCLUDE, "<dark_aqua>| <gray>e:<exclude> <white>- {0}");
+        phrases.put(Phrase.HELP_ROLLBACK_HEADER, "<dark_aqua>/co rollback <gray><params> <white>- Rollback changes");
+        phrases.put(Phrase.HELP_ROLLBACK_USER, "<dark_aqua>| <gray>u:<users> <white>- choose user(s) to rollback");
+        phrases.put(Phrase.HELP_ROLLBACK_TIME, "<dark_aqua>| <gray>t:<time> <white>- {0} - choose time to rollback");
+        phrases.put(Phrase.HELP_ROLLBACK_RADIUS, "<dark_aqua>| <gray>r:<radius> <white>- {0} - choose a radius to rollback");
+        phrases.put(Phrase.HELP_ROLLBACK_ACTION, "<dark_aqua>| <gray>a:<action> <white>- {0} - choose an action to rollback");
+        phrases.put(Phrase.HELP_ROLLBACK_INCLUDE, "<dark_aqua>| <gray>i:<include> <white>- {0} - choose which items/blocks to include with rollback");
+        phrases.put(Phrase.HELP_ROLLBACK_EXCLUDE, "<dark_aqua>| <gray>e:<exclude> <white>- {0} - choose which items/blocks to exclude with rollback");
 
-        phrases.put(Phrase.HELP_RESTORE_HEADER, "<dark_aqua>/co restore <gray><params> <white>- {0}");
-        phrases.put(Phrase.HELP_RESTORE_USER, "<dark_aqua>| <gray>u:<users> <white>- {0}");
-        phrases.put(Phrase.HELP_RESTORE_TIME, "<dark_aqua>| <gray>t:<time> <white>- {0}");
-        phrases.put(Phrase.HELP_RESTORE_RADIUS, "<dark_aqua>| <gray>r:<radius> <white>- {0}");
-        phrases.put(Phrase.HELP_RESTORE_ACTION, "<dark_aqua>| <gray>a:<action> <white>- {0}");
-        phrases.put(Phrase.HELP_RESTORE_INCLUDE, "<dark_aqua>| <gray>i:<include> <white>- {0}");
-        phrases.put(Phrase.HELP_RESTORE_EXCLUDE, "<dark_aqua>| <gray>e:<exclude> <white>- {0}");
+        phrases.put(Phrase.HELP_RESTORE_HEADER, "<dark_aqua>/co restore <gray><params> <white>- Restore changes");
+        phrases.put(Phrase.HELP_RESTORE_USER, "<dark_aqua>| <gray>u:<users> <white>- choose user(s) to restore");
+        phrases.put(Phrase.HELP_RESTORE_TIME, "<dark_aqua>| <gray>t:<time> <white>- choose time to restore");
+        phrases.put(Phrase.HELP_RESTORE_RADIUS, "<dark_aqua>| <gray>r:<radius> <white>- choose a radius to restore");
+        phrases.put(Phrase.HELP_RESTORE_ACTION, "<dark_aqua>| <gray>a:<action> <white>- choose an action to restore");
+        phrases.put(Phrase.HELP_RESTORE_INCLUDE, "<dark_aqua>| <gray>i:<include> <white>- choose which items/blocks to include with restore");
+        phrases.put(Phrase.HELP_RESTORE_EXCLUDE, "<dark_aqua>| <gray>e:<exclude> <white>- choose which items/block to exclude with restore");
 
-        phrases.put(Phrase.HELP_LOOKUP_HEADER, "<dark_aqua>/co lookup <params>");
-        phrases.put(Phrase.HELP_LOOKUP_ALIAS, "<dark_aqua>/co l <params> <white>- {0}");
-        phrases.put(Phrase.HELP_LOOKUP_PAGE, "<dark_aqua>/co lookup <page> <white>- {0}");
+        phrases.put(Phrase.HELP_LOOKUP_HEADER, "<dark_aqua>/co lookup <params> <white>- Lookup world changes");
+        phrases.put(Phrase.HELP_LOOKUP_ALIAS, "<dark_aqua>/co l <params> <white>- Alias for this command");
+        phrases.put(Phrase.HELP_LOOKUP_PAGE, "<dark_aqua>/co lookup <page> <white>- View selected page");
 
-        phrases.put(Phrase.HELP_PURGE_MAIN, "<dark_aqua>/co purge t:<time> <white>- {0}");
-        phrases.put(Phrase.HELP_PURGE_EXAMPLE, "<gray><italic>Example: {0}");
+        phrases.put(Phrase.HELP_PURGE_MAIN, "<dark_aqua>/co purge t:<time> <white>- Purge selected logs from the database");
+        phrases.put(Phrase.HELP_PURGE_EXAMPLE, "<gray><italic>Example: /co purge t:7d");
 
-        phrases.put(Phrase.HELP_RELOAD, "<dark_aqua>/co reload <white>- {0}");
+        phrases.put(Phrase.HELP_RELOAD, "<dark_aqua>/co reload <white>- Reload plugin configuration");
 
-        phrases.put(Phrase.HELP_STATUS, "<dark_aqua>/co status <white>- {0}");
+        phrases.put(Phrase.HELP_STATUS, "<dark_aqua>/co status <white>- Check plugin status");
 
-        phrases.put(Phrase.HELP_TELEPORT, "<dark_aqua>/co teleport <world> <x> <y> <z> <white>- {0}");
+        phrases.put(Phrase.HELP_TELEPORT, "<dark_aqua>/co teleport <world> <x> <y> <z> <white>- Teleport to the selected coordinates");
 
-        phrases.put(Phrase.HELP_USER_MAIN, "<dark_aqua>/co lookup u:<users> <white>- {0}");
+        phrases.put(Phrase.HELP_USER_MAIN, "<dark_aqua>/co lookup u:<users> <white>- Lookup all changes for selected users");
         phrases.put(Phrase.HELP_USER_NOTE, "<gray><italic>Separate multiple users with commas (no spaces)");
 
-        phrases.put(Phrase.HELP_TIME_MAIN, "<dark_aqua>/co lookup t:<time> <white>- {0}");
+        phrases.put(Phrase.HELP_TIME_MAIN, "<dark_aqua>/co lookup t:<time> <white>- Lookup all changes in selected time");
         phrases.put(Phrase.HELP_TIME_NOTE, "<gray><italic>Examples: 1h, 30m, 2d, 1w, 2y");
 
-        phrases.put(Phrase.HELP_RADIUS_MAIN, "<dark_aqua>/co lookup r:<radius> <white>- {0}");
+        phrases.put(Phrase.HELP_RADIUS_MAIN, "<dark_aqua>/co lookup r:<radius> <white>- Lookup all changes in the selected radius");
         phrases.put(Phrase.HELP_RADIUS_NOTE, "<gray><italic>Radius in blocks from your current position");
 
-        phrases.put(Phrase.HELP_ACTION_MAIN, "<dark_aqua>/co lookup a:<action> <white>- {0}");
+        phrases.put(Phrase.HELP_ACTION_MAIN, "<dark_aqua>/co lookup a:<action> <white>- Lookup all changes for the selected action");
         phrases.put(Phrase.HELP_ACTION_NOTE, "<gray><italic>Actions: block-break, block-place, container, chat, command, etc.");
 
-        phrases.put(Phrase.HELP_INCLUDE_MAIN, "<dark_aqua>/co lookup i:<include> <white>- {0}");
+        phrases.put(Phrase.HELP_INCLUDE_MAIN, "<dark_aqua>/co lookup i:<include> <white>- Lookup all changes with selected blocks/entities");
         phrases.put(Phrase.HELP_INCLUDE_NOTE, "<gray><italic>Filter by specific blocks or entities");
 
-        phrases.put(Phrase.HELP_EXCLUDE_MAIN, "<dark_aqua>/co lookup e:<exclude> <white>- {0}");
+        phrases.put(Phrase.HELP_EXCLUDE_MAIN, "<dark_aqua>/co lookup e:<exclude> <white>- Lookup all changes without selected blocks/entities");
         phrases.put(Phrase.HELP_EXCLUDE_NOTE, "<gray><italic>Exclude specific blocks or entities");
 
-        phrases.put(Phrase.HELP_NO_INFO, "<white>No help information available for <gray>{0}<white>. Try <gray>/co help<white>.");
+        phrases.put(Phrase.HELP_NO_INFO, "<white>No help information available for the provided command. Try <gray>/co help<white>.");
 
-        phrases.put(Phrase.LINK_WIKI_BLOCK, "<gray><italic>Block list: {0}");
-        phrases.put(Phrase.LINK_WIKI_ENTITY, "<gray><italic>Entity list: {0}");
+        phrases.put(Phrase.LINK_WIKI_BLOCK, "<gray><italic>Block list: not implemented, sorry!");
+        phrases.put(Phrase.LINK_WIKI_ENTITY, "<gray><italic>Entity list: not implemented, sorry!");
 
         phrases.put(Phrase.HELP_LIST, "");
         phrases.put(Phrase.HELP_INSPECT_COMMAND, "");

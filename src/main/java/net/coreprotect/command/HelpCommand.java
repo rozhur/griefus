@@ -36,7 +36,6 @@ public class HelpCommand {
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMS_ACTION));
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMS_INCLUDE));
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMS_EXCLUDE));
-                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMETER_FOOTER));
                 } else if (helpcommand.equals("rollback") || helpcommand.equals("rollbacks") || helpcommand.equals("rb") || helpcommand.equals("ro")) {
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_ROLLBACK_HEADER));
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_ROLLBACK_USER));
@@ -45,7 +44,6 @@ public class HelpCommand {
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_ROLLBACK_ACTION));
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_ROLLBACK_INCLUDE));
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_ROLLBACK_EXCLUDE));
-                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMETER_FOOTER));
                 } else if (helpcommand.equals("restore") || helpcommand.equals("restores") || helpcommand.equals("re") || helpcommand.equals("rs")) {
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_RESTORE_HEADER));
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_RESTORE_USER));
@@ -54,12 +52,10 @@ public class HelpCommand {
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_RESTORE_ACTION));
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_RESTORE_INCLUDE));
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_RESTORE_EXCLUDE));
-                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMETER_FOOTER));
                 } else if (helpcommand.equals("lookup") || helpcommand.equals("lookups") || helpcommand.equals("l")) {
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_LOOKUP_HEADER, Color.DARK_AQUA));
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_LOOKUP_ALIAS));
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_LOOKUP_PAGE));
-                    Chat.sendMessage(player, Phrase.build(Phrase.HELP_PARAMETER_FOOTER));
                 } else if (helpcommand.equals("purge") || helpcommand.equals("purges")) {
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_PURGE_MAIN));
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_PURGE_EXAMPLE));
