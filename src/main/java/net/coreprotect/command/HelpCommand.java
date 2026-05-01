@@ -90,7 +90,7 @@ public class HelpCommand {
                     Chat.sendMessage(player, Phrase.build(Phrase.HELP_NO_INFO, Color.WHITE, helpcommand_original));
                 }
             } else {
-                Chat.sendMessage(player, Phrase.build(Phrase.HELP_MAIN_HEADER, Color.WHITE, Color.DARK_AQUA));
+                Chat.sendMessage(player, Phrase.build(Phrase.HELP_MAIN_HEADER));
                 Chat.sendMessage(player, Phrase.build(Phrase.HELP_MAIN_COMMAND));
                 Chat.sendMessage(player, Phrase.build(Phrase.HELP_MAIN_INSPECT));
                 Chat.sendMessage(player, Phrase.build(Phrase.HELP_MAIN_ROLLBACK));
