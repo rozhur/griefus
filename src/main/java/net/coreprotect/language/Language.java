@@ -303,15 +303,6 @@ public class Language {
         phrases.put(Phrase.LINK_WIKI_BLOCK, "<gray><italic>Block list: not implemented, sorry!");
         phrases.put(Phrase.LINK_WIKI_ENTITY, "<gray><italic>Entity list: not implemented, sorry!");
 
-        phrases.put(Phrase.HELP_LIST, "");
-        phrases.put(Phrase.HELP_INSPECT_COMMAND, "");
-        phrases.put(Phrase.HELP_ROLLBACK_COMMAND, "");
-        phrases.put(Phrase.HELP_RESTORE_COMMAND, "");
-        phrases.put(Phrase.HELP_LOOKUP_COMMAND, "");
-        phrases.put(Phrase.HELP_PURGE_COMMAND, "");
-        phrases.put(Phrase.HELP_RELOAD_COMMAND, "");
-        phrases.put(Phrase.HELP_STATUS_COMMAND, "");
-
         phrases.put(Phrase.HELP_PARAMS_1, "Parameters for filtering results");
         phrases.put(Phrase.HELP_PARAMS_2, "Filter by usernames");
         phrases.put(Phrase.HELP_PARAMS_3, "Filter by time range");
