@@ -2,6 +2,7 @@ package net.coreprotect.utility;
 
 import java.util.logging.Level;
 
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.ParsingException;
 import org.bukkit.Bukkit;
@@ -67,6 +68,7 @@ public final class Chat {
         }
     }
 
+    // @todo: make this go brrr (prepare minimessage instead of using sendMessage which does same thing for each player)
     public static void sendGlobalMessage(CommandSender user, String string) {
         if (user instanceof ConsoleCommandSender) {
             sendMessage(user, Color.DARK_AQUA + "[Griefus] " + Color.WHITE + string);
@@ -87,4 +89,22 @@ public final class Chat {
         }
     }
 
+    // Broadcast a message for everyone except the sender - Griefus
+    public static void broadcastNoSender(CommandSender user, String permission, String string) {
+        Component components;
+        try {
+            MiniMessage miniMessage = MiniMessage.miniMessage();
+            components = miniMessage.deserialize(string);
+        } catch (ParsingException e) {
+            e.printStackTrace();
+            return;
+        }
+        if (!(user instanceof ConsoleCommandSender)) {
+            Bukkit.getConsoleSender().sendMessage(components); // not using console here as we're using components
+        }
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (!player.hasPermission(permission)) continue;
+            player.sendMessage(components);
+        }
+    }
 }
