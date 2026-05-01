@@ -338,6 +338,7 @@ public class Language {
         phrases.put(Phrase.HELP_PARAMETER, "Use {0} for more information about parameters");
         phrases.put(Phrase.HELP_COMMAND, "Show help for a specific command");
         phrases.put(Phrase.HELP_HEADER, "");
+        phrases.put(Phrase.GENERIC_UNKNOWN, "Unknown or not set");
         // Griefus end
         userPhrases.putAll(phrases);
         translatedPhrases.putAll(phrases);
