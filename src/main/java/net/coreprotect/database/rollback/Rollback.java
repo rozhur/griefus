@@ -53,6 +53,13 @@ public class Rollback extends RollbackUtil {
                 return null;
             }
 
+            if (user != null && Config.getGlobal().ANNOUNCE_ROLLBACKS) {
+                String users = String.join(", ", checkUsers);
+                String selector = rollbackType == 0 ? Selector.FIRST : Selector.SECOND;
+                if (preview > 0) selector = Selector.THIRD;
+                Chat.broadcastNoSender(user, "coreprotect.announce-rollbacks", Phrase.build(Phrase.ROLLBACK_ANNOUCE, user.getName(), selector, users, String.valueOf(radius[0]), timeString));
+            }
+
             boolean ROLLBACK_ITEMS = false;
             List<Object> itemRestrictList = new ArrayList<>(restrictList);
             Map<Object, Boolean> itemExcludeList = new HashMap<>(excludeList);
