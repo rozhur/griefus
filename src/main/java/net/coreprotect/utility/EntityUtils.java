@@ -2,6 +2,7 @@ package net.coreprotect.utility;
 
 import java.util.Locale;
 
+import net.coreprotect.config.Config;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 
@@ -138,7 +139,9 @@ public class EntityUtils extends Queue {
         return result;
     }
 
+    // Returns translatable string if enabled in the config, plain entity type otherwise - Griefus
     public static String asTranslatable(EntityType type){
-        return "<lang:" + type.translationKey() + ">";
+        return Config.getGlobal().TRANSLATE_MATERIALS ?
+                "<lang:" + type.translationKey() + ">" : type.name();
     }
 }

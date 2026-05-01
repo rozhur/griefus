@@ -3,6 +3,7 @@ package net.coreprotect.utility;
 import java.util.Locale;
 import java.util.Set;
 
+import net.coreprotect.config.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 
@@ -215,8 +216,9 @@ public class MaterialUtils extends Queue {
         }
     }
 
-    // Griefus
+    // Returns translatable string if enabled in the config, plain material otherwise - Griefus
     public static String asTranslatable(Material material) {
-        return "<lang:" + material.translationKey() + ">";
+        return Config.getGlobal().TRANSLATE_MATERIALS ?
+                "<lang:" + material.translationKey() + ">" : material.name();
     }
 }
