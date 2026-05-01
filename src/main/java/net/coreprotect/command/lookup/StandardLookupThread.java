@@ -35,6 +35,7 @@ import net.coreprotect.utility.ItemUtils;
 import net.coreprotect.utility.MaterialUtils;
 import net.coreprotect.utility.StringUtils;
 import net.coreprotect.utility.WorldUtils;
+import org.bukkit.entity.EntityType;
 
 public class StandardLookupThread implements Runnable {
     private final CommandSender player;
@@ -324,6 +325,13 @@ public class StandardLookupThread implements Runnable {
                                 boolean rb = (Integer.parseInt(data[8]) == 2 || Integer.parseInt(data[8]) == 3);
                                 String timeago = ChatUtils.getTimeSince(Integer.parseInt(time), unixtimestamp, true);
                                 Material blockType = ItemUtils.itemFilter(MaterialUtils.getType(dtype), (Integer.parseInt(data[13]) == 0));
+                                // Detect entity type in the spawner here too 2: electric boogaloo
+                                String extraData = "";
+                                if (blockType == Material.SPAWNER) {
+                                    EntityType spawnerEntity = EntityUtils.getSpawnerType(ddata);
+                                    String ename = spawnerEntity == EntityType.UNKNOWN ? Phrase.build(Phrase.GENERIC_UNKNOWN) : EntityUtils.asTranslatable(spawnerEntity);
+                                    extraData = Phrase.build(Phrase.LOOKUP_SPAWNER_DATA, ename);
+                                }
 
                                 // Griefus begin
                                 //String dname = StringUtils.nameFilter(blockType.name().toLowerCase(Locale.ROOT), ddata);
@@ -372,7 +380,7 @@ public class StandardLookupThread implements Runnable {
                                 // griefus begin
                                 //Chat.sendComponent(player, timeago + " " + tag + " " + Phrase.build(Phrase.LOOKUP_CONTAINER, Color.DARK_AQUA + rbd + dplayer + Color.WHITE + rbd, "x" + amount, ChatUtils.createTooltip(Color.DARK_AQUA + rbd + dname, tooltip) + Color.WHITE, selector));
                                 //Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)); // griefus
-                                Chat.sendComponent(player, Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeago, dplayer, selector, 'x' + amount + ' ' + dname, ""));
+                                Chat.sendComponent(player, Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeago, dplayer, selector, 'x' + amount + ' ' + dname, extraData));
                                 Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES, leftPadding, ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)));
                                 // griefus end
                                 PluginChannelListener.getInstance().sendData(player, Integer.parseInt(time), Phrase.LOOKUP_CONTAINER, selector, dplayer, dname, amount, dataX, dataY, dataZ, wid, String.valueOf(rb), true, tag.contains("+"));
@@ -412,6 +420,7 @@ public class StandardLookupThread implements Runnable {
                                 }
 
                                 String dname = "";
+                                String extraData = "";
                                 boolean isPlayer = false;
                                 if (daction == 3 && !actions.contains(11) && amount == -1) {
                                     if (dtype == 0) {
@@ -432,7 +441,14 @@ public class StandardLookupThread implements Runnable {
                                     // Griefus begin
                                     //dname = MaterialUtils.getType(dtype).name().toLowerCase(Locale.ROOT);
                                     //dname = StringUtils.nameFilter(dname, ddata);
-                                    dname = MaterialUtils.asTranslatable(MaterialUtils.getType(dtype));
+                                    Material material = MaterialUtils.getType(dtype);
+                                    dname = MaterialUtils.asTranslatable(material);
+                                    // Detect entity type in the spawner here too
+                                    if (material == Material.SPAWNER) {
+                                        EntityType spawnerEntity = EntityUtils.getSpawnerType(ddata);
+                                        String ename = spawnerEntity == EntityType.UNKNOWN ? Phrase.build(Phrase.GENERIC_UNKNOWN) : EntityUtils.asTranslatable(spawnerEntity);
+                                        extraData = Phrase.build(Phrase.LOOKUP_SPAWNER_DATA, ename);
+                                    }
                                 }
                                 /*
                                 if (dname.length() > 0 && !isPlayer) {
@@ -483,7 +499,7 @@ public class StandardLookupThread implements Runnable {
                                     String dselector = Phrase.build(phrase, selector);
                                     // Griefus begin
                                     //Chat.sendComponent(player, timeago + " " + tag + " " + Phrase.build(phrase, Color.DARK_AQUA + rbd + dplayer + Color.WHITE + rbd, "x" + amount, ChatUtils.createTooltip(Color.DARK_AQUA + rbd + dname, tooltip) + Color.WHITE, selector));
-                                    Chat.sendComponent(player, Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeago, dplayer, dselector, "x" + amount + " " + dname, ""));
+                                    Chat.sendComponent(player, Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeago, dplayer, dselector, "x" + amount + " " + dname, extraData));
                                     // Griefus end
                                     PluginChannelListener.getInstance().sendData(player, Integer.parseInt(time), phrase, selector, dplayer, dname, (tag.contains("+") ? 1 : -1), dataX, dataY, dataZ, wid, String.valueOf(rb), action.contains("container"), tag.contains("+"));
                                 }
@@ -502,7 +518,7 @@ public class StandardLookupThread implements Runnable {
                                     // Griefus begin
                                     String dselector = Phrase.build(phrase, selector);
                                     //Chat.sendComponent(player, timeago + " " + tag + " " + Phrase.build(phrase, Color.DARK_AQUA + rbd + dplayer + Color.WHITE + rbd, Color.DARK_AQUA + rbd + dname + Color.WHITE, selector));
-                                    Chat.sendComponent(player, Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeago, dplayer, dselector, dname, ""));
+                                    Chat.sendComponent(player, Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeago, dplayer, dselector, dname, extraData));
                                     // Griefus end
                                     PluginChannelListener.getInstance().sendData(player, Integer.parseInt(time), phrase, selector, dplayer, dname, (tag.contains("+") ? 1 : -1), dataX, dataY, dataZ, wid, String.valueOf(rb), false, tag.contains("+"));
                                 }

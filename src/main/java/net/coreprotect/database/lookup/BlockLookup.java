@@ -9,6 +9,7 @@ import net.coreprotect.utility.*;
 import org.bukkit.Material;
 import org.bukkit.block.BlockState;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.EntityType;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -115,6 +116,7 @@ public class BlockLookup {
                 // Griefus end
 
                 String target;
+                String extraData = "";
                 if (resultAction == 3) {
                     // Griefus begin
                     //target = EntityUtils.getEntityType(resultType).name();
@@ -130,6 +132,12 @@ public class BlockLookup {
                     //target = StringUtils.nameFilter(resultMaterial.name().toLowerCase(Locale.ROOT), resultData);
                     //target = "minecraft:" + target.toLowerCase(Locale.ROOT);
                     target = MaterialUtils.asTranslatable(resultMaterial);
+                    // Detect entity type in the spawner
+                    if (resultMaterial == Material.SPAWNER) {
+                        EntityType spawnerEntity = EntityUtils.getSpawnerType(resultData);
+                        String ename = spawnerEntity == EntityType.UNKNOWN ? Phrase.build(Phrase.GENERIC_UNKNOWN) : EntityUtils.asTranslatable(spawnerEntity);
+                        extraData = Phrase.build(Phrase.LOOKUP_SPAWNER_DATA, ename);
+                    }
                 }
                 /*if (target.length() > 0) {
                     target = "" + target + "";
@@ -142,7 +150,7 @@ public class BlockLookup {
                 // Griefus end
                 // Griefus begin
                 //resultTextBuilder.append(timeAgo + " " + tag + " ").append(Phrase.build(phrase, Color.DARK_AQUA + rbFormat + resultUser + Color.WHITE + rbFormat, Color.DARK_AQUA + rbFormat + target + Color.WHITE, selector)).append("\n");
-                resultTextBuilder.append(Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeAgo, resultUser, dselector, target, "")).append('\n');
+                resultTextBuilder.append(Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeAgo, resultUser, dselector, target, extraData)).append('\n');
                 // Griefus end
                 PluginChannelListener.getInstance().sendData(commandSender, resultTime, phrase, selector, resultUser, target, -1, x, y, z, worldId, String.valueOf(rb), false, tag.contains("+"));
             }

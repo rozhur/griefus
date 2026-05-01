@@ -16,6 +16,7 @@ import net.coreprotect.database.statement.UserStatement;
 import net.coreprotect.language.Phrase;
 import net.coreprotect.language.Selector;
 import net.coreprotect.listener.channel.PluginChannelListener;
+import org.bukkit.entity.EntityType;
 
 public class ChestTransactionLookup {
 
@@ -111,9 +112,14 @@ public class ChestTransactionLookup {
                     resultMaterial = Material.AIR;
                 }
                 // Griefus begin
-                boolean spawner = resultMaterial == Material.SPAWNER;
+                // whatever I wrote here before it should have been reworked bruh
+                String extraData = "";
+                if (resultMaterial == Material.SPAWNER) {
+                    EntityType entityType = EntityUtils.getEntityType(resultData);
+                    String ename = entityType == EntityType.UNKNOWN ? Phrase.build(Phrase.GENERIC_UNKNOWN) : EntityUtils.asTranslatable(entityType);
+                    extraData = Phrase.build(Phrase.LOOKUP_SPAWNER_DATA, ename);
+                }
                 String target = MaterialUtils.asTranslatable(resultMaterial);
-                String spawnerMob = spawner ? '(' + EntityUtils.asTranslatable(EntityUtils.getSpawnerType(resultData)) + ')' : "";
                 // Griefus end
                 /*
                 String target = resultMaterial.name().toLowerCase(Locale.ROOT);
@@ -128,7 +134,7 @@ public class ChestTransactionLookup {
                 }
                  */
                 //result.add(new StringBuilder(timeAgo + " " + tag + " " + Phrase.build(Phrase.LOOKUP_CONTAINER, Color.DARK_AQUA + rbFormat + resultUser + Color.WHITE + rbFormat, "x" + resultAmount, ChatUtils.createTooltip(Color.DARK_AQUA + rbFormat + target, tooltip) + Color.WHITE, selector)).toString());
-                result.add(Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeAgo, resultUser, dselector, "x" + resultAmount + ' ' + target, ""));
+                result.add(Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeAgo, resultUser, dselector, "x" + resultAmount + ' ' + target, extraData));
                 PluginChannelListener.getInstance().sendData(commandSender, resultTime, Phrase.LOOKUP_CONTAINER, selector, resultUser, target, resultAmount, x, y, z, worldId, rb ? "<strikethrough> " : "", true, tag.contains("+"));
                 // Griefus end
             }
