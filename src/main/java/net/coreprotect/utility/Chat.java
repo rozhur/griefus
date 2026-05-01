@@ -103,7 +103,7 @@ public final class Chat {
             Bukkit.getConsoleSender().sendMessage(components); // not using console here as we're using components
         }
         for (Player player : Bukkit.getOnlinePlayers()) {
-            if (!player.hasPermission(permission)) continue;
+            if (!player.hasPermission(permission) || user == player) continue;
             player.sendMessage(components);
         }
     }
