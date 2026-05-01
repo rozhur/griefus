@@ -1,8 +1,10 @@
 package net.coreprotect.utility;
 
+import net.coreprotect.config.Config;
 import net.coreprotect.language.Phrase;
 import net.coreprotect.language.Selector;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 
 import java.text.DecimalFormat;
@@ -17,29 +19,18 @@ public class ChatUtils {
         throw new IllegalStateException("Utility class");
     }
 
-    public static String getCoordinates(String command, int worldId, int x, int y, int z, boolean displayWorld, boolean italic) {
-        //StringBuilder message = new StringBuilder(Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_COMMAND);
-        StringBuilder message = new StringBuilder("<click:run_command:\""); // griefus
-
-        StringBuilder worldDisplay = new StringBuilder();
-        if (displayWorld) {
-            worldDisplay.append("/" + WorldUtils.getWorldName(worldId));
-        }
-
-        // command
-        DecimalFormat decimalFormat = new DecimalFormat("#.##", new DecimalFormatSymbols(Locale.ROOT));
-        //message.append("|/" + command + " teleport wid:" + worldId + " " + decimalFormat.format(x + 0.50) + " " + y + " " + decimalFormat.format(z + 0.50) + "|");
-
-        // griefus start
-        String commandLine = "/" + command + " teleport wid:" + worldId + " " + decimalFormat.format(x + 0.50) + " " + y + " " + decimalFormat.format(z + 0.50) + "|";
-        message.append(commandLine + "\"><hover:show_text:\"" + escapeAll(commandLine) + "\">");
-        // griefus end
-
-        // chat output
-        message.append(Color.GREY + (italic ? Color.ITALIC : "") + "(x" + x + "/y" + y + "/z" + z + worldDisplay.toString() + ")");
-
-        //return message.append(Chat.COMPONENT_TAG_CLOSE).toString();
-        return message.append("</hover></click>").toString(); // griefus
+    public static String getCoordinates(CommandSender user, String command, int worldId, int x, int y, int z, boolean displayWorld, boolean italic) {
+        return user.hasPermission(Config.getGlobal().TELEPORT_PERMISSION) ?
+                Phrase.build(Phrase.GENERIC_POSITION_FORMAT_TELEPORT,
+                        String.valueOf(x),
+                        String.valueOf(y),
+                        String.valueOf(z),
+                        WorldUtils.getWorldName(worldId)) :
+                Phrase.build(Phrase.GENERIC_POSITION_FORMAT,
+                        String.valueOf(x),
+                        String.valueOf(y),
+                        String.valueOf(z),
+                        WorldUtils.getWorldName(worldId));
     }
 
     public static String getPageNavigation(String command, int page, int totalPages) {

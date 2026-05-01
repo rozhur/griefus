@@ -95,7 +95,7 @@ public class ChestTransactionLookup {
                 if (!found) {
                     // GRIEFUS BEGIN
                    // result.add(new StringBuilder(Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.CONTAINER_HEADER) + Color.WHITE + " ----- " + ChatUtils.getCoordinates(command, worldId, x, y, z, false, false)).toString());
-                    result.add(Phrase.build(Phrase.CONTAINER_HEADER, ChatUtils.getCoordinates(command, worldId, x, y, z, false, false)));
+                    result.add(Phrase.build(Phrase.CONTAINER_HEADER, ChatUtils.getCoordinates(commandSender, command, worldId, x, y, z, false, false)));
                     // GRIEFUS END
                 }
                 found = true;

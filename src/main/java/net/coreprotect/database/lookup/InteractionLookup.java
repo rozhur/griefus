@@ -89,7 +89,7 @@ public class InteractionLookup {
                 if (!found) {
                     // Griefus begin
                     //resultBuilder = new StringBuilder(Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.INTERACTIONS_HEADER) + Color.WHITE + " ----- " + ChatUtils.getCoordinates(command, worldId, x, y, z, false, false) + "\n");
-                    resultBuilder = new StringBuilder(Phrase.build(Phrase.INTERACTIONS_HEADER, ChatUtils.getCoordinates(command, worldId, x, y, z, false, false)));
+                    resultBuilder = new StringBuilder(Phrase.build(Phrase.INTERACTIONS_HEADER, ChatUtils.getCoordinates(commandSender, command, worldId, x, y, z, false, false)));
                     // Griefus end
                 }
                 found = true;

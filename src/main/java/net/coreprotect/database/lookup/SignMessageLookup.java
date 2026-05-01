@@ -150,7 +150,7 @@ public class SignMessageLookup {
                 if (!found) {
                     // Griefus begin
                     //result.add(new StringBuilder(Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.SIGN_HEADER) + Color.WHITE + " ----- " + ChatUtils.getCoordinates(command, worldId, x, y, z, false, false) + "").toString());
-                    result.add(Phrase.build(Phrase.SIGN_HEADER, ChatUtils.getCoordinates(command, worldId, x, y, z, false, false)));
+                    result.add(Phrase.build(Phrase.SIGN_HEADER, ChatUtils.getCoordinates(commandSender, command, worldId, x, y, z, false, false)));
                     // Griefus end
                 }
                 found = true;

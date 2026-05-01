@@ -283,7 +283,9 @@ public enum Phrase {
     HELP_EXCLUDE_MAIN,
     HELP_EXCLUDE_NOTE,
     GENERIC_UNKNOWN,
-    LOOKUP_SPAWNER_DATA;
+    LOOKUP_SPAWNER_DATA,
+    GENERIC_POSITION_FORMAT,
+    GENERIC_POSITION_FORMAT_TELEPORT;
     // Griefus end
 
     final private static Set<Phrase> HEADERS = new HashSet<>(Arrays.asList(Phrase.CONTAINER_HEADER, Phrase.HELP_HEADER, Phrase.INTERACTIONS_HEADER, Phrase.LOOKUP_HEADER, Phrase.SIGN_HEADER, Phrase.UPDATE_HEADER));

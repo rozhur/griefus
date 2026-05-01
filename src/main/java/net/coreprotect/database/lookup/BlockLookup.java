@@ -87,7 +87,7 @@ public class BlockLookup {
                 if (!found) {
                     // Griefus begin
                     //resultTextBuilder = new StringBuilder(Color.WHITE + "----- " + Color.DARK_AQUA + "Griefus " + Color.WHITE + "----- " + ChatUtils.getCoordinates (command, worldId, x, y, z, false, false) + "\n");
-                    resultTextBuilder = new StringBuilder(Phrase.build(Phrase.INSPECT_HEADER, ChatUtils.getCoordinates(command, worldId, x, y, z, false, false) + "\n"));
+                    resultTextBuilder = new StringBuilder(Phrase.build(Phrase.INSPECT_HEADER, ChatUtils.getCoordinates(commandSender, command, worldId, x, y, z, false, false) + "\n"));
                     // Griefus end
                 }
                 found = true;

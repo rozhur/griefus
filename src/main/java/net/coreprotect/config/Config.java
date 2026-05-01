@@ -39,6 +39,7 @@ public class Config extends Language {
     public String MYSQL_USERNAME;
     public String MYSQL_PASSWORD;
     public String LANGUAGE;
+    public String TELEPORT_PERMISSION;
     public boolean ENABLE_SSL;
     public boolean DISABLE_WAL;
     public boolean HOVER_EVENTS;
@@ -144,6 +145,7 @@ public class Config extends Language {
         DEFAULT_VALUES.put("worldedit", "true");
         DEFAULT_VALUES.put("announce-rollbacks", "false");
         DEFAULT_VALUES.put("translate-materials", "false");
+        DEFAULT_VALUES.put("teleport-permission", "coreprotect.teleport");
 
         HEADERS.put("use-mysql", new String[] { "# MySQL is optional and not required.", "# If you prefer to use MySQL, enable the following and fill out the fields." });
         HEADERS.put("language", new String[] { "# If modified, will automatically attempt to translate languages phrases.", "# List of language codes: https://griefus.zhdev.org/languages/" });
@@ -188,6 +190,7 @@ public class Config extends Language {
         HEADERS.put("worldedit", new String[] { "# Logs changes made via the plugin \"WorldEdit\" if it's in use on your server." });
         HEADERS.put("announce-rollbacks", new String[] {"# Announces completed rollbacks for users with the \"coreprotect.rollback-announce\" permission."});
         HEADERS.put("translate-materials", new String[] {"# Use translatable keys for materials and entities. This will make all items/blocks/entities to display in the player's client locale."});
+        HEADERS.put("teleport-permission", new String[] {"Permission used for checking if the player allowed to teleport to the log source"});
     }
 
     private void readValues() {
@@ -250,6 +253,7 @@ public class Config extends Language {
         this.WORLDEDIT = this.getBoolean("worldedit");
         this.ANNOUNCE_ROLLBACKS = this.getBoolean("announce-rollbacks");
         this.TRANSLATE_MATERIALS = this.getBoolean("translate-materials");
+        this.TELEPORT_PERMISSION = this.getString("teleport-permission");
     }
 
     public static void init() throws IOException {

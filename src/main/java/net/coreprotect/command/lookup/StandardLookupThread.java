@@ -228,7 +228,7 @@ public class StandardLookupThread implements Runnable {
                                 //Chat.sendComponent(player, timeago + " " + Color.WHITE + "- " + Color.DARK_AQUA + dplayer + ": " + Color.WHITE, message);
                                 //Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)); // griefus
                                 Chat.sendComponent(player, Phrase.build(Phrase.CHAT_LOOKUP_FORMAT, timeago, dplayer, message));
-                                Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES, leftPadding, ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)));
+                                Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES, leftPadding, ChatUtils.getCoordinates(player, command.getName(), wid, dataX, dataY, dataZ, true, true)));
                                 // griefus end
                                 if (PluginChannelHandshakeListener.getInstance().isPluginChannelPlayer(player)) {
                                     //int wid = Integer.parseInt(data[3]);
@@ -263,7 +263,7 @@ public class StandardLookupThread implements Runnable {
                                // Chat.sendComponent(player, timeago + " " + tag + " " + Color.DARK_AQUA + Phrase.build(Phrase.LOOKUP_LOGIN, Color.DARK_AQUA + dplayer + Color.WHITE, (action != 0 ? Selector.FIRST : Selector.SECOND)));
                                // Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true) + "");
                                 Chat.sendComponent(player, Phrase.build(Phrase.LOGIN_LOOKUP_FORMAT, timeago, phraseAction));
-                                Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES, leftPadding, ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)));
+                                Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES, leftPadding, ChatUtils.getCoordinates(player, command.getName(), wid, dataX, dataY, dataZ, true, true)));
                                 // Griefus end
                                 PluginChannelListener.getInstance().sendInfoData(player, Integer.parseInt(time), Phrase.LOOKUP_LOGIN, (action != 0 ? Selector.FIRST : Selector.SECOND), dplayer, -1, dataX, dataY, dataZ, wid);
                             }
@@ -303,7 +303,7 @@ public class StandardLookupThread implements Runnable {
                                 //Chat.sendComponent(player, timeago + " " + Color.WHITE + "- " + Color.DARK_AQUA + dplayer + ": " + Color.WHITE, message);
                                 //Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true) + "");
                                 Chat.sendComponent(player, Phrase.build(Phrase.SIGN_LOOKUP_FORMAT, timeago, dplayer, message));
-                                Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES, leftPadding, ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)));
+                                Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES, leftPadding, ChatUtils.getCoordinates(player, command.getName(), wid, dataX, dataY, dataZ, true, true)));
                                 // Griefus end
                                 PluginChannelListener.getInstance().sendMessageData(player, Integer.parseInt(time), dplayer, message, true, dataX, dataY, dataZ, wid);
                             }
@@ -381,7 +381,7 @@ public class StandardLookupThread implements Runnable {
                                 //Chat.sendComponent(player, timeago + " " + tag + " " + Phrase.build(Phrase.LOOKUP_CONTAINER, Color.DARK_AQUA + rbd + dplayer + Color.WHITE + rbd, "x" + amount, ChatUtils.createTooltip(Color.DARK_AQUA + rbd + dname, tooltip) + Color.WHITE, selector));
                                 //Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)); // griefus
                                 Chat.sendComponent(player, Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeago, dplayer, selector, 'x' + amount + ' ' + dname, extraData));
-                                Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES, leftPadding, ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)));
+                                Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES, leftPadding, ChatUtils.getCoordinates(player, command.getName(), wid, dataX, dataY, dataZ, true, true)));
                                 // griefus end
                                 PluginChannelListener.getInstance().sendData(player, Integer.parseInt(time), Phrase.LOOKUP_CONTAINER, selector, dplayer, dname, amount, dataX, dataY, dataZ, wid, String.valueOf(rb), true, tag.contains("+"));
                             }
@@ -526,7 +526,7 @@ public class StandardLookupThread implements Runnable {
                                 action = (actions.size() == 0 ? " (" + action + ")" : "");
                                 // Griefus begin
                                 //Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true) + Color.GREY + Color.ITALIC + action);
-                                Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES_ACTION, leftPadding, ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true), action));
+                                Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES_ACTION, leftPadding, ChatUtils.getCoordinates(player, command.getName(), wid, dataX, dataY, dataZ, true, true), action));
                                 // Griefus end
                             }
                         }
