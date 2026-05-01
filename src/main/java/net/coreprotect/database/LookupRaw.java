@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import net.coreprotect.CoreProtect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -534,7 +533,7 @@ public class LookupRaw extends Queue {
                 if (message != null) {
                     for (char c : escapeSymbols) {
                         message = message.replace(String.valueOf(c), "\\" + c);
-                        queryMessage = "message LIKE %'" + message + "'%";
+                        queryMessage = "message LIKE '%" + message + "%'";
                     }
                 } else queryMessage = "";
             }
