@@ -6,7 +6,7 @@ api-version: 1.16
 folia-supported: true
 website: https://griefus.zhdev.org
 authors: [Intelli, rozhur]
-softdepend: [WorldEdit,AdvancedChests]
+softdepend: [WorldEdit]
 description: >
              Provides block protection for your server.
 commands:
@@ -72,12 +72,6 @@ permissions:
     coreprotect.coreprotect:
         description: Has permission to access the Griefus /coreprotect command
         default: false
-    coreprotect.gus:
-      description: Has permission to access the Griefus /gus command
-      default: true
-    coreprotect.griefus:
-      description: Has permission to access the Griefus /griefus command
-      default: false
     coreprotect.lookup:
         description: Has permission to use the lookup command
         default: op
