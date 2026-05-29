@@ -56,7 +56,7 @@ public class ConfigHandler extends Queue {
     public static final String MINECRAFT_VERSION = "1.16.5";
     public static final String PATCH_VERSION = "24.0";
     public static final String LATEST_VERSION = "26.1.2";
-    public static String path = "plugins/CoreProtect/";
+    public static String path = "plugins/Griefus/";
     public static String sqlite = "database.db";
     public static String host = "127.0.0.1";
     public static int port = 3306;
