@@ -25,9 +25,14 @@ commands:
     permission: coreprotect.coreprotect
     permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
-  gus:
+  gr:
     description: Utilize the plugin
-    permission: coreprotect.gus
+    permission: coreprotect.gr
+    permission-message: §3Griefus §f- You do not have permission to do that.
+    usage: /<command> <params>
+  grief:
+    description: Utilize the plugin
+    permission: coreprotect.grief
     permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
   griefus:
