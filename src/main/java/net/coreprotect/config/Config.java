@@ -20,6 +20,7 @@ import org.bukkit.World;
 import net.coreprotect.CoreProtect;
 import net.coreprotect.language.Language;
 import net.coreprotect.thread.Scheduler;
+import net.coreprotect.utility.VersionUtils;
 
 public class Config extends Language {
 
@@ -39,6 +40,8 @@ public class Config extends Language {
     public String MYSQL_USERNAME;
     public String MYSQL_PASSWORD;
     public String LANGUAGE;
+    public String AUTO_PURGE;
+    public String AUTO_PURGE_TIME;
     public String TELEPORT_PERMISSION;
     public boolean ENABLE_SSL;
     public boolean DISABLE_WAL;
@@ -46,10 +49,12 @@ public class Config extends Language {
     public boolean DATABASE_LOCK;
     public boolean LOG_CANCELLED_CHAT;
     public boolean HOPPER_FILTER_META;
+    public boolean DUPLICATE_SUPPRESSION;
     public boolean EXCLUDE_TNT;
     public boolean NETWORK_DEBUG;
     public boolean MYSQL;
     public boolean CHECK_UPDATES;
+    public boolean ERROR_REPORTING;
     public boolean API_ENABLED;
     public boolean ANNOUNCE_ROLLBACKS;
     public boolean VERBOSE;
@@ -63,6 +68,7 @@ public class Config extends Language {
     public boolean PISTONS;
     public boolean BLOCK_BURN;
     public boolean BLOCK_IGNITE;
+    public boolean FIRE_EXTINGUISH;
     public boolean EXPLOSIONS;
     public boolean ENTITY_CHANGE;
     public boolean ENTITY_KILLS;
@@ -104,7 +110,9 @@ public class Config extends Language {
         DEFAULT_VALUES.put("mysql-username", "root");
         DEFAULT_VALUES.put("mysql-password", "");
         DEFAULT_VALUES.put("language", "en");
+        DEFAULT_VALUES.put("auto-purge", "false");
         DEFAULT_VALUES.put("check-updates", "true");
+        DEFAULT_VALUES.put("error-reporting", "true");
         DEFAULT_VALUES.put("api-enabled", "true");
         DEFAULT_VALUES.put("verbose", "true");
         DEFAULT_VALUES.put("default-radius", "10");
@@ -119,6 +127,7 @@ public class Config extends Language {
         DEFAULT_VALUES.put("pistons", "true");
         DEFAULT_VALUES.put("block-burn", "true");
         DEFAULT_VALUES.put("block-ignite", "true");
+        DEFAULT_VALUES.put("fire-extinguish", "false");
         DEFAULT_VALUES.put("explosions", "true");
         DEFAULT_VALUES.put("entity-change", "true");
         DEFAULT_VALUES.put("entity-kills", "true");
@@ -149,7 +158,9 @@ public class Config extends Language {
 
         HEADERS.put("use-mysql", new String[] { "# MySQL is optional and not required.", "# If you prefer to use MySQL, enable the following and fill out the fields." });
         HEADERS.put("language", new String[] { "# If modified, will automatically attempt to translate languages phrases.", "# List of language codes: https://griefus.zhdev.org/languages/" });
+        HEADERS.put("auto-purge", new String[] { "# Automatically purge data older than the configured time.", "# Examples: 30d, 12w, 6mo. Set to false to disable." });
         HEADERS.put("check-updates", new String[] { "# If enabled, Griefus will check for updates when your server starts up.", "# If an update is available, you'll be notified via your server console.", });
+        HEADERS.put("error-reporting", new String[] { "# Automatically sends errors to the plugin author." });
         HEADERS.put("api-enabled", new String[] { "# If enabled, other plugins will be able to utilize the Griefus API.", });
         HEADERS.put("verbose", new String[] { "# If enabled, extra data is displayed during rollbacks and restores.", "# Can be manually triggered by adding \"#verbose\" to your rollback command." });
         HEADERS.put("default-radius", new String[] { "# If no radius is specified in a rollback or restore, this value will be", "# used as the radius. Set to \"0\" to disable automatically adding a radius." });
@@ -164,6 +175,7 @@ public class Config extends Language {
         HEADERS.put("pistons", new String[] { "# Properly track blocks moved by pistons." });
         HEADERS.put("block-burn", new String[] { "# Logs blocks that burn up in a fire." });
         HEADERS.put("block-ignite", new String[] { "# Logs when a block naturally ignites, such as from fire spreading." });
+        HEADERS.put("fire-extinguish", new String[] { "# Logs when fire naturally extinguishes." });
         HEADERS.put("explosions", new String[] { "# Logs explosions, such as TNT and Creepers." });
         HEADERS.put("entity-change", new String[] { "# Track when an entity changes a block, such as an Enderman destroying blocks." });
         HEADERS.put("entity-kills", new String[] { "# Logs killed entities, such as killed cows and enderman." });
@@ -200,6 +212,7 @@ public class Config extends Language {
         this.DATABASE_LOCK = this.getBoolean("database-lock", true);
         this.LOG_CANCELLED_CHAT = this.getBoolean("log-cancelled-chat", true);
         this.HOPPER_FILTER_META = this.getBoolean("hopper-filter-meta", false);
+        this.DUPLICATE_SUPPRESSION = this.getBoolean("duplicate-suppression", true);
         this.EXCLUDE_TNT = this.getBoolean("exclude-tnt", false);
         this.NETWORK_DEBUG = this.getBoolean("network-debug", false);
         this.UNKNOWN_LOGGING = this.getBoolean("unknown-logging", false);
@@ -212,7 +225,10 @@ public class Config extends Language {
         this.MYSQL_USERNAME = this.getString("mysql-username");
         this.MYSQL_PASSWORD = this.getString("mysql-password");
         this.LANGUAGE = this.getString("language");
+        this.AUTO_PURGE = this.getString("auto-purge");
+        this.AUTO_PURGE_TIME = this.getString("auto-purge-time");
         this.CHECK_UPDATES = this.getBoolean("check-updates");
+        this.ERROR_REPORTING = this.getBoolean("error-reporting");
         this.API_ENABLED = this.getBoolean("api-enabled");
         this.VERBOSE = this.getBoolean("verbose");
         this.DEFAULT_RADIUS = this.getInt("default-radius");
@@ -227,6 +243,7 @@ public class Config extends Language {
         this.PISTONS = this.getBoolean("pistons");
         this.BLOCK_BURN = this.getBoolean("block-burn");
         this.BLOCK_IGNITE = this.getBoolean("block-ignite");
+        this.FIRE_EXTINGUISH = this.getBoolean("fire-extinguish");
         this.EXPLOSIONS = this.getBoolean("explosions");
         this.ENTITY_CHANGE = this.getBoolean("entity-change");
         this.ENTITY_KILLS = this.getBoolean("entity-kills");

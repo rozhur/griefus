@@ -329,4 +329,7 @@ public class CommandParser {
         return MessageParser.parseMessage(inputArguments);
     }
 
+    protected static Integer parseGivableItemId(String[] inputArguments) {
+        return GivableItemIdParser.parseGivableItemId(inputArguments);
+    }
 }

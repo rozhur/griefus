@@ -12,8 +12,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-import net.coreprotect.spigot.SpigotAdapter;
-
 public final class Chat {
 
     public static final String COMPONENT_TAG_OPEN = "<COMPONENT>";
@@ -26,7 +24,15 @@ public final class Chat {
         throw new IllegalStateException("Utility class");
     }
 
+    public static String translateColorCodes(String text) {
+        if (text == null) {
+            return null;
+        }
+        return ChatColor.translateAlternateColorCodes('&', text);
+    }
+
     public static void sendComponent(CommandSender sender, String string, String bypass) {
+        //string = translateColorCodes(string);
         //SpigotAdapter.ADAPTER.sendComponent(sender, string, bypass);
         sendMessage(sender, string + bypass); // griefus
     }
@@ -42,24 +48,25 @@ public final class Chat {
             MiniMessage miniMessage = MiniMessage.miniMessage();
             sender.sendMessage(miniMessage.deserialize(message));
             return;
-        } catch (ParsingException ignored) {
-            ignored.printStackTrace();
-        }
+        } catch (ParsingException ignored) { }
         // griefus end
+
+        message = translateColorCodes(message);
 
         if (sender instanceof ConsoleCommandSender) {
             message = message.replace(Color.DARK_AQUA, ChatColor.DARK_AQUA.toString());
         }
 
         sender.sendMessage(message);
-
     }
 
     public static void sendConsoleMessage(String string) {
+        string = translateColorCodes(string);
         Bukkit.getServer().getConsoleSender().sendMessage(string);
     }
 
     public static void console(String string) {
+        string = translateColorCodes(string);
         if (string.startsWith("-") || string.startsWith("[")) {
             Bukkit.getLogger().log(Level.INFO, string);
         }
@@ -70,6 +77,7 @@ public final class Chat {
 
     // @todo: make this go brrr (prepare minimessage instead of using sendMessage which does same thing for each player)
     public static void sendGlobalMessage(CommandSender user, String string) {
+        string = translateColorCodes(string);
         if (user instanceof ConsoleCommandSender) {
             sendMessage(user, Color.DARK_AQUA + "[Griefus] " + Color.WHITE + string);
             return;

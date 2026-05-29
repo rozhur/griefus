@@ -4,7 +4,9 @@ Griefus
 Griefus is a blazing fast data logging and anti-griefing tool for Minecraft servers.
 
 ### Dependency Information
-Maven
+
+Maven:
+
 ```xml
 <repository>
     <id>zhdev-repo</id>
@@ -15,7 +17,7 @@ Maven
 <dependency>
     <groupId>org.zhdev.griefus</groupId>
     <artifactId>griefus</artifactId>
-    <version>23.1</version>
+    <version>24.0</version>
     <scope>provided</scope>
 </dependency>
 ```

@@ -6,7 +6,7 @@ api-version: 1.16
 folia-supported: true
 website: https://griefus.zhdev.org
 authors: [Intelli, rozhur]
-softdepend: [WorldEdit,AdvancedChests]
+softdepend: [WorldEdit]
 description: >
              Provides block protection for your server.
 commands:
@@ -25,9 +25,14 @@ commands:
     permission: coreprotect.coreprotect
     permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
-  gus:
+  gr:
     description: Utilize the plugin
-    permission: coreprotect.gus
+    permission: coreprotect.gr
+    permission-message: §3Griefus §f- You do not have permission to do that.
+    usage: /<command> <params>
+  grief:
+    description: Utilize the plugin
+    permission: coreprotect.grief
     permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
   griefus:
@@ -73,6 +78,7 @@ permissions:
             coreprotect.status: true
             coreprotect.consumer: true
             coreprotect.networking: true
+            coreprotect.give: false
     coreprotect.co:
         description: Has permission to access the Griefus /co command
         default: true
@@ -82,12 +88,6 @@ permissions:
     coreprotect.coreprotect:
         description: Has permission to access the Griefus /coreprotect command
         default: false
-    coreprotect.gus:
-      description: Has permission to access the Griefus /gus command
-      default: true
-    coreprotect.griefus:
-      description: Has permission to access the Griefus /griefus command
-      default: false
     coreprotect.lookup:
         description: Has permission to use the lookup command
         default: op
@@ -170,3 +170,6 @@ permissions:
     coreprotect.networking:
         description: Has permission to use the networking API
         default: op
+    coreprotect.give:
+        description: Has permission to use the give command
+        default: false

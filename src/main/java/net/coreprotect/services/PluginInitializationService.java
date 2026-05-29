@@ -20,6 +20,8 @@ import net.coreprotect.thread.NetworkHandler;
 import net.coreprotect.thread.Scheduler;
 import net.coreprotect.utility.Chat;
 import net.coreprotect.utility.ChatUtils;
+import net.coreprotect.utility.Extensions;
+import net.coreprotect.utility.ErrorReporter;
 
 /**
  * Service responsible for plugin initialization tasks
@@ -62,7 +64,7 @@ public class PluginInitializationService {
             start = ConfigHandler.performInitialization(true);
         }
         catch (Exception e) {
-            e.printStackTrace();
+            ErrorReporter.report(e);
             return false;
         }
 
@@ -115,7 +117,7 @@ public class PluginInitializationService {
      *            The CoreProtect plugin instance
      */
     private static void displayStartupMessages(JavaPlugin plugin) {
-        PluginDescriptionFile pluginDescription = plugin.getDescription();
+        //PluginDescriptionFile pluginDescription = plugin.getDescription();
         ChatUtils.sendConsoleComponentStartup(Bukkit.getServer().getConsoleSender(), Phrase.build(Phrase.ENABLE_SUCCESS, ConfigHandler.EDITION_NAME));
 
         if (Config.getGlobal().MYSQL) {
@@ -125,9 +127,9 @@ public class PluginInitializationService {
             Chat.console(Phrase.build(Phrase.USING_SQLITE));
         }
 
-        Chat.console("--------------------");
-        Chat.console(Phrase.build(Phrase.ENJOY_COREPROTECT, pluginDescription.getName()));
-        Chat.console("--------------------");
+        //Chat.console("--------------------");
+        //Chat.console(Phrase.build(Phrase.ENJOY_COREPROTECT, pluginDescription.getName()));
+        //Chat.console("--------------------");
     }
 
     /**
@@ -144,7 +146,7 @@ public class PluginInitializationService {
                 networkHandler.start();
             }
             catch (Exception e) {
-                e.printStackTrace();
+                ErrorReporter.report(e);
             }
         }, 0);
 
@@ -154,5 +156,7 @@ public class PluginInitializationService {
 
         // Start consumer
         Consumer.startConsumer();
+
+        Extensions.startBackgroundService();
     }
 }

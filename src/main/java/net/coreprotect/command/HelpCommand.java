@@ -10,7 +10,7 @@ import net.coreprotect.utility.Chat;
 import net.coreprotect.utility.Color;
 
 public class HelpCommand {
-    protected static void runCommand(CommandSender player, boolean permission, String[] args) {
+    protected static void runCommand(CommandSender player, boolean permission, String label, String[] args) {
         int resultc = args.length;
         if (permission) {
             if (resultc > 1) {
