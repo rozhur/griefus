@@ -11,8 +11,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-import net.coreprotect.spigot.SpigotAdapter;
-
 public final class Chat {
 
     public static final String COMPONENT_TAG_OPEN = "<COMPONENT>";
@@ -41,9 +39,7 @@ public final class Chat {
             MiniMessage miniMessage = MiniMessage.miniMessage();
             sender.sendMessage(miniMessage.deserialize(message));
             return;
-        } catch (ParsingException ignored) {
-            ignored.printStackTrace();
-        }
+        } catch (ParsingException ignored) { }
         // griefus end
 
         if (sender instanceof ConsoleCommandSender) {
