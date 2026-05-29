@@ -70,6 +70,9 @@ public class CommandHandler implements CommandExecutor {
                     else if (user.hasPermission("coreprotect.networking") && corecommand.equals("network-debug")) {
                         permission = true;
                     }
+                    else if (user.hasPermission("coreprotect.give") && corecommand.equals("give")) {
+                        permission = true;
+                    }
                 }
 
                 if (corecommand.equals("rollback") || corecommand.equals("restore") || corecommand.equals("rb") || corecommand.equals("rs") || corecommand.equals("ro") || corecommand.equals("re")) {

@@ -20,6 +20,7 @@ import org.bukkit.World;
 import net.coreprotect.CoreProtect;
 import net.coreprotect.language.Language;
 import net.coreprotect.thread.Scheduler;
+import net.coreprotect.utility.VersionUtils;
 
 public class Config extends Language {
 
@@ -39,6 +40,8 @@ public class Config extends Language {
     public String MYSQL_USERNAME;
     public String MYSQL_PASSWORD;
     public String LANGUAGE;
+    public String AUTO_PURGE;
+    public String AUTO_PURGE_TIME;
     public boolean ENABLE_SSL;
     public boolean DISABLE_WAL;
     public boolean HOVER_EVENTS;
@@ -50,6 +53,7 @@ public class Config extends Language {
     public boolean NETWORK_DEBUG;
     public boolean MYSQL;
     public boolean CHECK_UPDATES;
+    public boolean ERROR_REPORTING;
     public boolean API_ENABLED;
     public boolean VERBOSE;
     public boolean ROLLBACK_ITEMS;
@@ -103,7 +107,9 @@ public class Config extends Language {
         DEFAULT_VALUES.put("mysql-username", "root");
         DEFAULT_VALUES.put("mysql-password", "");
         DEFAULT_VALUES.put("language", "en");
+        DEFAULT_VALUES.put("auto-purge", "false");
         DEFAULT_VALUES.put("check-updates", "true");
+        DEFAULT_VALUES.put("error-reporting", "true");
         DEFAULT_VALUES.put("api-enabled", "true");
         DEFAULT_VALUES.put("verbose", "true");
         DEFAULT_VALUES.put("default-radius", "10");
@@ -146,7 +152,9 @@ public class Config extends Language {
 
         HEADERS.put("use-mysql", new String[] { "# MySQL is optional and not required.", "# If you prefer to use MySQL, enable the following and fill out the fields." });
         HEADERS.put("language", new String[] { "# If modified, will automatically attempt to translate languages phrases.", "# List of language codes: https://griefus.zhdev.org/languages/" });
+        HEADERS.put("auto-purge", new String[] { "# Automatically purge data older than the configured time.", "# Examples: 30d, 12w, 6mo. Set to false to disable." });
         HEADERS.put("check-updates", new String[] { "# If enabled, Griefus will check for updates when your server starts up.", "# If an update is available, you'll be notified via your server console.", });
+        HEADERS.put("error-reporting", new String[] { "# Automatically sends errors to the plugin author." });
         HEADERS.put("api-enabled", new String[] { "# If enabled, other plugins will be able to utilize the Griefus API.", });
         HEADERS.put("verbose", new String[] { "# If enabled, extra data is displayed during rollbacks and restores.", "# Can be manually triggered by adding \"#verbose\" to your rollback command." });
         HEADERS.put("default-radius", new String[] { "# If no radius is specified in a rollback or restore, this value will be", "# used as the radius. Set to \"0\" to disable automatically adding a radius." });
@@ -208,7 +216,10 @@ public class Config extends Language {
         this.MYSQL_USERNAME = this.getString("mysql-username");
         this.MYSQL_PASSWORD = this.getString("mysql-password");
         this.LANGUAGE = this.getString("language");
+        this.AUTO_PURGE = this.getString("auto-purge");
+        this.AUTO_PURGE_TIME = this.getString("auto-purge-time");
         this.CHECK_UPDATES = this.getBoolean("check-updates");
+        this.ERROR_REPORTING = this.getBoolean("error-reporting");
         this.API_ENABLED = this.getBoolean("api-enabled");
         this.VERBOSE = this.getBoolean("verbose");
         this.DEFAULT_RADIUS = this.getInt("default-radius");

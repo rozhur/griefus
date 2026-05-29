@@ -199,7 +199,22 @@ public class BlockUtils {
         }
 
         if (blockData != null) {
-            block.setBlockData(blockData, update);
+            try {
+                block.setBlockData(blockData, update);
+            }
+            catch (RuntimeException e) {
+                if (!update) {
+                    throw e;
+                }
+
+                try {
+                    block.setBlockData(blockData, false);
+                }
+                catch (RuntimeException retryException) {
+                    e.addSuppressed(retryException);
+                    throw e;
+                }
+            }
         }
     }
 
@@ -215,7 +230,7 @@ public class BlockUtils {
                 block.update();
             }
             catch (Exception e) {
-                e.printStackTrace();
+                ErrorReporter.report(e);
             }
         }, block.getLocation());
     }
@@ -238,7 +253,7 @@ public class BlockUtils {
             }
         }
         catch (Exception e) {
-            e.printStackTrace();
+            ErrorReporter.report(e);
         }
         return inventory;
     }
@@ -275,7 +290,7 @@ public class BlockUtils {
             }
         }
         catch (Exception e) {
-            e.printStackTrace();
+            ErrorReporter.report(e);
         }
 
         if (meta.isEmpty()) {
@@ -290,7 +305,7 @@ public class BlockUtils {
             contents = new ItemStack[] { blockState.getRecord() };
         }
         catch (Exception e) {
-            e.printStackTrace();
+            ErrorReporter.report(e);
         }
         return contents;
     }
