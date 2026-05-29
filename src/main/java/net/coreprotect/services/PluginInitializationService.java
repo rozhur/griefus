@@ -115,7 +115,7 @@ public class PluginInitializationService {
      *            The CoreProtect plugin instance
      */
     private static void displayStartupMessages(JavaPlugin plugin) {
-        PluginDescriptionFile pluginDescription = plugin.getDescription();
+        //PluginDescriptionFile pluginDescription = plugin.getDescription();
         ChatUtils.sendConsoleComponentStartup(Bukkit.getServer().getConsoleSender(), Phrase.build(Phrase.ENABLE_SUCCESS, ConfigHandler.EDITION_NAME));
 
         if (Config.getGlobal().MYSQL) {
@@ -125,9 +125,9 @@ public class PluginInitializationService {
             Chat.console(Phrase.build(Phrase.USING_SQLITE));
         }
 
-        Chat.console("--------------------");
-        Chat.console(Phrase.build(Phrase.ENJOY_COREPROTECT, pluginDescription.getName()));
-        Chat.console("--------------------");
+        //Chat.console("--------------------");
+        //Chat.console(Phrase.build(Phrase.ENJOY_COREPROTECT, pluginDescription.getName()));
+        //Chat.console("--------------------");
     }
 
     /**
