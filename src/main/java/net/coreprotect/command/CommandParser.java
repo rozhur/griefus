@@ -325,7 +325,7 @@ public class CommandParser {
      * @param inputArguments The command arguments
      * @return A parsed message
      */
-    protected static String parseMessage(String[] inputArguments) {
+    protected static List<String> parseMessage(String[] inputArguments) {
         return MessageParser.parseMessage(inputArguments);
     }
 
