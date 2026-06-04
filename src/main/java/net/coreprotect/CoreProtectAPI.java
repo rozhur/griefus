@@ -1032,6 +1032,10 @@ public class CoreProtectAPI extends Queue {
             actionList = new ArrayList<>();
         }
 
+        if (messageList == null) {
+            messageList = new ArrayList<>();
+        }
+
         List<Object> restrictBlocks = new ArrayList<>(restrictBlocksMap.keySet());
         if (actionList.isEmpty() && !restrictBlocks.isEmpty()) {
             boolean addedMaterial = false;
