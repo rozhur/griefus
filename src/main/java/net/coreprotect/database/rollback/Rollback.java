@@ -35,7 +35,6 @@ import net.coreprotect.model.action.LookupActions;
 import net.coreprotect.model.rollback.RollbackUpdateTargets;
 import net.coreprotect.thread.Scheduler;
 import net.coreprotect.utility.Chat;
-import net.coreprotect.utility.Color;
 import net.coreprotect.utility.DatabaseUtils;
 import net.coreprotect.utility.WorldUtils;
 import net.coreprotect.utility.ErrorReporter;

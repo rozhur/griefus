@@ -19,7 +19,6 @@ import net.coreprotect.config.ConfigHandler;
 import net.coreprotect.consumer.Consumer;
 import net.coreprotect.consumer.Queue;
 import net.coreprotect.database.statement.UserStatement;
-import net.coreprotect.listener.channel.PluginChannelHandshakeListener;
 import net.coreprotect.model.action.LookupActions;
 import net.coreprotect.model.action.SignActions;
 import net.coreprotect.model.item.ItemTransactionActions;
