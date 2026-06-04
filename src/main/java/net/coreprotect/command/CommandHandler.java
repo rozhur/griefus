@@ -29,8 +29,7 @@ public class CommandHandler implements CommandExecutor {
         String[] argumentArray = StringUtils.splitSmart(String.join(" ", rawArgumentArray), ' '); // griefus
 
         // Griefus begin
-        if (commandName.equals("coi") || commandName.equals("gusi")) {
-            boolean permission = user.hasPermission("coreprotect.inspect");
+        if (commandName.equals("coi") || commandName.equals("gri")) {
             boolean permission = user.hasPermission("griefus.inspect");
             InspectCommand.runCommand(user, permission, argumentArray);
             return true;
