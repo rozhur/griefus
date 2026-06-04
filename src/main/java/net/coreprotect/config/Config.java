@@ -202,7 +202,7 @@ public class Config extends Language {
         HEADERS.put("worldedit", new String[] { "# Logs changes made via the plugin \"WorldEdit\" if it's in use on your server." });
         HEADERS.put("announce-rollbacks", new String[] {"# Announces completed rollbacks for users with the \"coreprotect.rollback-announce\" permission."});
         HEADERS.put("translate-materials", new String[] {"# Use translatable keys for materials and entities. This will make all items/blocks/entities to display in the player's client locale."});
-        HEADERS.put("teleport-permission", new String[] {"Permission used for checking if the player allowed to teleport to the log source"});
+        HEADERS.put("teleport-permission", new String[] {"# Permission used for checking if the player allowed to teleport to the log source"});
     }
 
     private void readValues() {
