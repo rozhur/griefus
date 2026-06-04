@@ -30,7 +30,7 @@ import net.coreprotect.utility.ErrorReporter;
 
 public class LookupRaw extends Queue {
 
-    protected static List<Object[]> performLookupRaw(Statement statement, CommandSender user, List<String> checkUuids, List<String> checkUsers, List<Object> restrictList, Map<Object, Boolean> excludeList, List<String> excludeUserList, List<Integer> actionList, Location location, Integer[] radius, Long[] rowData, long startTime, long endTime, int limitOffset, int limitCount, boolean restrictWorld, String filterMessage, boolean lookup) {
+    protected static List<Object[]> performLookupRaw(Statement statement, CommandSender user, List<String> checkUuids, List<String> checkUsers, List<Object> restrictList, Map<Object, Boolean> excludeList, List<String> excludeUserList, List<Integer> actionList, List<String> messageList, Location location, Integer[] radius, Long[] rowData, long startTime, long endTime, int limitOffset, int limitCount, boolean restrictWorld, boolean lookup) {
         List<Object[]> list = new ArrayList<>();
         List<Integer> invalidRollbackActions = new ArrayList<>();
         invalidRollbackActions.add(LookupActions.INTERACTION);
@@ -50,7 +50,7 @@ public class LookupRaw extends Queue {
 
             Consumer.isPaused = true;
 
-            ResultSet results = rawLookupResultSet(statement, user, checkUuids, checkUsers, restrictList, excludeList, excludeUserList, actionList, location, radius, rowData, startTime, endTime, limitOffset, limitCount, restrictWorld, lookup, false, filterMessage);
+            ResultSet results = rawLookupResultSet(statement, user, checkUuids, checkUsers, restrictList, excludeList, excludeUserList, actionList, messageList, location, radius, rowData, startTime, endTime, limitOffset, limitCount, restrictWorld, lookup, false);
 
             while (results.next()) {
                 if (actionList.contains(LookupActions.CHAT) || actionList.contains(LookupActions.COMMAND)) {
@@ -222,7 +222,7 @@ public class LookupRaw extends Queue {
         return list;
     }
 
-    static ResultSet rawLookupResultSet(Statement statement, CommandSender user, List<String> checkUuids, List<String> checkUsers, List<Object> restrictList, Map<Object, Boolean> excludeList, List<String> excludeUserList, List<Integer> actionList, Location location, Integer[] radius, Long[] rowData, long startTime, long endTime, int limitOffset, int limitCount, boolean restrictWorld, boolean lookup, boolean count, String message) {
+    static ResultSet rawLookupResultSet(Statement statement, CommandSender user, List<String> checkUuids, List<String> checkUsers, List<Object> restrictList, Map<Object, Boolean> excludeList, List<String> excludeUserList, List<Integer> actionList, List<String> messageList, Location location, Integer[] radius, Long[] rowData, long startTime, long endTime, int limitOffset, int limitCount, boolean restrictWorld, boolean lookup, boolean count) {
         ResultSet results = null;
 
         try {

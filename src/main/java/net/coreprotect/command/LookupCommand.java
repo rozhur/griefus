@@ -601,7 +601,7 @@ public class LookupCommand {
                             timeEnd = (System.currentTimeMillis() / 1000L) - endTime;
                         }
                     }
-                    Runnable runnable = new StandardLookupThread(player, command, rollbackusers, argBlocks, argExclude, argExcludeUsers, argAction, argRadius, lo, x, y, z, wid, argWid, timeStart, timeEnd, argNoisy, argExcluded, argRestricted, pa, re, type, ts, count, parsedMessage);
+                    Runnable runnable = new StandardLookupThread(player, command, rollbackusers, argBlocks, argExclude, argExcludeUsers, argAction, argMessages, argRadius, lo, x, y, z, wid, argWid, timeStart, timeEnd, argNoisy, argExcluded, argRestricted, pa, re, type, ts, count);
                     Thread thread = new Thread(runnable);
                     thread.start();
                 }

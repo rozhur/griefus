@@ -766,12 +766,12 @@ public class CoreProtectAPI extends Queue {
      *            Center location for the radius search
      * @return List of results or null if the API is disabled
      */
-    public List<String[]> performLookup(int time, List<String> restrictUsers, List<String> excludeUsers, List<Object> restrictBlocks, List<Object> excludeBlocks, List<Integer> actionList, int radius, Location radiusLocation) {
+    public List<String[]> performLookup(int time, List<String> restrictUsers, List<String> excludeUsers, List<Object> restrictBlocks, List<Object> excludeBlocks, List<Integer> actionList, List<String> messageList, int radius, Location radiusLocation) {
         if (!isEnabled()) {
             return null;
         }
 
-        return processData(time, radius, radiusLocation, parseList(restrictBlocks), parseList(excludeBlocks), restrictUsers, excludeUsers, actionList, 0, 1, -1, -1, false);
+        return processData(time, radius, radiusLocation, parseList(restrictBlocks), parseList(excludeBlocks), restrictUsers, excludeUsers, actionList, messageList, 0, 1, -1, -1, false);
     }
 
     /**
@@ -790,7 +790,7 @@ public class CoreProtectAPI extends Queue {
      * @param exclude
      *            List of blocks to exclude from the lookup
      * @return List of results or null if the API is disabled
-     * @deprecated Use {@link #performLookup(int, List, List, List, List, List, int, Location)} instead
+     * @deprecated Use {@link #performLookup(int, List, List, List, List, List, List, int, Location)} instead
      */
     @Deprecated
     public List<String[]> performLookup(String user, int time, int radius, Location location, List<Object> restrict, List<Object> exclude) {
@@ -826,12 +826,12 @@ public class CoreProtectAPI extends Queue {
      *            Maximum number of results to return
      * @return List of results or null if the API is disabled
      */
-    public List<String[]> performPartialLookup(int time, List<String> restrictUsers, List<String> excludeUsers, List<Object> restrictBlocks, List<Object> excludeBlocks, List<Integer> actionList, int radius, Location radiusLocation, int limitOffset, int limitCount) {
+    public List<String[]> performPartialLookup(int time, List<String> restrictUsers, List<String> excludeUsers, List<Object> restrictBlocks, List<Object> excludeBlocks, List<Integer> actionList, List<String> messageList, int radius, Location radiusLocation, int limitOffset, int limitCount) {
         if (!isEnabled()) {
             return null;
         }
 
-        return processData(time, radius, radiusLocation, parseList(restrictBlocks), parseList(excludeBlocks), restrictUsers, excludeUsers, actionList, 0, 1, limitOffset, limitCount, true);
+        return processData(time, radius, radiusLocation, parseList(restrictBlocks), parseList(excludeBlocks), restrictUsers, excludeUsers, actionList, messageList, 0, 1, limitOffset, limitCount, true);
     }
 
     /**
@@ -854,7 +854,7 @@ public class CoreProtectAPI extends Queue {
      * @param limitCount
      *            Maximum number of results to return
      * @return List of results or null if the API is disabled
-     * @deprecated Use {@link #performPartialLookup(int, List, List, List, List, List, int, Location, int, int)} instead
+     * @deprecated Use {@link #performPartialLookup(int, List, List, List, List, List, List, int, Location, int, int)} instead
      */
     @Deprecated
     public List<String[]> performPartialLookup(String user, int time, int radius, Location location, List<Object> restrict, List<Object> exclude, int limitOffset, int limitCount) {
@@ -897,12 +897,12 @@ public class CoreProtectAPI extends Queue {
      *            Center location for the radius restore
      * @return List of results or null if the API is disabled
      */
-    public List<String[]> performRestore(int time, List<String> restrictUsers, List<String> excludeUsers, List<Object> restrictBlocks, List<Object> excludeBlocks, List<Integer> actionList, int radius, Location radiusLocation) {
+    public List<String[]> performRestore(int time, List<String> restrictUsers, List<String> excludeUsers, List<Object> restrictBlocks, List<Object> excludeBlocks, List<Integer> actionList, List<String> messageList, int radius, Location radiusLocation) {
         if (!isEnabled()) {
             return null;
         }
 
-        return processData(time, radius, radiusLocation, parseList(restrictBlocks), parseList(excludeBlocks), restrictUsers, excludeUsers, actionList, 1, 2, -1, -1, false);
+        return processData(time, radius, radiusLocation, parseList(restrictBlocks), parseList(excludeBlocks), restrictUsers, excludeUsers, actionList, messageList, 1, 2, -1, -1, false);
     }
 
     /**
@@ -921,7 +921,7 @@ public class CoreProtectAPI extends Queue {
      * @param exclude
      *            List of blocks to exclude from the restore
      * @return List of results or null if the API is disabled
-     * @deprecated Use {@link #performRestore(int, List, List, List, List, List, int, Location)} instead
+     * @deprecated Use {@link #performRestore(int, List, List, List, List, List, List, int, Location)} instead
      */
     @Deprecated
     public List<String[]> performRestore(String user, int time, int radius, Location location, List<Object> restrict, List<Object> exclude) {
@@ -953,12 +953,12 @@ public class CoreProtectAPI extends Queue {
      *            Center location for the radius rollback
      * @return List of results or null if the API is disabled
      */
-    public List<String[]> performRollback(int time, List<String> restrictUsers, List<String> excludeUsers, List<Object> restrictBlocks, List<Object> excludeBlocks, List<Integer> actionList, int radius, Location radiusLocation) {
+    public List<String[]> performRollback(int time, List<String> restrictUsers, List<String> excludeUsers, List<Object> restrictBlocks, List<Object> excludeBlocks, List<Integer> actionList, List<String> messageList, int radius, Location radiusLocation) {
         if (!isEnabled()) {
             return null;
         }
 
-        return processData(time, radius, radiusLocation, parseList(restrictBlocks), parseList(excludeBlocks), restrictUsers, excludeUsers, actionList, 0, 2, -1, -1, false);
+        return processData(time, radius, radiusLocation, parseList(restrictBlocks), parseList(excludeBlocks), restrictUsers, excludeUsers, actionList, messageList, 0, 2, -1, -1, false);
     }
 
     /**
@@ -977,7 +977,7 @@ public class CoreProtectAPI extends Queue {
      * @param exclude
      *            List of blocks to exclude from the rollback
      * @return List of results or null if the API is disabled
-     * @deprecated Use {@link #performRollback(int, List, List, List, List, List, int, Location)} instead
+     * @deprecated Use {@link #performRollback(int, List, List, List, List, List, List, int, Location)} instead
      */
     @Deprecated
     public List<String[]> performRollback(String user, int time, int radius, Location location, List<Object> restrict, List<Object> exclude) {
@@ -1019,7 +1019,7 @@ public class CoreProtectAPI extends Queue {
      *            Whether to use pagination limits
      * @return List of results or null if the parameters are invalid
      */
-    private List<String[]> processData(int time, int radius, Location location, Map<Object, Boolean> restrictBlocksMap, Map<Object, Boolean> excludeBlocks, List<String> restrictUsers, List<String> excludeUsers, List<Integer> actionList, int action, int lookup, int offset, int rowCount, boolean useLimit) {
+    private List<String[]> processData(int time, int radius, Location location, Map<Object, Boolean> restrictBlocksMap, Map<Object, Boolean> excludeBlocks, List<String> restrictUsers, List<String> excludeUsers, List<Integer> actionList, List<String> messageList, int action, int lookup, int offset, int rowCount, boolean useLimit) {
         List<String[]> result = new ArrayList<>();
         List<String> uuids = new ArrayList<>();
 
@@ -1108,10 +1108,10 @@ public class CoreProtectAPI extends Queue {
                     }
 
                     if (useLimit) {
-                        result = Lookup.performPartialLookup(statement, null, uuids, restrictUsers, restrictBlocks, excludeBlocks, excludeUsers, actionList, location, argRadius, null, startTime, endTime, offset, rowCount, restrictWorld, null, true);
+                        result = Lookup.performPartialLookup(statement, null, uuids, restrictUsers, restrictBlocks, excludeBlocks, excludeUsers, actionList, messageList, location, argRadius, null, startTime, endTime, offset, rowCount, restrictWorld, true);
                     }
                     else {
-                        result = Lookup.performLookup(statement, null, uuids, restrictUsers, restrictBlocks, excludeBlocks, excludeUsers, actionList, location, argRadius, startTime, endTime, restrictWorld, null,true);
+                        result = Lookup.performLookup(statement, null, uuids, restrictUsers, restrictBlocks, excludeBlocks, excludeUsers, actionList, messageList, location, argRadius, startTime, endTime, restrictWorld, true);
                     }
                 }
                 else {
@@ -1160,7 +1160,7 @@ public class CoreProtectAPI extends Queue {
      * @param useLimit
      *            Whether to use pagination limits
      * @return List of results
-     * @deprecated Use {@link #processData(int, int, Location, Map, Map, List, List, List, int, int, int, int, boolean)} instead
+     * @deprecated Use {@link #processData(int, int, Location, Map, Map, List, List, List, List, int, int, int, int, boolean)} instead
      */
     @Deprecated
     private List<String[]> processData(String user, int time, int radius, Location location, Map<Object, Boolean> restrictBlocks, Map<Object, Boolean> excludeBlocks, int action, int lookup, int offset, int rowCount, boolean useLimit) {
@@ -1169,7 +1169,7 @@ public class CoreProtectAPI extends Queue {
             restrictUsers.add(user);
         }
 
-        return processData(time, radius, location, restrictBlocks, excludeBlocks, restrictUsers, null, null, action, lookup, offset, rowCount, useLimit);
+        return processData(time, radius, location, restrictBlocks, excludeBlocks, restrictUsers, null, null, null, action, lookup, offset, rowCount, useLimit);
     }
 
     /**
