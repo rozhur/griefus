@@ -63,17 +63,20 @@ public final class Chat {
     }
 
     public static void sendConsoleMessage(String string) {
-        string = translateColorCodes(string);
-        Bukkit.getServer().getConsoleSender().sendMessage(string);
+        //string = translateColorCodes(string);
+        //Bukkit.getServer().getConsoleSender().sendMessage(string);
+        sendMessage(Bukkit.getConsoleSender(), string); // griefus
     }
 
     public static void console(String string) {
-        string = translateColorCodes(string);
+        //string = translateColorCodes(string);
         if (string.startsWith("-") || string.startsWith("[")) {
-            Bukkit.getLogger().log(Level.INFO, string);
+            //Bukkit.getLogger().log(Level.INFO, string);
+            sendConsoleMessage(string); // griefus
         }
         else {
-            Bukkit.getLogger().log(Level.INFO, "[Griefus] " + string);
+            //Bukkit.getLogger().log(Level.INFO, "[Griefus] " + string);
+            sendConsoleMessage("[Griefus] " + string); // griefus
         }
     }
 
