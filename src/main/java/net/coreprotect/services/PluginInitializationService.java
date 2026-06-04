@@ -91,12 +91,16 @@ public class PluginInitializationService {
         plugin.getCommand("core").setTabCompleter(new TabHandler());
         plugin.getCommand("co").setExecutor(CommandHandler.getInstance());
         plugin.getCommand("co").setTabCompleter(new TabHandler());
+        // griefus start
+        plugin.getCommand("coi").setExecutor(CommandHandler.getInstance());
         plugin.getCommand("griefus").setExecutor(CommandHandler.getInstance());
         plugin.getCommand("griefus").setTabCompleter(new TabHandler());
-        plugin.getCommand("gus").setExecutor(CommandHandler.getInstance());
-        plugin.getCommand("gus").setTabCompleter(new TabHandler());
-        plugin.getCommand("coi").setExecutor(CommandHandler.getInstance());
-        plugin.getCommand("gusi").setExecutor(CommandHandler.getInstance());
+        plugin.getCommand("grief").setExecutor(CommandHandler.getInstance());
+        plugin.getCommand("grief").setTabCompleter(new TabHandler());
+        plugin.getCommand("gr").setExecutor(CommandHandler.getInstance());
+        plugin.getCommand("gr").setTabCompleter(new TabHandler());
+        plugin.getCommand("gri").setExecutor(CommandHandler.getInstance());
+        // griefus end
     }
 
     /**
