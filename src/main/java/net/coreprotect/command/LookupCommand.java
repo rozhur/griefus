@@ -59,7 +59,7 @@ public class LookupCommand {
         }
 
         if (args[0].toLowerCase(Locale.ROOT).equals("page") && (args.length != 2 || !args[1].equals(args[1].replaceAll("[^0-9]", "")))) {
-            Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, Color.WHITE, "/co page <page>"));
+            Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, Color.WHITE, '/' + command.getName() + " page <page>"));
             return;
         }
 
@@ -165,7 +165,7 @@ public class LookupCommand {
             return;
         }
         if (resultc < 2) {
-            Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, "/co l <params>"));
+            Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, '/' + command.getName() + " l <params>"));
             return;
         }
         if (argAction.contains(-1)) {
@@ -536,7 +536,7 @@ public class LookupCommand {
                     }
 
                     if (rollbackusers.size() == 1 && rollbackusers.contains("#global") && argAction.contains(LookupActions.USERNAME)) {
-                        Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, "/co l a:username u:<user>"));
+                        Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, '/' + command.getName() + " l a:username u:<user>"));
                         return;
                     }
 
@@ -617,12 +617,12 @@ public class LookupCommand {
                     return;
                 }
                 else {
-                    Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, "/co l <params>"));
+                    Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, '/' + command.getName() + " l <params>"));
                 }
             }
         }
         else {
-            Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, "/co l <params>"));
+            Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, '/' + command.getName() + " l <params>"));
         }
     }
 }

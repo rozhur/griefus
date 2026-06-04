@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import net.coreprotect.utility.DatabaseUtils;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -550,14 +551,18 @@ public class LookupRaw extends Queue {
             if (queryBlock.length() == 0) {
                 queryBlock = " 1";
             }
-            if (actionList.contains(6) || actionList.contains(7)) {
-                final char[] escapeSymbols = {'\'', '\\', '[', ']', '%', '_', '^'};
-                if (message != null) {
-                    for (char c : escapeSymbols) {
-                        message = message.replace(String.valueOf(c), "\\" + c);
-                        queryMessage = "message LIKE '%" + message + "%'";
+            if (messageList.size() > 0 &&
+                    (actionList.contains(LookupActions.CHAT) || actionList.contains(LookupActions.COMMAND))) {
+                StringBuilder builder = new StringBuilder().append(" (");
+                for (String message : messageList) {
+                    if (builder.length() > 2) {
+                        builder.append(" OR ");
                     }
-                } else queryMessage = "";
+                    String escapedMessage = DatabaseUtils.escape(message);
+                    builder.append("message LIKE '%").append(escapedMessage.replaceAll("\\*+", "%")).append("%'");
+                }
+                builder.append(") AND");
+                queryBlock = queryBlock + builder;
             }
 
             queryEntity = queryBlock;
