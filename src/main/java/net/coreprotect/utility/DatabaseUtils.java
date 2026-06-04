@@ -8,6 +8,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class DatabaseUtils {
+    public static final String[] ESCAPE_CHARS = {"%", "_", "[", "]", "^", "\\", "'"};
 
     private DatabaseUtils() {
         throw new IllegalStateException("Utility class");
@@ -39,4 +40,21 @@ public class DatabaseUtils {
         return result;
     }
 
+    public static String escape(String input) {
+        StringBuilder builder = new StringBuilder(input);
+        for (String replacement : ESCAPE_CHARS) {
+            int index = builder.indexOf(replacement);
+            if (index == -1) {
+                continue;
+            }
+
+            String result = '\\' + replacement;
+            do {
+                builder.replace(index, index + replacement.length(), result);
+                index = builder.indexOf(replacement, index + result.length());
+            } while (index != -1);
+        }
+
+        return builder.toString();
+    }
 }
