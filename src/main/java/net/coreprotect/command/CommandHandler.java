@@ -28,6 +28,7 @@ public class CommandHandler implements CommandExecutor {
         // Griefus begin
         if (commandName.equals("coi") || commandName.equals("gusi")) {
             boolean permission = user.hasPermission("coreprotect.inspect");
+            boolean permission = user.hasPermission("griefus.inspect");
             InspectCommand.runCommand(user, permission, argumentArray);
             return true;
         }
@@ -42,43 +43,43 @@ public class CommandHandler implements CommandExecutor {
                 }
                 boolean permission = false;
                 if (!permission) {
-                    if (user.hasPermission("coreprotect.rollback") && (corecommand.equals("rollback") || corecommand.equals("rb") || corecommand.equals("ro") || corecommand.equals("apply") || corecommand.equals("cancel"))) {
+                    if (user.hasPermission("griefus.rollback") && (corecommand.equals("rollback") || corecommand.equals("rb") || corecommand.equals("ro") || corecommand.equals("apply") || corecommand.equals("cancel"))) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.restore") && (corecommand.equals("restore") || corecommand.equals("rs") || corecommand.equals("re") || corecommand.equals("undo") || corecommand.equals("apply") || corecommand.equals("cancel"))) {
+                    else if (user.hasPermission("griefus.restore") && (corecommand.equals("restore") || corecommand.equals("rs") || corecommand.equals("re") || corecommand.equals("undo") || corecommand.equals("apply") || corecommand.equals("cancel"))) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.inspect") && (corecommand.equals("i") || corecommand.equals("inspect") || corecommand.equals("inspector"))) {
+                    else if (user.hasPermission("griefus.inspect") && (corecommand.equals("i") || corecommand.equals("inspect") || corecommand.equals("inspector"))) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.help") && corecommand.equals("help")) {
+                    else if (user.hasPermission("griefus.help") && corecommand.equals("help")) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.purge") && corecommand.equals("purge")) {
+                    else if (user.hasPermission("griefus.purge") && corecommand.equals("purge")) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.lookup") && (corecommand.equals("l") || corecommand.equals("lookup") || corecommand.equals("page") || corecommand.equals("near"))) {
+                    else if (user.hasPermission("griefus.lookup") && (corecommand.equals("l") || corecommand.equals("lookup") || corecommand.equals("page") || corecommand.equals("near"))) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.lookup.near") && corecommand.equals("near")) {
+                    else if (user.hasPermission("griefus.lookup.near") && corecommand.equals("near")) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.teleport") && (corecommand.equals("tp") || corecommand.equals("teleport"))) {
+                    else if (user.hasPermission("griefus.teleport") && (corecommand.equals("tp") || corecommand.equals("teleport"))) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.reload") && corecommand.equals("reload")) {
+                    else if (user.hasPermission("griefus.reload") && corecommand.equals("reload")) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.status") && (corecommand.equals("status") || corecommand.equals("stats") || corecommand.equals("version"))) {
+                    else if (user.hasPermission("griefus.status") && (corecommand.equals("status") || corecommand.equals("stats") || corecommand.equals("version"))) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.consumer") && corecommand.equals("consumer")) {
+                    else if (user.hasPermission("griefus.consumer") && corecommand.equals("consumer")) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.networking") && corecommand.equals("network-debug")) {
+                    else if (user.hasPermission("griefus.networking") && corecommand.equals("network-debug")) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.give") && corecommand.equals("give")) {
+                    else if (user.hasPermission("griefus.give") && corecommand.equals("give")) {
                         permission = true;
                     }
                 }

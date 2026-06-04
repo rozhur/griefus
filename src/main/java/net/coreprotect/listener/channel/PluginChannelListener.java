@@ -209,7 +209,7 @@ public class PluginChannelListener implements Listener {
     }
 
     private void sendCoreProtectData(Player player, byte[] data) {
-        if (!player.hasPermission("coreprotect.networking")) {
+        if (!player.hasPermission("griefus.networking")) {
             return;
         }
 

@@ -31,13 +31,13 @@ public class InteractionLookup {
             }
 
             if (command == null) {
-                if (commandSender.hasPermission("coreprotect.co")) {
+                if (commandSender.hasPermission("griefus.co")) {
                     command = "co";
                 }
-                else if (commandSender.hasPermission("coreprotect.core")) {
+                else if (commandSender.hasPermission("griefus.core")) {
                     command = "core";
                 }
-                else if (commandSender.hasPermission("coreprotect.coreprotect")) {
+                else if (commandSender.hasPermission("griefus.coreprotect")) {
                     command = "coreprotect";
                 }
                 else {

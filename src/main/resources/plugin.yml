@@ -12,164 +12,160 @@ description: >
 commands:
   co:
     description: Utilize the plugin
-    permission: coreprotect.co
+    permission: griefus.co
     permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
   core:
     description: Utilize the plugin
-    permission: coreprotect.core
+    permission: griefus.core
     permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
   coreprotect:
     description: Utilize the plugin
     permission: coreprotect.coreprotect
+    permission: griefus.coreprotect
     permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
   gr:
     description: Utilize the plugin
-    permission: coreprotect.gr
+    permission: griefus.gr
     permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
   grief:
     description: Utilize the plugin
-    permission: coreprotect.grief
+    permission: griefus.grief
     permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
   griefus:
     description: Utilize the plugin
-    permission: coreprotect.griefus
+    permission: griefus.griefus
     permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
-  coi:
+  gri:
     description: Inspector mode shortcut
-    permission: coreprotect.inspect
-    permission-message: §3Griefus §f- You do not have permission to do that.
-    usage: /<command> <params>
-  gusi:
-    description: Inspector mode shortcut
-    permission: coreprotect.inspect
+    permission: griefus.inspect
     permission-message: §3Griefus §f- You do not have permission to do that.
     usage: /<command> <params>
 permissions:
-    coreprotect.*:
+    griefus.*:
         description: Gives access to all Griefus actions and commands
         default: op
         children: 
-            coreprotect.rollback: true
-            coreprotect.restore: true
-            coreprotect.inspect: true
-            coreprotect.help: true
-            coreprotect.purge: true
-            coreprotect.lookup: true
-            coreprotect.lookup.near: true
-            coreprotect.lookup.chat: true
-            coreprotect.lookup.command: true
-            coreprotect.lookup.session: true
-            coreprotect.lookup.username: true
-            coreprotect.lookup.block: true
-            coreprotect.lookup.sign: true
-            coreprotect.lookup.click: true
-            coreprotect.lookup.container: true
-            coreprotect.lookup.inventory: true
-            coreprotect.lookup.item: true
-            coreprotect.lookup.kill: true
-            coreprotect.teleport: true
-            coreprotect.reload: true
-            coreprotect.status: true
-            coreprotect.consumer: true
-            coreprotect.networking: true
-            coreprotect.give: false
-    coreprotect.co:
+            griefus.rollback: true
+            griefus.restore: true
+            griefus.inspect: true
+            griefus.help: true
+            griefus.purge: true
+            griefus.lookup: true
+            griefus.lookup.near: true
+            griefus.lookup.chat: true
+            griefus.lookup.command: true
+            griefus.lookup.session: true
+            griefus.lookup.username: true
+            griefus.lookup.block: true
+            griefus.lookup.sign: true
+            griefus.lookup.click: true
+            griefus.lookup.container: true
+            griefus.lookup.inventory: true
+            griefus.lookup.item: true
+            griefus.lookup.kill: true
+            griefus.teleport: true
+            griefus.reload: true
+            griefus.status: true
+            griefus.consumer: true
+            griefus.networking: true
+            griefus.give: false
+    griefus.co:
         description: Has permission to access the Griefus /co command
         default: true
-    coreprotect.core:
+    griefus.core:
         description: Has permission to access the Griefus /core command
         default: false
-    coreprotect.coreprotect:
+    griefus.coreprotect:
         description: Has permission to access the Griefus /coreprotect command
         default: false
-    coreprotect.lookup:
+    griefus.lookup:
         description: Has permission to use the lookup command
         default: op
         children:
-            coreprotect.lookup.near: true
-            coreprotect.lookup.chat: true
-            coreprotect.lookup.command: true
-            coreprotect.lookup.session: true
-            coreprotect.lookup.username: true
-            coreprotect.lookup.block: true
-            coreprotect.lookup.sign: true
-            coreprotect.lookup.click: true
-            coreprotect.lookup.container: true
-            coreprotect.lookup.inventory: true
-            coreprotect.lookup.item: true
-            coreprotect.lookup.kill: true
-    coreprotect.lookup.near:
+            griefus.lookup.near: true
+            griefus.lookup.chat: true
+            griefus.lookup.command: true
+            griefus.lookup.session: true
+            griefus.lookup.username: true
+            griefus.lookup.block: true
+            griefus.lookup.sign: true
+            griefus.lookup.click: true
+            griefus.lookup.container: true
+            griefus.lookup.inventory: true
+            griefus.lookup.item: true
+            griefus.lookup.kill: true
+    griefus.lookup.near:
         description: Has permission to lookup nearby changes via the near command
         default: op
-    coreprotect.lookup.chat:
+    griefus.lookup.chat:
         description: Has permission to lookup chat messages
         default: op
-    coreprotect.lookup.command:
+    griefus.lookup.command:
         description: Has permission to lookup player commands
         default: op
-    coreprotect.lookup.session:
+    griefus.lookup.session:
         description: Has permission to lookup player sessions
         default: op
-    coreprotect.lookup.username:
+    griefus.lookup.username:
         description: Has permission to lookup player username changes
         default: op
-    coreprotect.lookup.block:
+    griefus.lookup.block:
         description: Has permission to lookup block data
         default: op
-    coreprotect.lookup.sign:
+    griefus.lookup.sign:
         description: Has permission to lookup sign messages
         default: op
-    coreprotect.lookup.click:
+    griefus.lookup.click:
         description: Has permission to lookup player interactions
         default: op
-    coreprotect.lookup.container:
+    griefus.lookup.container:
         description: Has permission to lookup container transactions
         default: op
-    coreprotect.lookup.inventory:
+    griefus.lookup.inventory:
         description: Has permission to lookup inventory transactions
         default: op
-    coreprotect.lookup.item:
+    griefus.lookup.item:
         description: Has permission to lookup item transactions
         default: op
-    coreprotect.lookup.kill:
+    griefus.lookup.kill:
         description: Has permission to lookup entity kills
         default: op
-    coreprotect.rollback:
+    griefus.rollback:
         description: Has permission to perform rollbacks
         default: op
-    coreprotect.restore:
+    griefus.restore:
         description: Has permission to perform restores
         default: op
-    coreprotect.inspect:
+    griefus.inspect:
         description: Has permission to use the inspector
         default: op
-    coreprotect.help:
+    griefus.help:
         description: Has permission to use the help command
         default: op
-    coreprotect.purge:
+    griefus.purge:
         description: Has permission to use the purge command
         default: op
-    coreprotect.teleport:
+    griefus.teleport:
         description: Has permission to use the teleport command
         default: op
-    coreprotect.reload:
+    griefus.reload:
         description: Has permission to use the reload command
         default: op
-    coreprotect.status:
+    griefus.status:
         description: Has permission to use the status command
         default: op
-    coreprotect.consumer:
+    griefus.consumer:
         description: Has permission to use the consumer command
         default: op
-    coreprotect.networking:
+    griefus.networking:
         description: Has permission to use the networking API
         default: op
-    coreprotect.give:
+    griefus.give:
         description: Has permission to use the give command
         default: false

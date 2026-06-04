@@ -154,7 +154,7 @@ public class LookupCommand {
         }
 
         if (!permission) {
-            if (!pageLookup || !player.hasPermission("coreprotect.inspect")) {
+            if (!pageLookup || !player.hasPermission("griefus.inspect")) {
                 Chat.sendMessage(player, new ChatMessage(Phrase.build(Phrase.NO_PERMISSION)).build());
                 return;
             }
@@ -191,51 +191,51 @@ public class LookupCommand {
             }
         }
         boolean allPermission = false;
-        if (args[0].equals("near") && player.hasPermission("coreprotect.lookup.near")) {
+        if (args[0].equals("near") && player.hasPermission("griefus.lookup.near")) {
             allPermission = true;
         }
         if (!allPermission) {
-            if (!pageLookup && (argAction.size() == 0 || (argAction.size() == 1 && (argAction.contains(LookupActions.BLOCK_BREAK) || argAction.contains(LookupActions.BLOCK_PLACE)))) && !player.hasPermission("coreprotect.lookup.block")) {
+            if (!pageLookup && (argAction.size() == 0 || (argAction.size() == 1 && (argAction.contains(LookupActions.BLOCK_BREAK) || argAction.contains(LookupActions.BLOCK_PLACE)))) && !player.hasPermission("griefus.lookup.block")) {
                 Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
                 return;
             }
-            if (argAction.contains(LookupActions.INTERACTION) && !player.hasPermission("coreprotect.lookup.click")) {
+            if (argAction.contains(LookupActions.INTERACTION) && !player.hasPermission("griefus.lookup.click")) {
                 Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
                 return;
             }
-            if (argAction.contains(LookupActions.ENTITY_KILL) && !player.hasPermission("coreprotect.lookup.kill")) {
+            if (argAction.contains(LookupActions.ENTITY_KILL) && !player.hasPermission("griefus.lookup.kill")) {
                 Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
                 return;
             }
-            if (argAction.contains(LookupActions.CONTAINER) && !argAction.contains(LookupActions.ITEM) && !player.hasPermission("coreprotect.lookup.container")) {
+            if (argAction.contains(LookupActions.CONTAINER) && !argAction.contains(LookupActions.ITEM) && !player.hasPermission("griefus.lookup.container")) {
                 Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
                 return;
             }
-            if (argAction.contains(LookupActions.CHAT) && !player.hasPermission("coreprotect.lookup.chat")) {
+            if (argAction.contains(LookupActions.CHAT) && !player.hasPermission("griefus.lookup.chat")) {
                 Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
                 return;
             }
-            if (argAction.contains(LookupActions.COMMAND) && !player.hasPermission("coreprotect.lookup.command")) {
+            if (argAction.contains(LookupActions.COMMAND) && !player.hasPermission("griefus.lookup.command")) {
                 Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
                 return;
             }
-            if (argAction.contains(LookupActions.SESSION) && !player.hasPermission("coreprotect.lookup.session")) {
+            if (argAction.contains(LookupActions.SESSION) && !player.hasPermission("griefus.lookup.session")) {
                 Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
                 return;
             }
-            if (argAction.contains(LookupActions.USERNAME) && !player.hasPermission("coreprotect.lookup.username")) {
+            if (argAction.contains(LookupActions.USERNAME) && !player.hasPermission("griefus.lookup.username")) {
                 Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
                 return;
             }
-            if (argAction.contains(LookupActions.SIGN) && !player.hasPermission("coreprotect.lookup.sign")) {
+            if (argAction.contains(LookupActions.SIGN) && !player.hasPermission("griefus.lookup.sign")) {
                 Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
                 return;
             }
-            if (argAction.contains(LookupActions.ITEM) && !argAction.contains(LookupActions.CONTAINER) && !player.hasPermission("coreprotect.lookup.item")) {
+            if (argAction.contains(LookupActions.ITEM) && !argAction.contains(LookupActions.CONTAINER) && !player.hasPermission("griefus.lookup.item")) {
                 Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
                 return;
             }
-            if (LookupActions.isInventoryLookup(argAction) && !player.hasPermission("coreprotect.lookup.inventory")) {
+            if (LookupActions.isInventoryLookup(argAction) && !player.hasPermission("griefus.lookup.inventory")) {
                 Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
                 return;
             }
@@ -563,7 +563,7 @@ public class LookupCommand {
                         }
 
                         if (valid) {
-                            if (!player.hasPermission("coreprotect.lookup.container") && !allPermission) {
+                            if (!player.hasPermission("griefus.lookup.container") && !allPermission) {
                                 Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
                                 return;
                             }

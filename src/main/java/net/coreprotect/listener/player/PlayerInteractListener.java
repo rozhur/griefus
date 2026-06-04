@@ -124,7 +124,7 @@ public final class PlayerInteractListener extends Queue implements Listener {
             return;
         }
 
-        if (!player.hasPermission("coreprotect.inspect")) {
+        if (!player.hasPermission("griefus.inspect")) {
             Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
             ConfigHandler.inspecting.put(player.getName(), false);
             return;

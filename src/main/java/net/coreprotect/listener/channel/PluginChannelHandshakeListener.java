@@ -62,7 +62,7 @@ public class PluginChannelHandshakeListener implements PluginMessageListener, Li
     }
 
     private void handleHandshake(String channel, Player player, byte[] bytes) {
-        if (!player.hasPermission("coreprotect.networking")) {
+        if (!player.hasPermission("griefus.networking")) {
             return;
         }
 

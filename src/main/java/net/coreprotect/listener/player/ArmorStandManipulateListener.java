@@ -33,7 +33,7 @@ public final class ArmorStandManipulateListener extends Queue implements Listene
         class BasicThread implements Runnable {
             @Override
             public void run() {
-                if (!finalPlayer.hasPermission("coreprotect.inspect")) {
+                if (!finalPlayer.hasPermission("griefus.inspect")) {
                     Chat.sendMessage(finalPlayer, Phrase.build(Phrase.NO_PERMISSION));
                     ConfigHandler.inspecting.put(finalPlayer.getName(), false);
                     return;
