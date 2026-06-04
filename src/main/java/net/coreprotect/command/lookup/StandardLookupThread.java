@@ -48,6 +48,7 @@ public class StandardLookupThread implements Runnable {
     private final Map<Object, Boolean> excludedBlocks;
     private final List<String> excludedUsers;
     private final List<Integer> actions;
+    private final List<String> messages; // griefus
     private final Integer[] radius;
     private final Location location;
     private final int x;
@@ -65,11 +66,8 @@ public class StandardLookupThread implements Runnable {
     private final int typeLookup;
     private final String rtime;
     private final boolean count;
-    // Griefus begin (constructor was also modified)
-    private final String message;
-    // Griefus end
 
-    public StandardLookupThread(CommandSender player, Command command, List<String> rollbackUsers, List<Object> blockList, Map<Object, Boolean> excludedBlocks, List<String> excludedUsers, List<Integer> actions, Integer[] radius, Location location, int x, int y, int z, int worldId, int argWorldId, long timeStart, long timeEnd, int noisy, int excluded, int restricted, int page, int displayResults, int typeLookup, String rtime, boolean count, String message) {
+    public StandardLookupThread(CommandSender player, Command command, List<String> rollbackUsers, List<Object> blockList, Map<Object, Boolean> excludedBlocks, List<String> excludedUsers, List<Integer> actions, List<String> messages, Integer[] radius, Location location, int x, int y, int z, int worldId, int argWorldId, long timeStart, long timeEnd, int noisy, int excluded, int restricted, int page, int displayResults, int typeLookup, String rtime, boolean count) {
         this.player = player;
         this.command = command;
         this.rollbackUsers = rollbackUsers;
@@ -77,6 +75,7 @@ public class StandardLookupThread implements Runnable {
         this.excludedBlocks = excludedBlocks;
         this.excludedUsers = excludedUsers;
         this.actions = actions;
+        this.messages = messages;
         this.radius = radius;
         this.location = location;
         this.x = x;
@@ -94,7 +93,6 @@ public class StandardLookupThread implements Runnable {
         this.typeLookup = typeLookup;
         this.rtime = rtime;
         this.count = count;
-        this.message = message;
     }
 
     @Override
@@ -192,7 +190,7 @@ public class StandardLookupThread implements Runnable {
                     }
 
                     if (checkRows) {
-                        rows = Lookup.countLookupRows(statement, player, uuidList, userList, blockList, excludedBlocks, excludedUsers, actions, finalLocation, radius, rowData, timeStart, timeEnd, restrict_world, this.message, true);
+                        rows = Lookup.countLookupRows(statement, player, uuidList, userList, blockList, excludedBlocks, excludedUsers, actions, messages, finalLocation, radius, rowData, timeStart, timeEnd, restrict_world, true);
                         rowData[3] = rows;
                         ConfigHandler.lookupRows.put(player.getName(), rowData);
                     }
@@ -201,7 +199,7 @@ public class StandardLookupThread implements Runnable {
                         Chat.sendMessage(player, Phrase.build(Phrase.LOOKUP_ROWS_FOUND, row_format, (rows == 1 ? Selector.FIRST : Selector.SECOND)));
                     }
                     else if (pageStart < rows) {
-                        List<String[]> lookupList = Lookup.performPartialLookup(statement, player, uuidList, userList, blockList, excludedBlocks, excludedUsers, actions, finalLocation, radius, rowData, timeStart, timeEnd, (int) pageStart, displayResults, restrict_world, this.message, true);
+                        List<String[]> lookupList = Lookup.performPartialLookup(statement, player, uuidList, userList, blockList, excludedBlocks, excludedUsers, actions, messages, finalLocation, radius, rowData, timeStart, timeEnd, (int) pageStart, displayResults, restrict_world, true);
                         // Griefus begin
                         //Chat.sendMessage(player, Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.LOOKUP_HEADER, "Griefus" + Color.WHITE + " | " + Color.DARK_AQUA) + Color.WHITE + " -----");
                         Chat.sendMessage(player, Phrase.build(Phrase.LOOKUP_HEADER));
