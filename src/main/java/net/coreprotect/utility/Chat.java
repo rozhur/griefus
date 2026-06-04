@@ -1,7 +1,5 @@
 package net.coreprotect.utility;
 
-import java.util.logging.Level;
-
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.ParsingException;
