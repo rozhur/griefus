@@ -1,5 +1,7 @@
 package net.coreprotect.utility;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class StringUtils {
@@ -135,4 +137,57 @@ public class StringUtils {
         }
         return list.toArray(new Integer[list.size()]);
     }
+
+    // griefus start
+    public static String[] splitSmart(String line, char delimiter, int limit, char escape, char open, char close) {
+        StringBuilder builder = new StringBuilder();
+        List<String> list = new ArrayList<>();
+
+        boolean quote = false;
+        Character previous = null;
+        for (int i = 0; i < line.length(); i++) {
+            if (list.size() == limit) {
+                break;
+            }
+
+            char c = line.charAt(i);
+            builder.append(c);
+            if (!quote && c == open || c == close) {
+                if (previous == null || previous != escape) {
+                    builder.setLength(builder.length() - 1);
+                    quote = !quote;
+                } else {
+                    builder.setLength(builder.length() - 2);
+                    builder.append(c);
+                }
+            } else if (!quote && c == delimiter) {
+                builder.setLength(builder.length() - 1);
+                list.add(builder.toString());
+                builder.setLength(0);
+            }
+
+            previous = c;
+        }
+
+        if (builder.length() > 0) list.add(builder.toString());
+
+        return list.toArray(new String[0]);
+    }
+
+    public static String[] splitSmart(String line, char delimiter, int limit, char escape, char quotation) {
+        return splitSmart(line, delimiter, limit, escape, quotation, quotation);
+    }
+
+    public static String[] splitSmart(String line, char delimiter, int limit, char escape) {
+        return splitSmart(line, delimiter, limit, escape, '"');
+    }
+
+    public static String[] splitSmart(String line, char delimiter, int limit) {
+        return splitSmart(line, delimiter, limit, '\\');
+    }
+
+    public static String[] splitSmart(String line, char delimiter) {
+        return splitSmart(line, delimiter, -2);
+    }
+    // griefus end
 } 
