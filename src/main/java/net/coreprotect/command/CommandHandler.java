@@ -2,6 +2,7 @@ package net.coreprotect.command;
 
 import java.util.Locale;
 
+import net.coreprotect.utility.StringUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -22,8 +23,10 @@ public class CommandHandler implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender user, Command command, String commandLabel, String[] argumentArray) {
+    public boolean onCommand(CommandSender user, Command command, String commandLabel, String[] rawArgumentArray) {
         String commandName = command.getName().toLowerCase(Locale.ROOT);
+        // to be able to handle arguments containing spaces, for example `message:"foo bar"`
+        String[] argumentArray = StringUtils.splitSmart(String.join(" ", rawArgumentArray), ' '); // griefus
 
         // Griefus begin
         if (commandName.equals("coi") || commandName.equals("gusi")) {
