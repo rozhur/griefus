@@ -33,9 +33,6 @@ public class LookupCommand {
     public static void runCommand(CommandSender player, Command command, boolean permission, String[] args) {
         int resultc = args.length;
         args = CommandParser.parsePage(args);
-        // Griefus begin
-        String parsedMessage = CommandParser.parseMessage(args);
-        // Griefus end
         Location lo = CommandParser.parseLocation(player, args);
         // List<String> arg_uuids = new ArrayList<String>();
         List<String> argUsers = CommandParser.parseUsers(args);
@@ -45,6 +42,7 @@ public class LookupCommand {
         List<Object> argBlocks = CommandParser.parseRestricted(player, args, argAction);
         Map<Object, Boolean> argExclude = CommandParser.parseExcluded(player, args, argAction);
         List<String> argExcludeUsers = CommandParser.parseExcludedUsers(player, args);
+        List<String> argMessages = CommandParser.parseMessage(args); // griefus
         String ts = CommandParser.parseTimeString(args);
         long[] argTime = CommandParser.parseTime(args);
         long startTime = argTime[0];
