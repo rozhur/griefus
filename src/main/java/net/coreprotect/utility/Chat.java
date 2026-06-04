@@ -44,6 +44,10 @@ public final class Chat {
 
     public static void sendMessage(CommandSender sender, String message) {
         // griefus start
+        if (message.isEmpty()) {
+            return;
+        }
+
         try {
             MiniMessage miniMessage = MiniMessage.miniMessage();
             sender.sendMessage(miniMessage.deserialize(message));
