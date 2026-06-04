@@ -159,7 +159,8 @@ public class ConfigFile extends Config {
 
             for (final Entry<String, String> entry : DEFAULT_VALUES.entrySet()) {
                 final String key = entry.getKey();
-                final String defaultValue = entry.getValue().replaceAll("\"", "\\\\\"");
+                final String defaultValue = String.valueOf(entry.getValue()) // for nullable values
+                        .replaceAll("\"", "\\\\\"");
 
                 final String configuredValue = this.lang.get(key);
                 if (configuredValue != null) {
