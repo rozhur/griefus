@@ -8,10 +8,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 public class ChatUtils {
 
@@ -20,17 +18,12 @@ public class ChatUtils {
     }
 
     public static String getCoordinates(CommandSender user, String command, int worldId, int x, int y, int z, boolean displayWorld, boolean italic) {
-        return user.hasPermission(Config.getGlobal().TELEPORT_PERMISSION) ?
-                Phrase.build(Phrase.GENERIC_POSITION_FORMAT_TELEPORT,
-                        String.valueOf(x),
+        return Phrase.build(user.hasPermission(Config.getGlobal().TELEPORT_PERMISSION) ?
+                Phrase.GENERIC_POSITION_FORMAT_TELEPORT : Phrase.GENERIC_POSITION_FORMAT,
+                        WorldUtils.getWorldName(worldId),
+                        String.valueOf(x + 0.5),
                         String.valueOf(y),
-                        String.valueOf(z),
-                        WorldUtils.getWorldName(worldId)) :
-                Phrase.build(Phrase.GENERIC_POSITION_FORMAT,
-                        String.valueOf(x),
-                        String.valueOf(y),
-                        String.valueOf(z),
-                        WorldUtils.getWorldName(worldId));
+                        String.valueOf(z + 0.5));
     }
 
     public static String getPageNavigation(String command, int page, int totalPages) {
