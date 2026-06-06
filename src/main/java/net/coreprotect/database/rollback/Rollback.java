@@ -60,7 +60,7 @@ public class Rollback extends RollbackUtil {
                 String users = String.join(", ", checkUsers);
                 String selector = rollbackType == 0 ? Selector.FIRST : Selector.SECOND;
                 if (preview > 0) selector = Selector.THIRD;
-                Chat.broadcastNoSender(user, "coreprotect.announce-rollbacks", Phrase.build(Phrase.ROLLBACK_ANNOUCE, user.getName(), selector, users, String.valueOf(radius[0]), timeString));
+                Chat.broadcastNoSender(user, "griefus.rollback.announce", Phrase.build(Phrase.ROLLBACK_ANNOUNCE, user.getName(), selector, users, String.valueOf(radius[0]), timeString));
             }
 
             boolean ROLLBACK_ITEMS = false;
