@@ -351,8 +351,8 @@ public class Language {
         phrases.put(Phrase.HELP_HEADER, "----- Griefus Help -----");
         phrases.put(Phrase.GENERIC_UNKNOWN, "Unknown or not set");
         phrases.put(Phrase.LOOKUP_SPAWNER_DATA, "<gray><italic>(type: {0})");
-        phrases.put(Phrase.GENERIC_POSITION_FORMAT, "<gray>(x{0}/y{1}/z{2}/w{3})</gray>");
-        phrases.put(Phrase.GENERIC_POSITION_FORMAT_TELEPORT, "<click:run_command:\"/co teleport {0} {1} {2} {3}\"><hover:show_text:\"/co teleport {0} {1} {2} {3}\"><gray>(x{0}/y{1}/z{2}/w{3})</gray></hover></click>");
+        phrases.put(Phrase.GENERIC_POSITION_FORMAT, "<gray>(x{0}/y{1}/z{2}/{3})</gray>");
+        phrases.put(Phrase.GENERIC_POSITION_FORMAT_TELEPORT, "<click:run_command:\"/co teleport {3} {0} {1} {2}\"><hover:show_text:\"/{4} teleport {3} {0} {1} {2}\"><gray>(x{0}/y{1}/z{2}/{3})</gray></hover></click>");
         // Griefus end
         userPhrases.putAll(phrases);
         translatedPhrases.putAll(phrases);
