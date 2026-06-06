@@ -18,12 +18,15 @@ public class ChatUtils {
     }
 
     public static String getCoordinates(CommandSender user, String command, int worldId, int x, int y, int z, boolean displayWorld, boolean italic) {
-        return Phrase.build(user.hasPermission(Config.getGlobal().TELEPORT_PERMISSION) ?
-                Phrase.GENERIC_POSITION_FORMAT_TELEPORT : Phrase.GENERIC_POSITION_FORMAT,
-                        WorldUtils.getWorldName(worldId),
-                        String.valueOf(x + 0.5),
-                        String.valueOf(y),
-                        String.valueOf(z + 0.5));
+        return Phrase.build(
+                user.hasPermission(Config.getGlobal().TELEPORT_PERMISSION) ?
+                        Phrase.GENERIC_POSITION_FORMAT_TELEPORT : Phrase.GENERIC_POSITION_FORMAT,
+                String.valueOf(x),
+                String.valueOf(y),
+                String.valueOf(z),
+                WorldUtils.getWorldName(worldId),
+                command
+        );
     }
 
     public static String getPageNavigation(String command, int page, int totalPages) {
