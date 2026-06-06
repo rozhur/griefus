@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import net.coreprotect.event.RollbackRestoreEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -426,6 +427,15 @@ public class RollbackRestoreCommand {
                                                 Chat.sendMessage(player2, Phrase.build(Phrase.ROLLBACK_STARTED_RESTORE, users));
                                             }
 
+                                            // griefus start
+                                            RollbackRestoreEvent event = new RollbackRestoreEvent(player2.getName(), startTime, endTime, radius, rollbackusers2, finalPreview);
+                                            Bukkit.getPluginManager().callEvent(event);
+
+                                            if (event.isCancelled()) {
+                                                return;
+                                            }
+                                            // griefus end
+
                                             if (finalArgAction.contains(5)) {
                                                 ContainerRollback.performContainerRollbackRestore(statement, player2, uuidList, rollbackusers2, rtime, blist, elist, euserlist, finalArgAction, location, radius, finalTimeStart, finalTimeEnd, restrictWorld, false, verbose, action);
                                             }
@@ -439,6 +449,8 @@ public class RollbackRestoreCommand {
                                                 list.add(finalArgs);
                                                 list.add(locationFinal);
                                                 ConfigHandler.lastRollback.put(player2.getName(), list);
+
+                                                event.getFinishCallback().run(); // griefus
                                             }
                                         }
                                         else {
