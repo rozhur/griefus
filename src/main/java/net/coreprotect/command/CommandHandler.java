@@ -114,7 +114,7 @@ public class CommandHandler implements CommandExecutor {
                     LookupCommand.runCommand(user, command, permission, new String[] { "near", "r:5x5" });
                 }
                 else if (corecommand.equals("teleport") || corecommand.equals("tp")) {
-                    TeleportCommand.runCommand(user, permission, argumentArray);
+                    TeleportCommand.runCommand(user, permission, commandLabel, argumentArray);
                 }
                 else if (corecommand.equals("status") || corecommand.equals("stats") || corecommand.equals("version")) {
                     StatusCommand.runCommand(user, permission, argumentArray);
