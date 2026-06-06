@@ -80,16 +80,16 @@ public class TabHandler implements TabCompleter {
         String arg = argument.toLowerCase(Locale.ROOT);
         List<String> completions = new ArrayList<>();
 
-        addCompletionIfPermitted(sender, "coreprotect.help", "help", completions);
-        addCompletionIfPermitted(sender, "coreprotect.inspect", "inspect", completions);
-        addCompletionIfPermitted(sender, "coreprotect.rollback", "rollback", completions);
-        addCompletionIfPermitted(sender, "coreprotect.restore", "restore", completions);
-        addCompletionIfPermitted(sender, "coreprotect.lookup", "lookup", completions);
-        addCompletionIfPermitted(sender, "coreprotect.purge", "purge", completions);
-        addCompletionIfPermitted(sender, "coreprotect.reload", "reload", completions);
-        addCompletionIfPermitted(sender, "coreprotect.status", "status", completions);
-        addCompletionIfPermitted(sender, "coreprotect.lookup.near", "near", completions);
-        addCompletionIfPermitted(sender, "coreprotect.restore", "undo", completions);
+        addCompletionIfPermitted(sender, "griefus.help", "help", completions);
+        addCompletionIfPermitted(sender, "griefus.inspect", "inspect", completions);
+        addCompletionIfPermitted(sender, "griefus.rollback", "rollback", completions);
+        addCompletionIfPermitted(sender, "griefus.restore", "restore", completions);
+        addCompletionIfPermitted(sender, "griefus.lookup", "lookup", completions);
+        addCompletionIfPermitted(sender, "griefus.purge", "purge", completions);
+        addCompletionIfPermitted(sender, "griefus.reload", "reload", completions);
+        addCompletionIfPermitted(sender, "griefus.status", "status", completions);
+        addCompletionIfPermitted(sender, "griefus.lookup.near", "near", completions);
+        addCompletionIfPermitted(sender, "griefus.restore", "undo", completions);
 
         return StringUtil.copyPartialMatches(arg, completions, new ArrayList<>(completions.size()));
     }
