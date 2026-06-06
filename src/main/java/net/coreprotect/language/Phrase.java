@@ -2,7 +2,6 @@ package net.coreprotect.language;
 
 import net.coreprotect.utility.ChatMessage;
 import net.coreprotect.utility.Color;
-import net.coreprotect.utility.StringUtils;
 
 import java.util.Arrays;
 import java.util.HashSet;
