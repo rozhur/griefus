@@ -98,9 +98,9 @@ public class TeleportCommand {
         }
 
         location.setWorld(world);
-        location.setX(Double.parseDouble(x));
+        location.setX(Double.parseDouble(x) + 0.5);
         location.setY(Double.parseDouble(y));
-        location.setZ(Double.parseDouble(z));
+        location.setZ(Double.parseDouble(z) + 0.5);
 
         int chunkX = location.getBlockX() >> 4;
         int chunkZ = location.getBlockZ() >> 4;
