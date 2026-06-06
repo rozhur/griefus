@@ -235,7 +235,7 @@ public class Language {
         phrases.put(Phrase.INSPECT_HEADER, "----- Griefus ----- {0}");
 
         phrases.put(Phrase.HELP_MAIN_HEADER, "----- Griefus Help -----");
-        phrases.put(Phrase.HELP_MAIN_COMMAND, "<aqua>/co <white>help <dark_aqua><command> <white>- List all available commands");
+        phrases.put(Phrase.HELP_MAIN_COMMAND, "<dark_aqua>/co <white>help <dark_aqua><command> <white>- List all available commands");
         phrases.put(Phrase.HELP_MAIN_INSPECT, "<dark_aqua>/co <white>inspect - Toggle inspection mode");
         phrases.put(Phrase.HELP_MAIN_ROLLBACK, "<dark_aqua>/co <white>rollback <dark_aqua><params> <white>- Rollback changes");
         phrases.put(Phrase.HELP_MAIN_RESTORE, "<dark_aqua>/co <white>restore <dark_aqua><params> <white>- Restore changes");
