@@ -17,7 +17,7 @@ import net.coreprotect.utility.WorldUtils;
 
 public class TeleportCommand {
 
-    protected static void runCommand(CommandSender player, boolean permission, String[] args) {
+    protected static void runCommand(CommandSender player, boolean permission, String label, String[] args) {
         int resultc = args.length;
 
         if (!permission) {
