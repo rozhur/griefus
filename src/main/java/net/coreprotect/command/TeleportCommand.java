@@ -12,7 +12,6 @@ import net.coreprotect.language.Phrase;
 import net.coreprotect.thread.Scheduler;
 import net.coreprotect.utility.Chat;
 import net.coreprotect.utility.ChatMessage;
-import net.coreprotect.utility.Color;
 import net.coreprotect.utility.Teleport;
 import net.coreprotect.utility.WorldUtils;
 
