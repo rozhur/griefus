@@ -42,7 +42,7 @@ import net.coreprotect.utility.ErrorReporter;
 public class Rollback extends RollbackUtil {
 
     public static List<String[]> performRollbackRestore(Statement statement, CommandSender user, List<String> checkUuids, List<String> checkUsers, String timeString, List<Object> restrictList, Map<Object, Boolean> excludeList, List<String> excludeUserList, List<Integer> actionList, Location location, Integer[] radius, long startTime, long endTime, boolean restrictWorld, boolean lookup, boolean verbose, final int rollbackType, final int preview) {
-        List<String[]> list = new ArrayList<>();
+        List<String[]> list;
 
         try {
             long timeStart = System.currentTimeMillis();
