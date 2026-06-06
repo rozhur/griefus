@@ -165,7 +165,7 @@ public class Language {
         phrases.put(Phrase.ROLLBACK_COMPLETED_RESTORE, "Restore completed for \"{0}\".");
         phrases.put(Phrase.ROLLBACK_COMPLETED_PREVIEW, "Preview completed for \"{0}\".");
         // {0} - performer, {1} - target, {2} - radius, {3} - time
-        phrases.put(Phrase.ROLLBACK_ANNOUCE, "Griefus - User {0} has started {rollback|restore|preview} on user(s) \"{1}\" with radius {2} and time {3}");
+        phrases.put(Phrase.ROLLBACK_ANNOUNCE, "Griefus - User {0} has started {rollback|restore|preview} on user(s) \"{1}\" with radius {2} and time {3}");
         phrases.put(Phrase.ROLLBACK_EXCLUDED_USERS, "Excluded {user|users}: \"{0}\".");
         phrases.put(Phrase.ROLLBACK_INCLUDE, "{Included|Excluded} {block|entity|target} {type|types}: \"{0}\".");
         phrases.put(Phrase.ROLLBACK_IN_PROGRESS, "A rollback/restore is already in progress.");
