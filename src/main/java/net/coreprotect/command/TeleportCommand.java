@@ -39,7 +39,7 @@ public class TeleportCommand {
         }
 
         if (resultc < 3) {
-            Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, "/co teleport <world> <x> <y> <z>"));
+            Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, '/' + label + " teleport <world> <x> <y> <z>"));
             return;
         }
 
@@ -93,7 +93,7 @@ public class TeleportCommand {
         String zValidate = z.replaceAll("[^.\\-]", "");
 
         if ((x.length() == 0 || x.length() >= 12 || x.equals(xValidate)) || (y.length() == 0 || y.length() >= 12 || y.equals(yValidate)) || (z.length() == 0 || z.length() >= 12 || z.equals(zValidate))) {
-            Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, "/co teleport <world> <x> <y> <z>"));
+            Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, '/' + label + " teleport <world> <x> <y> <z>"));
             return;
         }
 
