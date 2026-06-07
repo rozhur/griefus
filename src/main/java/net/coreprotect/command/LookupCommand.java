@@ -165,7 +165,7 @@ public class LookupCommand {
             return;
         }
         if (resultc < 2) {
-            Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, '/' + command.getName() + " l <params>"));
+            Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS,  Phrase.build(Phrase.PARAMETERS_USAGE, command.getName(), "l")));
             return;
         }
         if (argAction.contains(-1)) {
@@ -617,12 +617,12 @@ public class LookupCommand {
                     return;
                 }
                 else {
-                    Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, '/' + command.getName() + " l <params>"));
+                    Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, Phrase.build(Phrase.PARAMETERS_USAGE, command.getName(), "l")));
                 }
             }
         }
         else {
-            Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS, '/' + command.getName() + " l <params>"));
+            Chat.sendMessage(player, Phrase.build(Phrase.MISSING_PARAMETERS,  Phrase.build(Phrase.PARAMETERS_USAGE, command.getName(), "l")));
         }
     }
 }

@@ -128,6 +128,7 @@ public class Language {
         phrases.put(Phrase.NO_RESULTS, "No results found.");
         phrases.put(Phrase.NO_RESULTS_PAGE, "No {results|data} found for that page.");
         phrases.put(Phrase.NO_ROLLBACK, "No {pending|previous} rollback/restore found.");
+        phrases.put(Phrase.PARAMETERS_USAGE, "/{0} {1} <params>");
         phrases.put(Phrase.PATCH_INTERRUPTED, "Upgrade interrupted. Will try again on restart.");
         phrases.put(Phrase.PATCH_OUTDATED_1, "Unable to upgrade databases older than {0}.");
         phrases.put(Phrase.PATCH_OUTDATED_2, "Please upgrade with a supported version of CoreProtect.");
