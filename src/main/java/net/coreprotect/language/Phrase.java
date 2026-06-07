@@ -347,8 +347,9 @@ public enum Phrase {
 
             if (output.contains("{" + index + "}")) {
                 output = output.replace("{" + index + "}", param);
-                index++;
             }
+
+            index++;
         }
 
         if ((index + indexExtra) != params.length) { // fallback for issues with user modified phrases
