@@ -356,6 +356,24 @@ public class Language {
         phrases.put(Phrase.LOOKUP_SPAWNER_DATA, "<gray><italic>(type: {0})");
         phrases.put(Phrase.GENERIC_POSITION_FORMAT, "<gray>(x{0}/y{1}/z{2}/{3})</gray>");
         phrases.put(Phrase.GENERIC_POSITION_FORMAT_TELEPORT, "<click:run_command:\"/co teleport {3} {0} {1} {2}\"><hover:show_text:\"/{4} teleport {3} {0} {1} {2}\"><gray>(x{0}/y{1}/z{2}/{3})</gray></hover></click>");
+        phrases.put(Phrase.WAIT_COOLDOWN, "Please wait {0}");
+        phrases.put(Phrase.NOW, "now");
+        phrases.put(Phrase.SECOND, "{0} second");
+        phrases.put(Phrase.SECOND_ALT, "{0} second");
+        phrases.put(Phrase.SECONDS, "{0} seconds");
+        phrases.put(Phrase.SECONDS_ALT, "{0} seconds");
+        phrases.put(Phrase.MINUTE, "{0} minute");
+        phrases.put(Phrase.MINUTE_ALT, "{0} minute");
+        phrases.put(Phrase.MINUTES, "{0} minutes");
+        phrases.put(Phrase.MINUTES_ALT, "{0} minutes");
+        phrases.put(Phrase.HOUR, "{0} hour");
+        phrases.put(Phrase.HOUR_ALT, "{0} hour");
+        phrases.put(Phrase.HOURS, "{0} hours");
+        phrases.put(Phrase.HOURS_ALT, "{0} hours");
+        phrases.put(Phrase.DAY, "{0} day");
+        phrases.put(Phrase.DAY_ALT, "{0} day");
+        phrases.put(Phrase.DAYS, "{0} days");
+        phrases.put(Phrase.DAYS_ALT, "{0} days");
         // Griefus end
         userPhrases.putAll(phrases);
         translatedPhrases.putAll(phrases);

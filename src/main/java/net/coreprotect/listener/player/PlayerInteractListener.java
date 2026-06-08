@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+import net.coreprotect.cooldown.Cooldown;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -124,6 +125,11 @@ public final class PlayerInteractListener extends Queue implements Listener {
             return;
         }
 
+        if (event.getHand() == EquipmentSlot.OFF_HAND) {
+            event.setCancelled(true);
+            return;
+        }
+
         if (!player.hasPermission("griefus.inspect")) {
             Chat.sendMessage(player, Phrase.build(Phrase.NO_PERMISSION));
             ConfigHandler.inspecting.put(player.getName(), false);
@@ -131,6 +137,11 @@ public final class PlayerInteractListener extends Queue implements Listener {
         }
 
         if (event.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
+            if (!player.hasPermission("griefus.inspect.cooldown.bypass") && Cooldown.checkCooldown(player)) {
+                event.setCancelled(true);
+                return;
+            }
+
             BlockState checkBlock = event.getClickedBlock().getState();
             int x = checkBlock.getX();
             int y = checkBlock.getY();
@@ -177,6 +188,11 @@ public final class PlayerInteractListener extends Queue implements Listener {
         else if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             Block block = event.getClickedBlock();
             if (block != null) {
+                if (!player.hasPermission("griefus.inspect.cooldown.bypass") && Cooldown.checkCooldown(player)) {
+                    event.setCancelled(true);
+                    return;
+                }
+
                 final Material type = block.getType();
                 boolean isInteractBlock = BlockGroup.INTERACT_BLOCKS.contains(type);
                 boolean isContainerBlock = BlockGroup.CONTAINERS.contains(type);
