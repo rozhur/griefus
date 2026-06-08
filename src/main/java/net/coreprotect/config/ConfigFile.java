@@ -64,7 +64,7 @@ public class ConfigFile extends Config {
         for (final Entry<String, String> entry : this.lang.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
-            if (DEFAULT_VALUES.containsKey(key) && value.length() > 0 && (!isCache || DEFAULT_VALUES.get(key).equals(USER_VALUES.get(key)))) {
+            if (DEFAULT_VALUES.containsKey(key) && (!isCache || DEFAULT_VALUES.get(key).equals(USER_VALUES.get(key)))) {
                 Phrase phrase = Phrase.valueOf(key);
                 if (!isCache) {
                     Language.setUserPhrase(phrase, value);

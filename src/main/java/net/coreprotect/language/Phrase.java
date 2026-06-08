@@ -326,6 +326,10 @@ public enum Phrase {
             }
         }
 
+        if (output.isEmpty()) {
+            return output;
+        }
+
         String color = "";
         // Griefus begin
         //if (HEADERS.contains(phrase)) {
