@@ -380,9 +380,10 @@ public class StandardLookupThread implements Runnable {
                                 }
                                 // griefus end
                                 // griefus begin
+                                String dselector = Phrase.build(Phrase.LOOKUP_ITEM, selector);
                                 //Chat.sendComponent(player, timeago + " " + tag + " " + Phrase.build(Phrase.LOOKUP_CONTAINER, Color.DARK_AQUA + rbd + dplayer + Color.WHITE + rbd, "x" + amount, ChatUtils.createTooltip(Color.DARK_AQUA + rbd + dname, tooltip) + Color.WHITE, selector));
                                 //Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)); // griefus
-                                Chat.sendComponent(player, Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeago, dplayer, selector, 'x' + amount + ' ' + dname, extraData));
+                                Chat.sendComponent(player, Phrase.build(!rb ? Phrase.GENERIC_LOOKUP_FORMAT : Phrase.GENERIC_LOOKUP_FORMAT_RB, timeago, dplayer, dselector, "x" + amount + ' ' + dname, extraData));
                                 Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES, leftPadding, ChatUtils.getCoordinates(player, command.getName(), wid, dataX, dataY, dataZ, true, true)));
                                 // griefus end
                                 PluginChannelListener.getInstance().sendData(player, Integer.parseInt(time), Phrase.LOOKUP_CONTAINER, selector, dplayer, dname, amount, dataX, dataY, dataZ, wid, String.valueOf(rb), true, tag.contains("+"));
@@ -472,8 +473,8 @@ public class StandardLookupThread implements Runnable {
                                 String action = "a:block";
                                 if (actions.contains(LookupActions.CONTAINER) || actions.contains(5) || actions.contains(LookupActions.ITEM) || amount > -1) {
                                     byte[] metadata = data[11] == null ? null : data[11].getBytes(StandardCharsets.ISO_8859_1);
-                                    String tooltip = ItemUtils.getEnchantments(metadata, dtype, amount);
-                                    Integer itemId = ItemUtils.makeGivableItem(ItemUtils.getItemStack(metadata, dtype, amount));
+                                    //String tooltip = ItemUtils.getEnchantments(metadata, dtype, amount);
+                                    //Integer itemId = ItemUtils.makeGivableItem(ItemUtils.getItemStack(metadata, dtype, amount));
 
                                     if (daction == ItemTransactionActions.DROP || daction == ItemTransactionActions.PICKUP) {
                                         phrase = Phrase.LOOKUP_ITEM; // {picked up|dropped}
