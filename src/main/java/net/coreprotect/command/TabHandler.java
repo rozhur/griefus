@@ -27,7 +27,7 @@ public class TabHandler implements TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!(sender instanceof Player) || args.length == 0) {
+        if (args.length == 0) {
             return null;
         }
 
