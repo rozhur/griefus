@@ -228,6 +228,7 @@ public class Language {
         phrases.put(Phrase.GENERIC_LOOKUP_COORDINATES_ACTION, "{0}<gray>^ {1} {2}");
         // 0 - time ago, 1 - player, 2 - message
         phrases.put(Phrase.CHAT_LOOKUP_FORMAT, "{0} - {1}: {2}");
+        phrases.put(Phrase.COMMAND_LOOKUP_FORMAT, "{0} - {1}: {2}");
         // 0 - time ago, 1 - action
         phrases.put(Phrase.LOGIN_LOOKUP_FORMAT, "{0} - {1}");
         // 0 - time ago, 1 - action

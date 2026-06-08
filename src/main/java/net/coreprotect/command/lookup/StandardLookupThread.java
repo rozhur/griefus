@@ -204,7 +204,8 @@ public class StandardLookupThread implements Runnable {
                         //Chat.sendMessage(player, Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.LOOKUP_HEADER, "Griefus" + Color.WHITE + " | " + Color.DARK_AQUA) + Color.WHITE + " -----");
                         Chat.sendMessage(player, Phrase.build(Phrase.LOOKUP_HEADER));
                         // Griefus end
-                        if (actions.contains(LookupActions.CHAT) || actions.contains(LookupActions.COMMAND)) { // Chat/command
+                        boolean chat = actions.contains(LookupActions.CHAT);
+                        if (chat || actions.contains(LookupActions.COMMAND)) { // Chat/command
                             for (String[] data : lookupList) {
                                 String time = data[0];
                                 String dplayer = data[1];
@@ -228,7 +229,7 @@ public class StandardLookupThread implements Runnable {
                                 // griefus begin
                                 //Chat.sendComponent(player, timeago + " " + Color.WHITE + "- " + Color.DARK_AQUA + dplayer + ": " + Color.WHITE, message);
                                 //Chat.sendComponent(player, Color.WHITE + leftPadding + Color.GREY + "^ " + ChatUtils.getCoordinates(command.getName(), wid, dataX, dataY, dataZ, true, true)); // griefus
-                                Chat.sendComponent(player, Phrase.build(Phrase.CHAT_LOOKUP_FORMAT, timeago, dplayer, message));
+                                Chat.sendComponent(player, Phrase.build(chat ? Phrase.CHAT_LOOKUP_FORMAT : Phrase.COMMAND_LOOKUP_FORMAT, timeago, dplayer, message));
                                 Chat.sendComponent(player, Phrase.build(Phrase.GENERIC_LOOKUP_COORDINATES, leftPadding, ChatUtils.getCoordinates(player, command.getName(), wid, dataX, dataY, dataZ, true, true)));
                                 // griefus end
                                 if (PluginChannelHandshakeListener.getInstance().isPluginChannelPlayer(player)) {
