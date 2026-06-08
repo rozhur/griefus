@@ -129,7 +129,8 @@ public class ChatMessage {
     }
 
     public String build() {
-        return (this.useTag ? pluginName : createSpaces(pluginName, true, this.useSpaces)) + this.textColor + " " + this.separator + " " + this.textStyle + this.message;
+        //return (this.useTag ? pluginName : createSpaces(pluginName, true, this.useSpaces)) + this.textColor + " " + this.separator + " " + this.textStyle + this.message;
+        return this.message;
     }
 
     @Override
