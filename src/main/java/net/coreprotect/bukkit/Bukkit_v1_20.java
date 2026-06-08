@@ -128,18 +128,21 @@ public class Bukkit_v1_20 extends Bukkit_v1_19 {
     public String parseLegacyName(String name) {
         switch (name) {
             case "GRASS_PATH":
-                return "DIRT_PATH";
+                name = "DIRT_PATH";
+                break;
             case "GRASS":
-                return "SHORT_GRASS";
+                name = "SHORT_GRASS";
+                break;
             case "SCUTE":
-                return "TURTLE_SCUTE";
-            default:
-                // Fallback until this method is moved up into v1_21
-                if ("SHORT_GRASS".equals(name) && Material.getMaterial(name) == null) {
-                    return "GRASS";
-                }
-                return name;
+                name = "TURTLE_SCUTE";
         }
+
+        // Fallback until this method is moved up into v1_21
+        if ("SHORT_GRASS".equals(name) && Material.getMaterial(name) == null) {
+            name = "GRASS";
+        }
+
+        return name;
     }
 
     @Override
