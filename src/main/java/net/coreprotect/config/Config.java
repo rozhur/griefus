@@ -99,6 +99,7 @@ public class Config extends Language {
     public int MYSQL_PORT;
     public int DEFAULT_RADIUS;
     public int MAX_RADIUS;
+    public int COOLDOWN;
 
     static {
         DEFAULT_VALUES.put("donation-key", "");
@@ -117,6 +118,7 @@ public class Config extends Language {
         DEFAULT_VALUES.put("verbose", "true");
         DEFAULT_VALUES.put("default-radius", "10");
         DEFAULT_VALUES.put("max-radius", "100");
+        DEFAULT_VALUES.put("cooldown", "3");
         DEFAULT_VALUES.put("rollback-items", "true");
         DEFAULT_VALUES.put("rollback-entities", "true");
         DEFAULT_VALUES.put("skip-generic-data", "true");
@@ -233,6 +235,7 @@ public class Config extends Language {
         this.VERBOSE = this.getBoolean("verbose");
         this.DEFAULT_RADIUS = this.getInt("default-radius");
         this.MAX_RADIUS = this.getInt("max-radius");
+        this.COOLDOWN = this.getInt("cooldown");
         this.ROLLBACK_ITEMS = this.getBoolean("rollback-items");
         this.ROLLBACK_ENTITIES = this.getBoolean("rollback-entities");
         this.SKIP_GENERIC_DATA = this.getBoolean("skip-generic-data");

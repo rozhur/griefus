@@ -53,6 +53,7 @@ public class Language {
         phrases.put(Phrase.CONSUMER_TOGGLED, "Consumer queue processing has been {paused|resumed}.");
         phrases.put(Phrase.CONTAINER_HEADER, "----- Container Transactions -----");
         phrases.put(Phrase.CPU_CORES, "CPU cores.");
+        phrases.put(Phrase.DATE_FORMAT, "yyyy-MM-dd HH:mm:ss z");
         phrases.put(Phrase.DATABASE_BUSY, "Database busy. Please try again later.");
         phrases.put(Phrase.DATABASE_INDEX_ERROR, "Unable to validate database indexes.");
         phrases.put(Phrase.DATABASE_LOCKED_1, "Database locked. Waiting up to 15 seconds...");
@@ -191,6 +192,7 @@ public class Language {
         phrases.put(Phrase.TELEPORTED, "Teleported to {0}.");
         phrases.put(Phrase.TELEPORTED_SAFETY, "Teleported you to safety.");
         phrases.put(Phrase.TELEPORT_PLAYERS, "Teleport command can only be used by players.");
+        phrases.put(Phrase.TIME_SINCE, "<hover:show_text:\"<yellow>{1}</yellow>\"><gray>{0}</hover>");
         phrases.put(Phrase.TIME_DAYS, "{0} {day|days}");
         phrases.put(Phrase.TIME_HOURS, "{0} {hour|hours}");
         phrases.put(Phrase.TIME_MINUTES, "{0} {minute|minutes}");

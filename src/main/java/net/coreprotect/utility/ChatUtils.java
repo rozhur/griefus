@@ -181,10 +181,10 @@ public class ChatUtils {
 
         if (component) {
             Date logDate = new Date(resultTime * 1000L);
-            String formattedTimestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z").format(logDate);
+            String formattedTimestamp = new SimpleDateFormat(Phrase.build(Phrase.DATE_FORMAT)).format(logDate);
 
             //return Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_POPUP + "|" + Color.GREY + formattedTimestamp + "|" + Color.GREY + message.toString() + Chat.COMPONENT_TAG_CLOSE;
-            return "<hover:show_text:\"<gray>" + escapeAll(formattedTimestamp) + "</gray>\"><gray>" + message + "</hover>"; // griefus
+            return Phrase.build(Phrase.TIME_SINCE, message, formattedTimestamp); // griefus
         }
 
         return message.toString();
