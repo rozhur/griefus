@@ -35,7 +35,6 @@ import net.coreprotect.utility.Color;
 import net.coreprotect.utility.EntityUtils;
 import net.coreprotect.utility.ItemUtils;
 import net.coreprotect.utility.MaterialUtils;
-import net.coreprotect.utility.StringUtils;
 import net.coreprotect.utility.WorldUtils;
 import org.bukkit.entity.EntityType;
 import net.coreprotect.utility.ErrorReporter;
