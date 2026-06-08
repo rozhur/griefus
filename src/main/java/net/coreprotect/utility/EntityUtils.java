@@ -150,8 +150,9 @@ public class EntityUtils extends Queue {
     }
 
     // Returns translatable string if enabled in the config, plain entity type otherwise - Griefus
-    public static String asTranslatable(EntityType type){
+    public static String asTranslatable(EntityType type) {
+        String key = type.getKey().getKey();
         return Config.getGlobal().TRANSLATE_MATERIALS ?
-                "<lang:entity.minecraft." + type.getKey().getKey() + ">" : type.name().toLowerCase(Locale.ROOT);
+                "<insert:" + key + "><hover:show_text:" + key + "><lang:" + type.translationKey() + "></hover></insert>" : key;
     }
 }

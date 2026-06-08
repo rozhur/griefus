@@ -241,7 +241,8 @@ public class MaterialUtils extends Queue {
 
     // Returns translatable string if enabled in the config, plain material otherwise - Griefus
     public static String asTranslatable(Material material) {
+        String key = material.getKey().getKey();
         return Config.getGlobal().TRANSLATE_MATERIALS ?
-                "<lang:block.minecraft." + material.getKey().getKey() + ">" : material.name().toLowerCase(Locale.ROOT);
+                "<insert:" + key + "><hover:show_text:" + key + "><lang:" + material.translationKey() + "></hover></insert>" : key;
     }
 }
