@@ -5,7 +5,7 @@ branch: ${project.branch}
 api-version: 1.16
 folia-supported: true
 website: https://griefus.zhdev.org
-authors: [Intelli, rozhur]
+authors: [Intelli, rozhur, whitebelyash]
 softdepend: [WorldEdit]
 description: >
              Provides block protection for your server.
