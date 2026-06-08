@@ -540,17 +540,6 @@ public class LookupRaw extends Queue {
                 queryBlock = queryBlock + " time <= '" + endTime + "' AND";
             }
 
-            if (actionList.contains(LookupActions.SIGN)) {
-                queryBlock = queryBlock + " action = '" + SignActions.PLACE + "' AND (LENGTH(line_1) > 0 OR LENGTH(line_2) > 0 OR LENGTH(line_3) > 0 OR LENGTH(line_4) > 0 OR LENGTH(line_5) > 0 OR LENGTH(line_6) > 0 OR LENGTH(line_7) > 0 OR LENGTH(line_8) > 0) AND";
-            }
-
-            if (queryBlock.length() > 0) {
-                queryBlock = queryBlock.substring(0, queryBlock.length() - 4);
-            }
-
-            if (queryBlock.length() == 0) {
-                queryBlock = " 1";
-            }
             if (messageList.size() > 0 &&
                     (actionList.contains(LookupActions.CHAT) || actionList.contains(LookupActions.COMMAND))) {
                 StringBuilder builder = new StringBuilder().append(" (");
@@ -563,6 +552,18 @@ public class LookupRaw extends Queue {
                 }
                 builder.append(") AND");
                 queryBlock = queryBlock + builder;
+            }
+
+            if (actionList.contains(LookupActions.SIGN)) {
+                queryBlock = queryBlock + " action = '" + SignActions.PLACE + "' AND (LENGTH(line_1) > 0 OR LENGTH(line_2) > 0 OR LENGTH(line_3) > 0 OR LENGTH(line_4) > 0 OR LENGTH(line_5) > 0 OR LENGTH(line_6) > 0 OR LENGTH(line_7) > 0 OR LENGTH(line_8) > 0) AND";
+            }
+
+            if (queryBlock.length() > 0) {
+                queryBlock = queryBlock.substring(0, queryBlock.length() - 4);
+            }
+
+            if (queryBlock.length() == 0) {
+                queryBlock = " 1";
             }
 
             queryEntity = queryBlock;
