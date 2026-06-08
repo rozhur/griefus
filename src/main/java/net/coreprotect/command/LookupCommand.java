@@ -182,7 +182,8 @@ public class LookupCommand {
         }
         if (ConfigHandler.lookupThrottle.get(player.getName()) != null) {
             Object[] lookupThrottle = ConfigHandler.lookupThrottle.get(player.getName());
-            if ((boolean) lookupThrottle[0] || ((System.currentTimeMillis() - (long) lookupThrottle[1])) < 50) {
+            if (((boolean) lookupThrottle[0] || ((System.currentTimeMillis() - (long) lookupThrottle[1])) < 50) &&
+                    !player.hasPermission("griefus.throttle.bypass")) {
                 Chat.sendMessage(player, Phrase.build(Phrase.DATABASE_BUSY));
                 return;
             }

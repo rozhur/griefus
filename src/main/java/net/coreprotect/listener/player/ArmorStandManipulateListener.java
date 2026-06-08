@@ -48,7 +48,8 @@ public final class ArmorStandManipulateListener extends Queue implements Listene
                 }
                 if (ConfigHandler.lookupThrottle.get(finalPlayer.getName()) != null) {
                     Object[] lookupThrottle = ConfigHandler.lookupThrottle.get(finalPlayer.getName());
-                    if ((boolean) lookupThrottle[0] || ((System.currentTimeMillis() - (long) lookupThrottle[1])) < 100) {
+                    if (((boolean) lookupThrottle[0] || ((System.currentTimeMillis() - (long) lookupThrottle[1])) < 100) &&
+                            !finalPlayer.hasPermission("griefus.throttle.bypass")) {
                         Chat.sendMessage(finalPlayer, Phrase.build(Phrase.DATABASE_BUSY));
                         return;
                     }
