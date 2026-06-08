@@ -339,8 +339,8 @@ public class StandardLookupThread implements Runnable {
                                 String dname = MaterialUtils.asTranslatable(blockType);
                                 // Griefus end
                                 byte[] metadata = data[11] == null ? null : data[11].getBytes(StandardCharsets.ISO_8859_1);
-                                String tooltip = ItemUtils.getEnchantments(metadata, dtype, amount);
-                                Integer itemId = ItemUtils.makeGivableItem(ItemUtils.getItemStack(metadata, dtype, amount));
+                                //String tooltip = ItemUtils.getEnchantments(metadata, dtype, amount);
+                                //Integer itemId = ItemUtils.makeGivableItem(ItemUtils.getItemStack(metadata, dtype, amount));
 
                                 String selector = Selector.FIRST;
                                 String tag = Color.WHITE + "-";
