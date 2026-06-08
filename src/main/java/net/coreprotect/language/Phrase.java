@@ -295,7 +295,21 @@ public enum Phrase {
     GENERIC_UNKNOWN,
     LOOKUP_SPAWNER_DATA,
     GENERIC_POSITION_FORMAT,
-    GENERIC_POSITION_FORMAT_TELEPORT;
+    GENERIC_POSITION_FORMAT_TELEPORT,
+    WAIT_COOLDOWN,
+    NOW,
+    SECOND,
+    SECOND_ALT,
+    SECONDS, SECONDS_ALT,
+    MINUTE,
+    MINUTE_ALT,
+    MINUTES, MINUTES_ALT,
+    HOUR,
+    HOUR_ALT,
+    HOURS, HOURS_ALT,
+    DAY,
+    DAY_ALT,
+    DAYS, DAYS_ALT;
     // Griefus end
 
     final private static Set<Phrase> HEADERS = new HashSet<>(Arrays.asList(Phrase.CONTAINER_HEADER, Phrase.HELP_HEADER, Phrase.INTERACTIONS_HEADER, Phrase.LOOKUP_HEADER, Phrase.SIGN_HEADER, Phrase.UPDATE_HEADER));
@@ -315,7 +329,7 @@ public enum Phrase {
         return Language.getTranslatedPhrase(this);
     }
 
-    public static String build(Phrase phrase, String... params) {
+    public static String build(Phrase phrase, Object... params) {
         String output = phrase.getTranslatedPhrase();
 
         // If translated phrase is null, fall back to the default phrase
@@ -339,7 +353,8 @@ public enum Phrase {
         // Griefus end
         int index = 0;
         int indexExtra = 0;
-        for (String param : params) {
+        for (Object rawParam : params) {
+            String param = String.valueOf(rawParam);
             if (index == 0 && COLORS.contains(param)) {
                 color = param;
                 indexExtra++;
@@ -373,7 +388,7 @@ public enum Phrase {
         return output;
     }
 
-    private static String buildInternal(Phrase phrase, String[] params, String color) {
+    private static String buildInternal(Phrase phrase, Object[] params, String color) {
         String output = phrase.getPhrase(); // get internal phrase
 
         // If internal phrase is null, use an empty string to avoid NullPointerException
@@ -383,7 +398,8 @@ public enum Phrase {
         }
 
         int index = 0;
-        for (String param : params) {
+        for (Object rawParam : params) {
+            String param = String.valueOf(rawParam);
             if (index == 0 && COLORS.contains(param)) {
                 continue;
             }
