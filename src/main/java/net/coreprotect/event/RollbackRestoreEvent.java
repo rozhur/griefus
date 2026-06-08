@@ -1,5 +1,6 @@
 package net.coreprotect.event;
 
+import org.bukkit.Location;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -11,22 +12,24 @@ public class RollbackRestoreEvent extends Event implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
 
     private final String user;
-    private final long startTime;
-    private final long endTime;
+    private final Location location;
     private final Integer[] radius;
+    private final String time;
     private final List<String> checkUsers;
+    private final int action;
     private final int preview;
 
     private Runnable finishCallback;
     private boolean cancelled;
 
-    public RollbackRestoreEvent(String user, long startTime, long endTime, Integer[] radius, List<String> checkUsers, int preview) {
+    public RollbackRestoreEvent(String user, Location location, Integer[] radius, String time, List<String> checkUsers, int action, int preview) {
         super(true);
         this.user = user;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.location = location;
         this.radius = radius;
+        this.time = time;
         this.checkUsers = checkUsers;
+        this.action = action;
         this.preview = preview;
     }
 
@@ -34,20 +37,24 @@ public class RollbackRestoreEvent extends Event implements Cancellable {
         return user;
     }
 
-    public long getStartTime() {
-        return startTime;
-    }
-
-    public long getEndTime() {
-        return endTime;
+    public Location getLocation() {
+        return location;
     }
 
     public Integer[] getRadius() {
         return radius;
     }
 
+    public String getTime() {
+        return time;
+    }
+
     public List<String> getCheckUsers() {
         return checkUsers;
+    }
+
+    public int getAction() {
+        return action;
     }
 
     public int getPreview() {

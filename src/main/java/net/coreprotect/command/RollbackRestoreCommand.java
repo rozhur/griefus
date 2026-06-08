@@ -428,7 +428,7 @@ public class RollbackRestoreCommand {
                                             }
 
                                             // griefus start
-                                            RollbackRestoreEvent event = new RollbackRestoreEvent(player2.getName(), startTime, endTime, radius, rollbackusers2, finalPreview);
+                                            RollbackRestoreEvent event = new RollbackRestoreEvent(player2.getName(), location, radius, rtime, rollbackusers2, action, finalPreview);
                                             Bukkit.getPluginManager().callEvent(event);
 
                                             if (event.isCancelled()) {
