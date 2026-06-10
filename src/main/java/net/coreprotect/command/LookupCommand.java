@@ -522,6 +522,7 @@ public class LookupCommand {
                     argExclude = ConfigHandler.lookupElist.get(player.getName());
                     argExcludeUsers = ConfigHandler.lookupEUserlist.get(player.getName());
                     argAction = ConfigHandler.lookupAlist.get(player.getName());
+                    argMessages = ConfigHandler.lookupMlist.get(player.getName());
                     argRadius = ConfigHandler.lookupRadius.get(player.getName());
                     ts = ConfigHandler.lookupTime.get(player.getName());
                     startTime = 1;

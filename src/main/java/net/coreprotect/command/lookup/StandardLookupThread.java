@@ -112,6 +112,7 @@ public class StandardLookupThread implements Runnable {
             ConfigHandler.lookupBlist.put(player.getName(), blockList);
             ConfigHandler.lookupUlist.put(player.getName(), rollbackUsers);
             ConfigHandler.lookupAlist.put(player.getName(), actions);
+            ConfigHandler.lookupMlist.put(player.getName(), messages);
             ConfigHandler.lookupRadius.put(player.getName(), radius);
 
             if (connection != null) {
