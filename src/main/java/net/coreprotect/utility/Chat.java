@@ -32,7 +32,11 @@ public final class Chat {
     public static void sendComponent(CommandSender sender, String string, String bypass) {
         //string = translateColorCodes(string);
         //SpigotAdapter.ADAPTER.sendComponent(sender, string, bypass);
-        sendMessage(sender, string + bypass); // griefus
+        if (bypass != null) {
+            string += bypass;
+        }
+
+        sendMessage(sender, string); // griefus
     }
 
     public static void sendComponent(CommandSender sender, String string) {
