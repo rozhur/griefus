@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 
@@ -17,7 +20,6 @@ import net.coreprotect.language.Selector;
 import net.coreprotect.listener.channel.PluginChannelListener;
 import net.coreprotect.model.action.SignActions;
 import net.coreprotect.utility.ChatUtils;
-import net.coreprotect.utility.Color;
 import net.coreprotect.utility.WorldUtils;
 import net.coreprotect.utility.ErrorReporter;
 
@@ -141,6 +143,9 @@ public class SignMessageLookup {
                         parsedMessage = parsedMessage.replace(color, "");
                     }
                 }
+
+                Component componentMessage = LegacyComponentSerializer.legacySection().deserialize(ChatUtils.escape(parsedMessage));
+                parsedMessage = MiniMessage.miniMessage().serialize(componentMessage);
 
                 if (ConfigHandler.playerIdCacheReversed.get(resultUserId) == null) {
                     UserStatement.loadName(statement.getConnection(), resultUserId);
