@@ -3,8 +3,8 @@ package net.coreprotect.utility;
 import java.util.Locale;
 import java.util.Set;
 
+import net.coreprotect.CoreProtect;
 import net.coreprotect.config.Config;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Painting;
 
@@ -139,6 +139,10 @@ public class MaterialUtils extends Queue {
             if (material == null) {
                 material = Material.getMaterial(name, true);
             }
+        }
+
+        if (material == null) {
+            CoreProtect.getInstance().getLogger().warning("Material '" + id + "' not found");
         }
 
         return material;
